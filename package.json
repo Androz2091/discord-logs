@@ -1,0 +1,27 @@
+{
+  "name": "discord-logs",
+  "version": "1.0.0",
+  "description": "Add many useful events to your Discord.js client!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Androz2091/discord-logs.git"
+  },
+  "keywords": [
+    "avdanced",
+    "logs",
+    "bot",
+    "framework",
+    "discord",
+    "audit-logs"
+  ],
+  "author": "Androz2091",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Androz2091/discord-logs/issues"
+  },
+  "homepage": "https://github.com/Androz2091/discord-logs#readme"
+}
