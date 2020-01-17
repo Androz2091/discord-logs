@@ -51,28 +51,30 @@ const handleUserUpdateEvent = (client, oldUser, newUser) => {
 /**
  * Handles the voiceStateUpdate event and emits the specific event
  * @param {Client} client The Discord Client instance
- * @param {GuildMember} oldMember The member without the change
- * @param {GuildMember} newMember The member with the change
+ * @param {VoiceState} oldState The voice state without the change
+ * @param {VoiceState} newState The voice state with the change
  */
-const handleVoiceStateUpdateEvent = (client, oldMember, newMember) => {
+const handleVoiceStateUpdateEvent = (client, oldState, newState) => {
+    let oldMember = oldState.member;
+    let newMember = newState.member;
     // If the member joins the voice channel
-    if(!oldMember.voice.channel && newMember.voice.channel){
+    if(!oldState.channel && newState.channel){
         return client.emit('voiceChannelJoin', oldMember, newMember);
     }
     // If the member leaves the voice channel
-    if(oldMember.voice.channel && !newMember.voice.channel){
+    if(oldState.channel && !newState.channel){
         return client.emit('voiceChannelLeave', oldMember, newMember);
     }
     // If the member changes the voice channel
-    if(oldMember.voice.channel && newMember.voice.channel && (oldMember.voice.channel.id !== newMember.voice.channel.id)){
+    if(oldState.channel && newState.channel && (oldState.channel.id !== newState.channel.id)){
         return client.emit('voiceChannelSwitch', oldMember, newMember);
     }
     // If the member became muted
-    if(!oldMember.voice.mute && newMember.voice.mute){
+    if(!oldState.mute && newState.mute){
         return client.emit('voiceChannelMute', oldMember, newMember);
     }
     // If the member became unmuted
-    if(oldMember.voice.mute && !newMember.voice.mute){
+    if(oldState.mute && !newState.mute){
         return client.emit('voiceChannelUnmute', oldMember, newMember);
     }
 };
@@ -90,8 +92,8 @@ module.exports = async (client) => {
     });
 
     /* HANDLE VOICE STATE UPDATE */
-    client.on('voiceStateUpdate', (oldMember, newMember) => {
-        handleVoiceStateUpdateEvent(client, oldMember, newMember);
+    client.on('voiceStateUpdate', (oldState, newState) => {
+        handleVoiceStateUpdateEvent(client, oldState, newState);
     });
 
 };
