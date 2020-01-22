@@ -79,11 +79,25 @@ const handleVoiceStateUpdateEvent = (client, oldState, newState) => {
     }
 };
 
+/**
+ * Handles the guildMemberUpdate event to check if the member is now a booster
+ * @param {Client} client The Discord Client instance
+ * @param {GuildMember} oldMember The member without the change
+ * @param {GuildMember} newMember The member with the change
+ */
+const handleGuildMemberUpdateEventBoost = (client, oldMember, newMember) => {
+    // If the member is now boosting
+    if(!oldMember.premiumSince && newMember.premiumSince){
+        client.emit('guildMemberBoost', newMember);
+    }
+};
+
 module.exports = async (client) => {
 
     /* HANDLE MEMBER EVENTS */
     client.on('guildMemberUpdate', (oldMember, newMember) => {
         handleGuildMemberUpdateEvent(client, oldMember, newMember);
+        handleGuildMemberUpdateEventBoost(client, oldMember, newMember);
     });
 
     /* HANDLE USER EVENTS */

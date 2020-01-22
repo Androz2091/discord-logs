@@ -14,9 +14,9 @@ const client = new Discord.Client();
 const logs = require('discord-logs');
 logs(client);
 
-// Access to new events, like guildMemberRoleAdd!
-client.on('guildMemberRoleAdd', (member, role) => {
-    console.log(`${member.user.tag} now has the role ${role.name}!`);
+// Access to new events, like guildMemberBoost!
+client.on('guildMemberBoost', (member) => {
+    console.log(`${member.user.tag} just boosted ${member.guild.name}!`);
 });
 
 client.login('YOUR_DISCORD_BOT_TOKEN');
@@ -27,6 +27,14 @@ client.login('YOUR_DISCORD_BOT_TOKEN');
 You will find here all new events that Discord Logs implement. Not all events that could be supported are supported by the module. You can open a pull request to add new ones.
 
 ### Member Events
+
+* `guildMemberBoost`: emitted when a member starts boosting the server
+```js
+// When a member starts boosting the server
+client.on('guildMemberBoost', (member) => {
+    console.log(`${member.user.tag} just boosted ${member.guild.name}!`);
+});
+```
 
 * `guildMemberRoleAdd`: emitted when a member receives a new role
 
