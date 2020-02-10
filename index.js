@@ -32,6 +32,23 @@ const handleGuildMemberUpdateEvent = (client, oldMember, newMember) => {
 };
 
 /**
+ * Handles the presenceUpdate event and emits the specific event
+ * @param {Client} client The Discord Client instance
+ * @param {Presence} oldPresence The presence without the change
+ * @param {Presence} newPresence The presence with the change
+ */
+const handlePresenceUpdate = (client, oldPresence, newPresence) => {
+    // Check if the member is now online
+    if(oldPresence.status === 'offline' && newPresence.status !== 'offline'){
+        return client.emit('guildMemberOnline', oldPresence.member, newPresence.member);
+    }
+    // Check if the member is now offline
+    if(oldPresence.status !== 'offline' && newPresence.status === 'offline'){
+        return client.emit('guildMemberOffline', oldPresence.member, newPresence.member);
+    }
+};
+
+/**
  * Handles the userUpdate event and emits the specific event
  * @param {Client} client The Discord Client instance
  * @param {User} oldUser The user without the change
@@ -98,6 +115,11 @@ module.exports = async (client) => {
     client.on('guildMemberUpdate', (oldMember, newMember) => {
         handleGuildMemberUpdateEvent(client, oldMember, newMember);
         handleGuildMemberUpdateEventBoost(client, oldMember, newMember);
+    });
+
+    /* HANDLE PRESENCE UPDATE EVENTS */
+    client.on('presenceUpdate', (oldPresence, newPresence) => {
+        handlePresenceUpdate(client, oldPresence, newPresence);
     });
 
     /* HANDLE USER EVENTS */

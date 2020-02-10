@@ -62,6 +62,26 @@ client.on('guildMemberNicknameUpdate', (oldMember, newMember) => {
 });
 ```
 
+### Presence Events
+
+* `guildMemberOnline`: emitted when a member is now online
+  
+```js
+// When a member is now online
+client.on('guildMemberOnline', (oldMember, newMember) => {
+    console.log(`${newMember.user.tag} is now online!`);
+});
+```
+
+* `guildMemberOffline`: emitted when a member is now offline
+  
+```js
+// When a member is now offline
+client.on('guildMemberOffline', (oldMember, newMember) => {
+    console.log(`${newMember.user.tag} is now offline!`);
+});
+```
+
 ### User Events
 
 * `userAvatarUpdate`: emitted when a user avatar changes
