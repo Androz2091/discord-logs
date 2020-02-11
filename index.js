@@ -56,7 +56,7 @@ const handlePresenceUpdate = (client, oldPresence, newPresence) => {
  */
 const handleUserUpdateEvent = (client, oldUser, newUser) => {
     // Check if the avatar has changed
-    if(oldUser.displayAvatarURL !== newUser.displayAvatarURL){
+    if(oldUser.displayAvatarURL() !== newUser.displayAvatarURL()){
         return client.emit('userAvatarUpdate', oldUser, newUser);
     }
     // Check if the username has changed
