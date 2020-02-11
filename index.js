@@ -7,8 +7,8 @@
 const handleGuildMemberUpdateEvent = (client, oldMember, newMember) => {
     let addedRole = null;
     // Check if a role was added
-    newMember.roles.forEach((role) => {
-        if(!oldMember.roles.has(role.id)){
+    newMember.roles.cache.forEach((role) => {
+        if(!oldMember.roles.cache.has(role.id)){
             addedRole = role;
         }
     });
@@ -17,8 +17,8 @@ const handleGuildMemberUpdateEvent = (client, oldMember, newMember) => {
     }
     // Check if a role was removed
     let removedRole = null;
-    oldMember.roles.forEach((role) => {
-        if(!newMember.roles.has(role.id)){
+    oldMember.roles.cache.forEach((role) => {
+        if(!newMember.roles.cache.has(role.id)){
             removedRole = role;
         }
     });
