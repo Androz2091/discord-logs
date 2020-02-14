@@ -6,7 +6,7 @@ import {
     handleVoiceStateUpdateEvent,
 } from './handlers';
 
-export default async (client: Client) => {
+export = async (client: Client) => {
     /* HANDLE MEMBER EVENTS */
     client.on('guildMemberUpdate', (oldMember: GuildMember, newMember: GuildMember) => {
         handleGuildMemberUpdateEvent(client, oldMember, newMember);
