@@ -2,9 +2,13 @@
   "name": "discord-logs",
   "version": "1.1.0",
   "description": "Add many useful events to your Discord.js client!",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": ["lib/**/*"],
   "scripts": {
-    "test": "node index.js"
+    "test": "node lib/index.js",
+    "build": "tsc",
+    "format": "prettier --write \"handlers/**/*.ts\" index.ts",
+    "lint": "tslint -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -23,5 +27,16 @@
   "bugs": {
     "url": "https://github.com/Androz2091/discord-logs/issues"
   },
-  "homepage": "https://github.com/Androz2091/discord-logs#readme"
+  "homepage": "https://github.com/Androz2091/discord-logs#readme",
+  "dependencies": {
+    "@types/node": "^13.7.1",
+    "@types/ws": "^7.2.1",
+    "discord.js": "github:discordjs/discord.js"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
+  }
 }
