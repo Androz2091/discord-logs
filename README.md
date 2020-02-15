@@ -144,7 +144,7 @@ client.on('voiceChannelMute', (oldMember, newMember) => {
 
 ```js
 // When a member become unmuted
-client.on('voiceChannelMute', (oldMember, newMember) => {
+client.on('voiceChannelUnmute', (oldMember, newMember) => {
     console.log(`${oldMember.user.tag} is now unmuted!`);
 });
 ```
