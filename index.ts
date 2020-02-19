@@ -1,7 +1,7 @@
 import { Client, Guild, GuildMember, Presence, User } from 'discord.js';
 import {
     handleGuildMemberUpdateEvent,
-    handlerGuildUpdateEvent,
+    handleGuildUpdateEvent,
     handlePresenceUpdateEvent,
     handleUserUpdateEvent,
     handleVoiceStateUpdateEvent,
