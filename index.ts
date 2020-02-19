@@ -12,7 +12,7 @@ export = async (client: Client) => {
     client.on('guildMemberUpdate', (oldMember: GuildMember, newMember: GuildMember) => {
         handleGuildMemberUpdateEvent(client, oldMember, newMember);
     });
-    
+
     /* HANDLE GUILD EVENTS */
     client.on('guildUpdate', (oldGuild: Guild, newGuild: Guild) => {
         handleGuildUpdateEvent(client, oldGuild, newGuild);

@@ -5,4 +5,4 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     if (oldGuild.premiumTier < newGuild.premiumTier) {
         client.emit('guildBoostLevelUp', oldGuild, newGuild);
     }
- }
+}
