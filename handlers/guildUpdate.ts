@@ -1,8 +1,8 @@
-import { Client, Guild} from 'discord.js';
+import { Client, Guild } from 'discord.js';
 
-export async function handleGuildUpdateEvent(client: Client, guild: Guild) {
+export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, newGuild: Guild) {
     // If the guild increased in boost level
-    if (!guild.premiumTier && guild.premiumTier) {
-        client.emit('guildBoostLevelUp', guild);
+    if (oldGuild.premiumTier < newGuild.premiumTier) {
+        client.emit('guildBoostLevelUp', oldGuild, newGuild);
     }
  }
