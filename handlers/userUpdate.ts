@@ -9,4 +9,8 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User, newUs
     if (oldUser.username !== newUser.username) {
         return client.emit('userUsernameUpdate', oldUser, newUser);
     }
+    // Check if the nickname has changed
+     if (oldUser.nickanme !== newUser.nickname) {
+        return client.emit('userNicknameUpdate', oldUser, newUser);
+    }
 }
