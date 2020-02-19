@@ -102,6 +102,24 @@ client.on('guildBoostLevelUp', (oldGuild, newGuild) => {
 });
 ```
 
+* `guildBoostLevelUp`: emitted when the guild boost level decreases
+  
+```js
+// When the guild's boost level decreases
+client.on('guildBoostLevelDown', (oldGuild, newGuild) => {
+    console.log(`${newGuild.name}'s boost level is now ${newGuild.premiumTier}!`);
+});
+```
+
+* `guildRegionUpdate`: emitted when the guild region has changed
+  
+```js
+// When the guild region has changed
+client.on('guildRegionUpdate', (oldGuild, newGuild) => {
+    console.log(`${newGuild.name}'s region is now: ${newGuild.region}`);
+});
+```
+
 ### User Events
 
 * `userAvatarUpdate`: emitted when a user avatar changes
@@ -174,5 +192,23 @@ client.on('voiceChannelMute', (oldMember, newMember) => {
 // When a member become unmuted
 client.on('voiceChannelUnmute', (oldMember, newMember) => {
     console.log(`${oldMember.user.tag} is now unmuted!`);
+});
+```
+
+* `voiceChannelDeaf`: emitted when a member become deafed
+
+```js
+// When a member become deafed
+client.on('voiceChannelDeaf', (oldMember, newMember) => {
+    console.log(`${oldMember.user.tag} is now deafed!`);
+});
+```
+
+* `voiceChannelUnmute`: emitted when a member become unmuted
+
+```js
+// When a member become undeafed
+client.on('voiceChannelUndeafed', (oldMember, newMember) => {
+    console.log(`${oldMember.user.tag} is now undeafed!`);
 });
 ```

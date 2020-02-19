@@ -6,15 +6,15 @@ export async function handlePresenceUpdateEvent(
     newPresence: Presence,
 ) {
     if (!oldPresence) return;
-    // Check if the member is now online
+    // If the member is now online
     if (oldPresence.status === 'offline' && newPresence.status !== 'offline') {
         return client.emit('guildMemberOnline', oldPresence.member, newPresence.member);
     }
-    // Check if the member is now AFK
+    // If the member is now idle
     if (oldPresence.status !== 'offline' && newPresence.status === 'idle') {
         return client.emit('guildMemberIdle', oldPresence.member, newPresence.member);
     }
-    // Check if the member is now offline
+    // If the member is now offline
     if (oldPresence.status !== 'offline' && newPresence.status === 'offline') {
         return client.emit('guildMemberOffline', oldPresence.member, newPresence.member);
     }
