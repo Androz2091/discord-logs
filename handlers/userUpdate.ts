@@ -9,7 +9,7 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User, newUs
     if (oldUser.username !== newUser.username) {
         return client.emit('userUsernameUpdate', oldUser, newUser);
     }
-     // Check if the tag has changed
+    // Check if the tag has changed
     if (oldUser.discriminator !== newUser.discriminator) {
         return client.emit('userDiscriminatorUpdate', oldUser, newUser);
     }
