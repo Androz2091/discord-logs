@@ -1,13 +1,15 @@
 {
   "name": "discord-logs",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Add many useful events to your Discord.js client!",
   "main": "lib/index.js",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "test": "node lib/index.js",
     "build": "tsc",
-    "format": "prettier --write \"handlers/**/*.ts\" index.ts",
+    "format": "prettier --write \"handlers/**/*.ts\" index.ts scripts/**/*.js docs/**/*.html",
     "lint": "tslint -p tsconfig.json"
   },
   "repository": {
@@ -34,6 +36,7 @@
     "discord.js": "github:discordjs/discord.js"
   },
   "devDependencies": {
+    "parse-comments": "^1.0.0",
     "prettier": "^1.19.1",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",

@@ -1,34 +1,106 @@
 import { Client, VoiceState } from 'discord.js';
 
+/**
+ * @handler Voice Events
+ * @related voiceStateUpdate
+ */
 export async function handleVoiceStateUpdateEvent(client: Client, oldState: VoiceState, newState: VoiceState) {
     const oldMember = oldState.member;
     const newMember = newState.member;
-    // If the member joins the voice channel
+    /**
+     * @event voiceChannelJoin
+     * @description Emitted when a member joins a voice channel.
+     * @param {DJS:GuildMember} member The member who joined the voice channel.
+     * @param {DJS:VoiceChannel} voiceChannel The joined voice channel.
+     * @example
+     * client.on("voiceChannelJoin", (member, channel) => {
+     *   console.log(member.user.tag+" joined "+channel.name+"!");
+     * });
+     */
     if (!oldState.channel && newState.channel) {
-        client.emit('voiceChannelJoin', oldMember, newMember);
+        client.emit('voiceChannelJoin', newMember, newState.channel);
     }
-    // If the member leaves the voice channel
+    /**
+     * @event voiceChannelLeave
+     * @description Emitted when a member leaves a voice channel.
+     * @param {DJS:GuildMember} member The member who left the voice channel.
+     * @param {DJS:VoiceChannel} voiceChannel The left voice channel.
+     * @example
+     * client.on("voiceChannelLeave", (member, channel) => {
+     *   console.log(member.user.tag+" left "+channel.name+"!");
+     * });
+     */
     if (oldState.channel && !newState.channel) {
-        client.emit('voiceChannelLeave', oldMember, newMember);
+        client.emit('voiceChannelLeave', newMember, newState.channel);
     }
-    // If the member changes the voice channel
+    /**
+     * @event voiceChannelSwitch
+     * @description Emitted when a member switches to another voice channel.
+     * @param {DJS:GuildMember} member The member who switched to another voice channel.
+     * @param {DJS:VoiceChannel} voiceChannel The old voice channel.
+     * @param {DJS:VoiceChannel} voiceChannel The new voice channel.
+     * @example
+     * client.on("voiceChannelSwitch", (member, oldChannel, newChannel) => {
+     *   console.log(member.user.tag+" left "+oldChannel.name+" and joined "+newChannel.name+"!");
+     * });
+     */
     if (oldState.channel && newState.channel && oldState.channel.id !== newState.channel.id) {
-        client.emit('voiceChannelSwitch', oldMember, newMember);
+        client.emit('voiceChannelSwitch', newMember, oldState.channel, newState.channel);
     }
-    // If the member became muted
+    /**
+     * @event voiceChannelMute
+     * @description Emitted when a member becomes muted (self-muted or server-muted).
+     * @param {DJS:GuildMember} member The member who became muted.
+     * @param {boolean} muteType The mute type. It can be "self-muted" or "server-muted".
+     * @example
+     * client.on("voiceChannelMute", (member, muteType) => {
+     *   console.log(member.user.tag+" become muted! (type: "+muteType);
+     * });
+     */
     if (!oldState.mute && newState.mute) {
-        client.emit('voiceChannelMute', oldMember, newMember);
+        const muteType: string = newState.selfMute ? 'self-muted' : 'server-muted';
+        client.emit('voiceChannelMute', newMember, muteType);
     }
-    // If the member became unmuted
+    /**
+     * @event voiceChannelUnmute
+     * @description Emitted when a member becomes unmuted.
+     * @param {DJS:GuildMember} member The member who became unmuted.
+     * @param {boolean} muteType The old mute type. It can be "self-muted" or "server-muted".
+     * @example
+     * client.on("voiceChannelMute", (member, oldMuteType) => {
+     *   console.log(member.user.tag+" become unmuted!");
+     * });
+     */
     if (oldState.mute && !newState.mute) {
-        client.emit('voiceChannelUnmute', oldMember, newMember);
+        const muteType: string = oldState.selfMute ? 'self-muted' : 'server-muted';
+        client.emit('voiceChannelUnmute', newMember, muteType);
     }
-    // If the member became deafed
+    /**
+     * @event voiceChannelDeaf
+     * @description Emitted when a member becomes deafed.
+     * @param {DJS:GuildMember} member The member who became deafed.
+     * @param {boolean} deafType The deaf type. It can be "self-deafed" or "server-deafed".
+     * @example
+     * client.on("voiceChannelDeaf", (member, deafType) => {
+     *   console.log(member.user.tag+" become deafed!);
+     * });
+     */
     if (!oldState.deaf && newState.deaf) {
-        client.emit('voiceChannelDeaf', oldMember, newMember);
+        const deafType: string = newState.selfDeaf ? 'self-deafed' : 'server-v';
+        client.emit('voiceChannelDeaf', newMember, deafType);
     }
-    // If the member became undeafed
+    /**
+     * @event voiceChannelUndeaf
+     * @description Emitted when a member becomes undeafed.
+     * @param {DJS:GuildMember} member The member who became undeafed.
+     * @param {boolean} deafType The deaf type. It can be "self-deafed" or "server-deafed".
+     * @example
+     * client.on("voiceChannelUneaf", (member, deafType) => {
+     *   console.log(member.user.tag+" become undeafed!");
+     * });
+     */
     if (oldState.deaf && !newState.deaf) {
-        client.emit('voiceChannelUndeaf', oldMember, newMember);
+        const deafType: string = oldState.selfDeaf ? 'self-deafed' : 'server-v';
+        client.emit('voiceChannelUndeaf', newMember, deafType);
     }
 }
