@@ -13,4 +13,8 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     if (oldGuild.region !== newGuild.region) {
         client.emit('guildRegionUpdate', oldGuild, newGuild);
     }
+    // If the guild add a banner
+    if (!oldGuild.banner && newGuild.banner) {
+        client.emit('guildBannerUpdate', oldGuild, newGuild);
+    }
 }
