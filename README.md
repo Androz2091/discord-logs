@@ -82,6 +82,26 @@ client.on('guildMemberOffline', (oldMember, newMember) => {
 });
 ```
 
+* `guildMemberIdle`: emitted when a member is now idle
+  
+```js
+// When a member is now idle
+client.on('guildMemberIdle', (oldMember, newMember) => {
+    console.log(`${newMember.user.tag} is now idle!`);
+});
+```
+
+### Guild Events
+
+* `guildBoostLevelUp`: emitted when the guild boost level increases
+  
+```js
+// When the guild's boost level increases
+client.on('guildBoostLevelUp', (oldGuild, newGuild) => {
+    console.log(`${newGuild.name}'s boost level is now ${newGuild.premiumTier}!`);
+});
+```
+
 ### User Events
 
 * `userAvatarUpdate`: emitted when a user avatar changes
@@ -89,7 +109,7 @@ client.on('guildMemberOffline', (oldMember, newMember) => {
 ```js
 // When a user avatar changes
 client.on('userAvatarUpdate', (oldUser, newUser) => {
-    console.log(`${newMember.user.tag}'s avatar updated!`);
+    console.log(`${newMember.tag}'s avatar updated!`);
 });
 ```
 
@@ -98,7 +118,15 @@ client.on('userAvatarUpdate', (oldUser, newUser) => {
 ```js
 // When a user username changes
 client.on('userUsernameUpdate', (oldUser, newUser) => {
-    console.log(`${oldUser.user.username} is now ${newUser.user.username}!`);
+    console.log(`${oldUser.username} is now ${newUser.username}!`);
+});
+```
+
+* `userDiscriminatorEvent`: emitted when a user discriminator changes
+```js
+// When a user discrminator changes
+client.on('userDiscriminatorUpdate', (oldUser, newUser) => {
+    console.log(`${oldUser.username}'s discriminator is now ${newUser.discriminator}!`);
 });
 ```
 
