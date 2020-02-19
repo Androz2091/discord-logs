@@ -23,7 +23,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     if (oldState.mute && !newState.mute) {
         client.emit('voiceChannelUnmute', oldMember, newMember);
     }
-     // If the member became deafed
+    // If the member became deafed
     if (!oldState.deaf && newState.deaf) {
         client.emit('voiceChannelDeaf', oldMember, newMember);
     }
