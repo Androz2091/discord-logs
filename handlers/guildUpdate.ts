@@ -9,7 +9,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     if (oldGuild.premiumTier > newGuild.premiumTier) {
         client.emit('guildBoostLevelDown', oldGuild, newGuild);
     }
-    // If the guild change his region
+    // If the guild change its region
     if (oldGuild.region !== newGuild.region) {
         client.emit('guildRegionUpdate', oldGuild, newGuild);
     }
