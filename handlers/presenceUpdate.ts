@@ -21,7 +21,7 @@ export async function handlePresenceUpdateEvent(
      * });
      */
     if (oldPresence.status !== 'offline' && newPresence.status === 'offline') {
-        return client.emit('guildMemberOnline', newPresence.member, oldPresence.status);
+        return client.emit('guildMemberOffline', newPresence.member, oldPresence.status);
     }
     /**
      * @event guildMemberOnline
@@ -35,5 +35,18 @@ export async function handlePresenceUpdateEvent(
      */
     if (oldPresence.status === 'offline' && newPresence.status !== 'offline') {
         return client.emit('guildMemberOnline', newPresence.member, newPresence.status);
+    }
+ /**
+     * @event guildMemberIdle
+     * @description Emitted when a member becomes online, dnd or idle.
+     * @param {DJS:GuildMember} member The member who became idle.
+     * @param {DJST:Status} newStatus The new member status, it can be "dnd", "idle" or "online".
+     * @example
+     * client.on("guildMemberIdle", (member, newStatus) => {
+     *   console.log(member.user.tag+" became "+newStatus+"!");
+     * });
+     */
+    if (oldPresence.status !== 'idle' && newPresence.status !== 'idle') {
+        return client.emit('guildMemberIdle', newPresence.member, newPresence.status);
     }
 }
