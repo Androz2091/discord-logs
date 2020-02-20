@@ -21,7 +21,7 @@ export async function handlePresenceUpdateEvent(
      * });
      */
     if (oldPresence.status !== 'offline' && newPresence.status === 'offline') {
-        return client.emit('guildMemberOnline', newPresence.member, oldPresence.status);
+        return client.emit('guildMemberOffline', newPresence.member, oldPresence.status);
     }
     /**
      * @event guildMemberOnline
