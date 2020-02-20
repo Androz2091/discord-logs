@@ -51,4 +51,8 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     if (!oldGuild.banner && newGuild.banner) {
         client.emit('guildBannerUpdate', oldGuild, newGuild);
     }
+    // If the guild add an afkChannel
+    if (!oldGuild.afkChannel && newGuild.afkChannel) {
+        client.emit('guildAfkChannelAdd', oldGuild, newGuild);
+    }
 }
