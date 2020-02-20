@@ -82,15 +82,6 @@ client.on('guildMemberOffline', (oldMember, newMember) => {
 });
 ```
 
-* `guildMemberIdle`: emitted when a member is now idle
-  
-```js
-// When a member is now idle
-client.on('guildMemberIdle', (oldMember, newMember) => {
-    console.log(`${newMember.user.tag} is now idle!`);
-});
-```
-
 ### Guild Events
 
 * `guildBoostLevelUp`: emitted when the guild boost level increases
@@ -115,8 +106,8 @@ client.on('guildBoostLevelDown', (oldGuild, newGuild) => {
   
 ```js
 // When the guild region has changed
-client.on('guildRegionUpdate', (oldGuild, newGuild) => {
-    console.log(`${newGuild.name}'s region is now: ${newGuild.region}`);
+client.on('guildRegionUpdate', (guild,oldRegion, newRegion) => {
+    console.log(`${guild.name}'s region is now: ${newRegion}`);
 });
 ```
 
@@ -204,7 +195,7 @@ client.on('voiceChannelDeaf', (oldMember, newMember) => {
 });
 ```
 
-* `voiceChannelUnmute`: emitted when a member become unmuted
+* `voiceChannelUndeaf`: emitted when a member become unmuted
 
 ```js
 // When a member become undeafed
