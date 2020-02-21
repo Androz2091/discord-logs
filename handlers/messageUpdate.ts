@@ -17,4 +17,4 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
     if (!oldMessage.pinned && newMessage.pinned) {
         client.emit('messagePinned', newMessage);
     }
-  }
+}
