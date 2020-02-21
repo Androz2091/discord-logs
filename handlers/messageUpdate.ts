@@ -16,7 +16,7 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      *   console.log("This message bas been pinned : "+message);
      * });
      */
-    if (oldMessage.pinned !== true && newMessage.pinned === true) {
+    if (!oldMessage.pinned && newMessage.pinned) {
         client.emit('messagePinned', newMessage);
     }
   }
