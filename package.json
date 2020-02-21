@@ -1,6 +1,6 @@
 {
   "name": "discord-logs",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Add many useful events to your Discord.js client!",
   "main": "lib/index.js",
   "files": [
@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "test": "node lib/index.js",
+    "generate-docs": "node scripts/generate-docs.js",
     "build": "tsc",
     "format": "prettier --write \"handlers/**/*.ts\" index.ts scripts/**/*.js docs/**/*.html",
     "lint": "tslint -p tsconfig.json"
