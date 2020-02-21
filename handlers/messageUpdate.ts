@@ -8,7 +8,7 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
     /**
      * @event messagePinned
      * @description Emitted when a message has been pinned.
-     * @param {DJS:Message} message The message who has been pinned.
+     * @param {DJS:Message} message The message that was pinned.
      * @param {boolean} oldMessage The old message.
      * @param {boolean} newMessage The new message.
      * @example
