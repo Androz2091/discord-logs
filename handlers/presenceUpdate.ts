@@ -11,29 +11,16 @@ export async function handlePresenceUpdateEvent(
 ) {
     if (!oldPresence) return;
     /**
-     * @event guildMemberOffline
-     * @description Emitted when a member becomes offline.
-     * @param {DJS:GuildMember} member The member who became offline.
-     * @param {DJST:Status} oldStatus The old member status, it can be "dnd", "idle" or "online".
+     * @event guildMemberPresenceUpdate
+     * @description Emitted when a member becomes online, dnd, idle or offline.
+     * @param {DJS:GuildMember} member The member who became "online","idle","dnd" or "offline"
+     * @param {DJST:Status} newStatus The new member status, it can be "dnd", "idle", "online" or "offline".
      * @example
-     * client.on("guildMemberOffline", (member, oldStatus) => {
-     *   console.log(member.user.tag+" became offline!");
+     * client.on("guildMemberPresenceUpdate", (member, oldStatus, newStatus) => {
+     *   console.log(member.user.tag+" was " + oldStatus + " and is now "+newStatus+"!");
      * });
      */
-    if (oldPresence.status !== 'offline' && newPresence.status === 'offline') {
-        return client.emit('guildMemberOffline', newPresence.member, oldPresence.status);
-    }
-    /**
-     * @event guildMemberOnline
-     * @description Emitted when a member becomes online, dnd or idle.
-     * @param {DJS:GuildMember} member The member who became online.
-     * @param {DJST:Status} newStatus The new member status, it can be "dnd", "idle" or "online".
-     * @example
-     * client.on("guildMemberOnline", (member, newStatus) => {
-     *   console.log(member.user.tag+" was offline and is now "+newStatus+"!");
-     * });
-     */
-    if (oldPresence.status === 'offline' && newPresence.status !== 'offline') {
-        return client.emit('guildMemberOnline', newPresence.member, newPresence.status);
+    if (oldPresence.status !==newPresence.status) {
+        return client.emit('guildMemberPresenceUpdate', newPresence.member, oldPresence.status,newPresence.status);
     }
 }
