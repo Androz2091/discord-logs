@@ -11,10 +11,22 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      * @param {DJS:Message} message The message that was pinned.
      * @example
      * client.on("messagePinned", (message) => {
-     *   console.log("This message bas been pinned : "+message);
+     *   console.log("This message has been pinned : "+message);
      * });
      */
     if (!oldMessage.pinned && newMessage.pinned) {
         client.emit('messagePinned', newMessage);
+    }
+       /**
+     * @event messageDeleted
+     * @description Emitted when a message has been deleted.
+     * @param {DJS:Message} message The message that was deleted.
+     * @example
+     * client.on("messageDeleted", (message) => {
+     *   console.log("This message has been deleted : "+message);
+     * });
+     */
+    if (!oldMessage.deleted && newMessage.deleted) {
+        client.emit('messageDeleted', oldMessage);
     }
 }
