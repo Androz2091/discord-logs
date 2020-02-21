@@ -11,10 +11,24 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      * @param {DJS:Message} message The message that was pinned.
      * @example
      * client.on("messagePinned", (message) => {
-     *   console.log("This message bas been pinned : "+message);
+     *   console.log("This message has been pinned : "+message);
      * });
      */
     if (!oldMessage.pinned && newMessage.pinned) {
         client.emit('messagePinned', newMessage);
+    }
+     /**
+     * @event messageEdited
+     * @description Emitted when a message has been edited.
+     * @param {DJS:Message} message The message that was edited.
+     * @param {object} oldMessage The message before that was edited.
+     * @param {object} newMessage The message after that was edited.
+     * @example
+     * client.on("messageEdited", (message,oldMessage,newMessage) => {
+     *   console.log("This message has been edited to "+newMessage);
+     * });
+     */
+    if (!oldMessage.edits && newMessage.edits) {
+        client.emit('messagePinned', newMessage,newMessage.edits[0],newMessage.edits[1]);
     }
 }
