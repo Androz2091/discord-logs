@@ -104,27 +104,39 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
         client.emit('voiceChannelUndeaf', newMember, deafType);
     }
      /**
-     * @event voiceChannelStreaming
-     * @description Emitted when a member is streaming.
+     * @event voiceStreamingStart
+     * @description Emitted when a member start stream.
      * @param {DJS:GuildMember} member The member who is streaming.
      * @example
-     * client.on("voiceChannelStreaming", (member, channel) => {
-     *   console.log(member.user.tag+" is streaming in "+channel.name);
+     * client.on("voiceStreamingStart", (member, channel) => {
+     *   console.log(member.user.tag+" started stream in "+channel.name);
      * });
      */
     if (!oldState.streaming && newState.streaming) {  
-        client.emit('voiceChannelStreaming', newMember, newState.channel);
+        client.emit('voiceStreamingStart', newMember, newState.channel);
     }
     /**
-     * @event voiceChannelSpeaking
+     * @event voiceStreamingStop
+     * @description Emitted when a member stop stream
+     * @param {DJS:GuildMember} member The member who stoped stream.
+     * @example
+     * client.on("voiceStreamingStop", (member, channel) => {
+     *   console.log(member.user.tag+" stoped stream");
+     * });
+     */
+    if (oldState.streaming && !newState.streaming) {  
+        client.emit('voiceStreamingStop', newMember, newState.channel);
+    }
+    /**
+     * @event voiceSpeakingStart
      * @description Emitted when a member is speaking.
      * @param {DJS:GuildMember} member The member who is speaking.  
      * @example
-     * client.on("voiceChannelSpeaking", (member, channel) => {
-     *   console.log(member.user.tag+" is speaking in "+channel.name);
+     * client.on("voiceSpeakingStart", (member, channel) => {
+     *   console.log(member.user.tag+" started speak in "+channel.name);
      * });
      */
     if (!oldState.speaking && newState.speaking) {  
-        client.emit('voiceChannelSpeaking', newMember, newState.channel);
+        client.emit('voiceSpeakingStart', newMember, newState.channel);
     }
 }
