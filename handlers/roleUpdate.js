@@ -12,7 +12,7 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
      * @param {number} newPosition The new role position.
      * @example
      * client.on("rolePositionUpdate", (role, oldPosition, newPosition) => {
-     *   console.log(role.name + "was at position "+oldPosition+"and now is at position"+newPosition);
+     *   console.log(role.name + " was at position "+oldPosition+" and now is at position "+newPosition);
      * });
      */
     if (oldRole.rawPosition !== newRole.rawPosition) {
