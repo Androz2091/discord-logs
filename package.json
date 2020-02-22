@@ -7,7 +7,8 @@
     "lib/**/*"
   ],
   "scripts": {
-    "test": "node lib/index.js",
+    "prepare": "npm run format && npm run build && npm run generate-docs && npm run generate-test && npm run test",
+    "test": "node tests/test.js",
     "generate-docs": "node scripts/generate-docs.js",
     "generate-test": "node scripts/generate-test.js",
     "build": "tsc",

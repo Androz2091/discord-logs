@@ -18,16 +18,17 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
         client.emit('messagePinned', newMessage);
     }
     /**
-     * @event messageEdited
-     * @description Emitted when a message has been edited.
-     * @param {DJS:Message} oldMessage The message before it was edited.
-     * @param {DJS:Message} newMessage The message after it was edited.
+     * @event messageContentEdited
+     * @description Emitted when a message content has been edited.
+     * @param {DJS:Message} message The old message.
+     * @param {string} oldContent The message content before it was edited.
+     * @param {string} newContent The message content after it was edited.
      * @example
-     * client.on("messageEdited", (message, oldMessage, newMessage) => {
-     *   console.log("Message with ID +"oldMessage.id"+ has been edited to "+newMessage.content);
+     * client.on("messageContentEdited", (message, oldContent, newContent) => {
+     *   console.log("Message with ID "+message.id+" has been edited to "+newContent);
      * });
      */
-    if (oldMessage.edits.length !== newMessage.edits.length) {
-        client.emit('messageEdited', oldMessage, newMessage);
+    if (oldMessage.content !== newMessage.content) {
+        client.emit('messageContentEdited', newMessage, oldMessage.content, newMessage.content);
     }
 }

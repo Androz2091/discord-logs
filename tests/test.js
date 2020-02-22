@@ -59,7 +59,11 @@ client.on("guildAfkChannelAdd", (guild, afkChannel) => {
 // Events related to the messageUpdate event.
 
 client.on("messagePinned", (message) => {
-  console.log("This message bas been pinned : "+message);
+  console.log("This message has been pinned : "+message);
+});
+
+client.on("messageContentEdited", (message, oldContent, newContent) => {
+  console.log("Message with ID "+message.id+" has been edited to "+newContent);
 });
 
 /* Presence Events */
