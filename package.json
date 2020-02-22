@@ -9,6 +9,7 @@
   "scripts": {
     "test": "node lib/index.js",
     "generate-docs": "node scripts/generate-docs.js",
+    "generate-test": "node scripts/generate-test.js",
     "build": "tsc",
     "format": "prettier --write \"handlers/**/*.ts\" index.ts scripts/**/*.js docs/**/*.html",
     "lint": "tslint -p tsconfig.json"
@@ -37,6 +38,7 @@
     "discord.js": "github:discordjs/discord.js"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "parse-comments": "^1.0.0",
     "prettier": "^1.19.1",
     "tslint": "^6.0.0",
