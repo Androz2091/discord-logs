@@ -106,7 +106,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      /**
      * @event voiceStreamingStart
      * @description Emitted when a member starts streaming.
-     * @param {DJS:GuildMember} member The member who is streaming.
+     @param {DJS:VoiceChannel} The channel in which the member is streaming.
      * @example
      * client.on("voiceStreamingStart", (member, channel) => {
      *   console.log(member.user.tag+" started streaming in "+channel.name);
@@ -118,7 +118,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     /**
      * @event voiceStreamingStop
      * @description Emitted when a member stops streaming.
-     * @param {DJS:GuildMember} member The member who was streaming.
+     @param {DJS:VoiceChannel} The channel in which the member was streaming.
      * @example
      * client.on("voiceStreamingStop", (member, channel) => {
      *   console.log(member.user.tag+" stopped streaming");
@@ -130,7 +130,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     /**
      * @event voiceSpeakingStart
      * @description Emitted when a member is speaking.
-     * @param {DJS:GuildMember} member The member who is speaking.  
+     @param {DJS:VoiceChannel} The channel in which the member is speaking.  
      * @example
      * client.on("voiceSpeakingStart", (member, channel) => {
      *   console.log(member.user.tag+" started speaking in "+channel.name);
