@@ -21,7 +21,6 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      * @event messageEdited
      * @description Emitted when a message has been edited.
      * @param {DJS:Message} oldMessage The message before it was edited.
-     * @param {DJS:Message} oldMessage The message before that was edited.
      * @param {DJS:Message} newMessage The message after it was edited.
      * @example
      * client.on("messageEdited", (message, oldMessage, newMessage) => {
