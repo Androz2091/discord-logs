@@ -22,7 +22,7 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      * @description Emitted when a message has been edited.
      * @param {DJS:Message} oldMessage The message before it was edited.
      * @param {object} oldMessage The message before that was edited.
-     * @param {object} newMessage The message after that was edited.
+     * @param {DJS:Message} newMessage The message after it was edited.
      * @example
      * client.on("messageEdited", (message,oldMessage,newMessage) => {
      *   console.log("Message with ID +"oldMessage.id"+ has been edited to "+newMessage.content);
