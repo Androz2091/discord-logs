@@ -31,7 +31,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * });
      */
     if (oldState.channel && !newState.channel) {
-        client.emit('voiceChannelLeave', newMember, newState.channel);
+        client.emit('voiceChannelLeave', newMember, oldState.channel);
     }
     /**
      * @event voiceChannelSwitch
