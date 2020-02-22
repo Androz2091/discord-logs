@@ -103,4 +103,40 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
         const deafType: string = oldState.selfDeaf ? 'self-deafed' : 'server-v';
         client.emit('voiceChannelUndeaf', newMember, deafType);
     }
+     /**
+     * @event voiceStreamingStart
+     * @description Emitted when a member starts streaming.
+     @param {DJS:VoiceChannel} The channel in which the member is streaming.
+     * @example
+     * client.on("voiceStreamingStart", (member, channel) => {
+     *   console.log(member.user.tag+" started streaming in "+channel.name);
+     * });
+     */
+    if (!oldState.streaming && newState.streaming) {  
+        client.emit('voiceStreamingStart', newMember, newState.channel);
+    }
+    /**
+     * @event voiceStreamingStop
+     * @description Emitted when a member stops streaming.
+     @param {DJS:VoiceChannel} The channel in which the member was streaming.
+     * @example
+     * client.on("voiceStreamingStop", (member, channel) => {
+     *   console.log(member.user.tag+" stopped streaming");
+     * });
+     */
+    if (oldState.streaming && !newState.streaming) {  
+        client.emit('voiceStreamingStop', newMember, newState.channel);
+    }
+    /**
+     * @event voiceSpeakingStart
+     * @description Emitted when a member is speaking.
+     @param {DJS:VoiceChannel} The channel in which the member is speaking.  
+     * @example
+     * client.on("voiceSpeakingStart", (member, channel) => {
+     *   console.log(member.user.tag+" started speaking in "+channel.name);
+     * });
+     */
+    if (!oldState.speaking && newState.speaking) {  
+        client.emit('voiceSpeakingStart', newMember, newState.channel);
+    }
 }
