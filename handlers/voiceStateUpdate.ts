@@ -105,7 +105,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     }
      /**
      * @event voiceStreamingStart
-     * @description Emitted when a member start stream.
+     * @description Emitted when a member starts streaming.
      * @param {DJS:GuildMember} member The member who is streaming.
      * @example
      * client.on("voiceStreamingStart", (member, channel) => {
