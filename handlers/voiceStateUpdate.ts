@@ -133,7 +133,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * @param {DJS:GuildMember} member The member who is speaking.  
      * @example
      * client.on("voiceSpeakingStart", (member, channel) => {
-     *   console.log(member.user.tag+" started speak in "+channel.name);
+     *   console.log(member.user.tag+" started speaking in "+channel.name);
      * });
      */
     if (!oldState.speaking && newState.speaking) {  
