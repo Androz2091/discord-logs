@@ -1,9 +1,10 @@
-import { Client, Guild, GuildMember, Presence, User, Message } from 'discord.js';
+import { Client, Guild, GuildMember, Presence, Role, User, Message } from 'discord.js';
 import {
     handleGuildMemberUpdateEvent,
     handleGuildUpdateEvent,
     handleMessageUpdateEvent,
     handlePresenceUpdateEvent,
+    handleRoleUpdateEvent,
     handleUserUpdateEvent,
     handleVoiceStateUpdateEvent,
 } from './handlers';
@@ -28,7 +29,12 @@ export = async (client: Client) => {
     client.on('presenceUpdate', (oldPresence: Presence, newPresence: Presence) => {
         handlePresenceUpdateEvent(client, oldPresence, newPresence);
     });
-
+    
+    /* HANDLE ROLE EVENTS */
+    client.on('roleUpdate', (oldRole: Role, newRole: Role) => {
+        handleRoleUpdateEvent(client, oldRole, newRole);
+    });
+    
     /* HANDLE USER EVENTS */
     client.on('userUpdate', (oldUser: User, newUser: User) => {
         handleUserUpdateEvent(client, oldUser, newUser);
