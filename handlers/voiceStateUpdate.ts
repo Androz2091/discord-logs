@@ -129,30 +129,4 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     if (oldState.streaming && !newState.streaming) {
         client.emit('voiceStreamingStop', newMember, newState.channel);
     }
-    /**
-     * @event voiceSpeakingStart
-     * @description Emitted when a member starts speaking.
-     * @param {DJS:GuildMember} member The member who started speaking.
-     * @param {DJS:VoiceChannel} voiceChannel The channel in which the member is speaking.
-     * @example
-     * client.on("voiceSpeakingStart", (member, voiceChannel) => {
-     *   console.log(member.user.tag+" started speaking in "+voiceChannel.name);
-     * });
-     */
-    if (!oldState.speaking && newState.speaking) {
-        client.emit('voiceSpeakingStart', newMember, newState.channel);
-    }
-    /**
-     * @event voiceSpeakingStop
-     * @description Emitted when a member stops speaking.
-     * @param {DJS:GuildMember} member The member who stopped speaking.
-     * @param {DJS:VoiceChannel} voiceChannel The channel in which the member was speaking.
-     * @example
-     * client.on("voiceSpeakingStop", (member, voiceChannel) => {
-     *   console.log(member.user.tag+" stopped speaking");
-     * });
-     */
-    if (oldState.speaking && !newState.speaking) {
-        client.emit('voiceSpeakingStop', newMember, newState.channel);
-    }
 }
