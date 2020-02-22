@@ -90,7 +90,7 @@ client.on("guildMemberOnline", (member, newStatus) => {
 });
 
 client.on("unhandledPresenceUpdate", (oldPresence, newPresence) => {
-  console.log("Presence of member "+oldPresence.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
+  console.log("Presence for member "+oldPresence.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
 });
 
 /* Role Events */
@@ -163,7 +163,7 @@ client.on("voiceStreamingStop", (member, voiceChannel) => {
 });
 
 client.on("unhandledRoleUpdate", (oldState, newState) => {
-  console.log("Voice state of member '"+oldState.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
+  console.log("Voice state for member '"+oldState.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
 });
 
 client.login(process.env.TOKEN);
