@@ -1,6 +1,6 @@
 {
   "name": "discord-logs",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Add many useful events to your Discord.js client!",
   "main": "lib/index.js",
   "files": [
