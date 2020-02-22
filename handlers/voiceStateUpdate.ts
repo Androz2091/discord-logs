@@ -103,40 +103,56 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
         const deafType: string = oldState.selfDeaf ? 'self-deafed' : 'server-v';
         client.emit('voiceChannelUndeaf', newMember, deafType);
     }
-     /**
+    /**
      * @event voiceStreamingStart
      * @description Emitted when a member starts streaming.
-     @param {DJS:VoiceChannel} The channel in which the member is streaming.
+     * @param {DJS:GuildMember} member The member who started streaming.
+     * @param {DJS:VoiceChannel} voiceChannel The channel in which the member is streaming.
      * @example
-     * client.on("voiceStreamingStart", (member, channel) => {
-     *   console.log(member.user.tag+" started streaming in "+channel.name);
+     * client.on("voiceStreamingStart", (member, voiceChannel) => {
+     *   console.log(member.user.tag+" started streaming in "+voiceChannel.name);
      * });
      */
-    if (!oldState.streaming && newState.streaming) {  
+    if (!oldState.streaming && newState.streaming) {
         client.emit('voiceStreamingStart', newMember, newState.channel);
     }
     /**
      * @event voiceStreamingStop
      * @description Emitted when a member stops streaming.
-     @param {DJS:VoiceChannel} The channel in which the member was streaming.
+     * @param {DJS:GuildMember} member The member who stopped streaming.
+     * @param {DJS:VoiceChannel} voiceChannel The channel in which the member was streaming.
      * @example
-     * client.on("voiceStreamingStop", (member, channel) => {
+     * client.on("voiceStreamingStop", (member, voiceChannel) => {
      *   console.log(member.user.tag+" stopped streaming");
      * });
      */
-    if (oldState.streaming && !newState.streaming) {  
+    if (oldState.streaming && !newState.streaming) {
         client.emit('voiceStreamingStop', newMember, newState.channel);
     }
     /**
      * @event voiceSpeakingStart
-     * @description Emitted when a member is speaking.
-     @param {DJS:VoiceChannel} The channel in which the member is speaking.  
+     * @description Emitted when a member starts speaking.
+     * @param {DJS:GuildMember} member The member who started speaking.
+     * @param {DJS:VoiceChannel} voiceChannel The channel in which the member is speaking.
      * @example
-     * client.on("voiceSpeakingStart", (member, channel) => {
-     *   console.log(member.user.tag+" started speaking in "+channel.name);
+     * client.on("voiceSpeakingStart", (member, voiceChannel) => {
+     *   console.log(member.user.tag+" started speaking in "+voiceChannel.name);
      * });
      */
-    if (!oldState.speaking && newState.speaking) {  
+    if (!oldState.speaking && newState.speaking) {
         client.emit('voiceSpeakingStart', newMember, newState.channel);
+    }
+    /**
+     * @event voiceSpeakingStop
+     * @description Emitted when a member stops speaking.
+     * @param {DJS:GuildMember} member The member who stopped speaking.
+     * @param {DJS:VoiceChannel} voiceChannel The channel in which the member was speaking.
+     * @example
+     * client.on("voiceSpeakingStop", (member, voiceChannel) => {
+     *   console.log(member.user.tag+" stopped speaking");
+     * });
+     */
+    if (oldState.speaking && !newState.speaking) {
+        client.emit('voiceSpeakingStop', newMember, newState.channel);
     }
 }
