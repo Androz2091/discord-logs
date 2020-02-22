@@ -117,7 +117,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     }
     /**
      * @event voiceStreamingStop
-     * @description Emitted when a member stop stream
+     * @description Emitted when a member stops streaming.
      * @param {DJS:GuildMember} member The member who stoped stream.
      * @example
      * client.on("voiceStreamingStop", (member, channel) => {
