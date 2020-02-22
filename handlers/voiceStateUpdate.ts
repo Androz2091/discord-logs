@@ -109,7 +109,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * @param {DJS:GuildMember} member The member who is streaming.
      * @example
      * client.on("voiceStreamingStart", (member, channel) => {
-     *   console.log(member.user.tag+" started stream in "+channel.name);
+     *   console.log(member.user.tag+" started streaming in "+channel.name);
      * });
      */
     if (!oldState.streaming && newState.streaming) {  
