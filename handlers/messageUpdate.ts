@@ -28,7 +28,7 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      *   console.log("Message with ID +"oldMessage.id"+ has been edited to "+newMessage.content);
      * });
      */
-    if (!oldMessage.edits && newMessage.edits) {
+    if (oldMessage.edits.length !== newMessage.edits.length) {
         client.emit('messageEdited', oldMessage, newMessage);
     }
 }
