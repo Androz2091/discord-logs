@@ -18,3 +18,4 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
     if (oldRole.rawPosition !== newRole.rawPosition) {
         client.emit('rolePositionUpdate', newRole, oldRole.rawPosition, newRole.rawPosition);
     }
+}
