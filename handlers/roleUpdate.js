@@ -2,7 +2,8 @@ import { Client, Role } from 'discord.js';
 
 /**
  * @handler Role Events
-role */
+ * @related roleUpdate
+**/
 export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRole: Role) {
     /**
      * @event rolePositionUpdate
