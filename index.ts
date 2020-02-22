@@ -1,4 +1,4 @@
-import { Client, Guild, GuildMember, Presence, User, Message } from 'discord.js';
+import { Client, Guild, GuildMember, Presence, Role, User, Message } from 'discord.js';
 import {
     handleGuildMemberUpdateEvent,
     handleGuildUpdateEvent,
