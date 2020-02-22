@@ -32,6 +32,10 @@ client.on("guildMemberNicknameUpdate", (member, oldNickname, newNickname) => {
   console.log(member.user.tag+"'s nickname is now "+newNickname);
 });
 
+client.on("unhandledGuildMemberUpdate", (oldMember, newMember) => {
+  console.log("Member '"+oldMember.id+"' was edited but discord-logs couldn't find what was updated...");
+});
+
 /* Guild Events */
 // Events related to the guildUpdate event.
 
@@ -55,6 +59,10 @@ client.on("guildAfkChannelAdd", (guild, afkChannel) => {
   console.log(guild.name+" has an AFK channel now!");
 });
 
+client.on("unhandledGuildUpdate", (oldGuild, newGuild) => {
+  console.log("Guild '"+oldGuild.id+"' was edited but discord-logs couldn't find what was updated...");
+});
+
 /* Message Events */
 // Events related to the messageUpdate event.
 
@@ -63,7 +71,11 @@ client.on("messagePinned", (message) => {
 });
 
 client.on("messageContentEdited", (message, oldContent, newContent) => {
-  console.log("Message with ID "+message.id+" has been edited to "+newContent);
+  console.log("Message '"+message.id+"' has been edited to "+newContent);
+});
+
+client.on("unhandledMessageUpdate", (oldMessage, newMessage) => {
+  console.log("Message '"+oldMessage.id+"' was edited but discord-logs couldn't find what was updated...");
 });
 
 /* Presence Events */
@@ -77,11 +89,19 @@ client.on("guildMemberOnline", (member, newStatus) => {
   console.log(member.user.tag+" was offline and is now "+newStatus+"!");
 });
 
+client.on("unhandledPresenceUpdate", (oldPresence, newPresence) => {
+  console.log("Presence of member "+oldPresence.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
+});
+
 /* Role Events */
 // Events related to the roleUpdate event.
 
 client.on("rolePositionUpdate", (role, oldPosition, newPosition) => {
   console.log(role.name + " was at position "+oldPosition+" and now is at position "+newPosition);
+});
+
+client.on("unhandledRoleUpdate", (oldRole, newRole) => {
+  console.log("Role '"+oldRole.id+"' was updated but discord-logs couldn't find what was updated...");
 });
 
 /* User Events */
@@ -97,6 +117,10 @@ client.on("userUsernameUpdate", (user, oldUsername, newUsername) => {
 
 client.on("userUsernameUpdate", (user, oldDiscriminator, newDiscriminator) => {
   console.log(user.tag+" discriminator updated!");
+});
+
+client.on("unhandledUserUpdate", (oldUser, newUser) => {
+  console.log("User '"+oldUser.id+"' was updated but discord-logs couldn't find what was updated...");
 });
 
 /* Voice Events */
@@ -136,6 +160,10 @@ client.on("voiceStreamingStart", (member, voiceChannel) => {
 
 client.on("voiceStreamingStop", (member, voiceChannel) => {
   console.log(member.user.tag+" stopped streaming");
+});
+
+client.on("unhandledRoleUpdate", (oldState, newState) => {
+  console.log("Voice state of member '"+oldState.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
 });
 
 client.login(process.env.TOKEN);

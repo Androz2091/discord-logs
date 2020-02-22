@@ -10,6 +10,7 @@ export async function handlePresenceUpdateEvent(
     newPresence: Presence,
 ) {
     if (!oldPresence) return;
+    let emitted = false;
     /**
      * @event guildMemberOffline
      * @description Emitted when a member becomes offline.
@@ -21,7 +22,8 @@ export async function handlePresenceUpdateEvent(
      * });
      */
     if (oldPresence.status !== 'offline' && newPresence.status === 'offline') {
-        return client.emit('guildMemberOffline', newPresence.member, oldPresence.status);
+        client.emit('guildMemberOffline', newPresence.member, oldPresence.status);
+        emitted = true;
     }
     /**
      * @event guildMemberOnline
@@ -34,6 +36,20 @@ export async function handlePresenceUpdateEvent(
      * });
      */
     if (oldPresence.status === 'offline' && newPresence.status !== 'offline') {
-        return client.emit('guildMemberOnline', newPresence.member, newPresence.status);
+        client.emit('guildMemberOnline', newPresence.member, newPresence.status);
+        emitted = true;
+    }
+    /**
+     * @event unhandledPresenceUpdate
+     * @description Emitted when the presenceUpdate event is triggered but discord-logs didn't trigger any custom event.
+     * @param {DJS:Presence} oldPresence The presence before the update.
+     * @param {DJS:Presence} newPresence The presence after the update.
+     * @example
+     * client.on("unhandledPresenceUpdate", (oldPresence, newPresence) => {
+     *   console.log("Presence for member "+oldPresence.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
+     * });
+     */
+    if (!emitted) {
+        client.emit('unhandledPresenceUpdate', oldPresence, newPresence);
     }
 }

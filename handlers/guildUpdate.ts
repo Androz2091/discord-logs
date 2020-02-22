@@ -5,6 +5,7 @@ import { Client, Guild } from 'discord.js';
  * @related guildUpdate
  */
 export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, newGuild: Guild) {
+    let emitted = false;
     /**
      * @event guildBoostLevelUp
      * @description Emitted when a guild's boost level increases.
@@ -18,6 +19,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      */
     if (oldGuild.premiumTier < newGuild.premiumTier) {
         client.emit('guildBoostLevelUp', newGuild, oldGuild.premiumTier, newGuild.premiumTier);
+        emitted = true;
     }
     /**
      * @event guildBoostLevelDown
@@ -32,6 +34,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      */
     if (oldGuild.premiumTier > newGuild.premiumTier) {
         client.emit('guildBoostLevelDown', oldGuild, newGuild);
+        emitted = true;
     }
     /**
      * @event guildRegionUpdate
@@ -46,6 +49,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      */
     if (oldGuild.region !== newGuild.region) {
         client.emit('guildRegionUpdate', newGuild, oldGuild.region, newGuild.region);
+        emitted = true;
     }
     /**
      * @event guildBannerAdd
@@ -59,6 +63,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      */
     if (!oldGuild.banner && newGuild.banner) {
         client.emit('guildBannerAdd', newGuild, newGuild.bannerURL());
+        emitted = true;
     }
     /**
      * @event guildAfkChannelAdd
@@ -72,5 +77,19 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      */
     if (!oldGuild.afkChannel && newGuild.afkChannel) {
         client.emit('guildAfkChannelAdd', newGuild, newGuild.afkChannel);
+        emitted = true;
+    }
+    /**
+     * @event unhandledGuildUpdate
+     * @description Emitted when the guildUpdate event is triggered but discord-logs didn't trigger any custom event.
+     * @param {DJS:Guild} oldGuild The guild before the update.
+     * @param {DJS:Guild} newGuild The guild after the update.
+     * @example
+     * client.on("unhandledGuildUpdate", (oldGuild, newGuild) => {
+     *   console.log("Guild '"+oldGuild.id+"' was edited but discord-logs couldn't find what was updated...");
+     * });
+     */
+    if (!emitted) {
+        client.emit('unhandledGuildUpdate', oldGuild, newGuild);
     }
 }

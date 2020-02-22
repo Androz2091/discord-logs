@@ -5,6 +5,7 @@ import { Client, User } from 'discord.js';
  * @related userUpdate
  */
 export async function handleUserUpdateEvent(client: Client, oldUser: User, newUser: User) {
+    let emitted = false;
     /**
      * @event userAvatarUpdate
      * @description Emitted when a user changes their avatar.
@@ -17,7 +18,8 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User, newUs
      * });
      */
     if (oldUser.displayAvatarURL() !== newUser.displayAvatarURL()) {
-        return client.emit('userAvatarUpdate', newUser, oldUser.displayAvatarURL(), newUser.displayAvatarURL());
+        client.emit('userAvatarUpdate', newUser, oldUser.displayAvatarURL(), newUser.displayAvatarURL());
+        emitted = true;
     }
     /**
      * @event userUsernameUpdate
@@ -31,7 +33,8 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User, newUs
      * });
      */
     if (oldUser.username !== newUser.username) {
-        return client.emit('userUsernameUpdate', newUser, oldUser.username, newUser.username);
+        client.emit('userUsernameUpdate', newUser, oldUser.username, newUser.username);
+        emitted = true;
     }
     /**
      * @event userDiscriminatorUpdate
@@ -45,6 +48,20 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User, newUs
      * });
      */
     if (oldUser.discriminator !== newUser.discriminator) {
-        return client.emit('userDiscriminatorUpdate', newUser, oldUser.discriminator, newUser.discriminator);
+        client.emit('userDiscriminatorUpdate', newUser, oldUser.discriminator, newUser.discriminator);
+        emitted = true;
+    }
+    /**
+     * @event unhandledUserUpdate
+     * @description Emitted when the userUpdate event is triggered but discord-logs didn't trigger any custom event.
+     * @param {DJS:User} oldUser The user before the update.
+     * @param {DJS:User} newUser The user after the update.
+     * @example
+     * client.on("unhandledUserUpdate", (oldUser, newUser) => {
+     *   console.log("User '"+oldUser.id+"' was updated but discord-logs couldn't find what was updated...");
+     * });
+     */
+    if (!emitted) {
+        client.emit('unhandledUserUpdate', oldUser, newUser);
     }
 }

@@ -5,6 +5,7 @@ import { Client, Message } from 'discord.js';
  * @related messageUpdate
  */
 export async function handleMessageUpdateEvent(client: Client, oldMessage: Message, newMessage: Message) {
+    let emitted = false;
     /**
      * @event messagePinned
      * @description Emitted when a message has been pinned.
@@ -16,6 +17,7 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      */
     if (!oldMessage.pinned && newMessage.pinned) {
         client.emit('messagePinned', newMessage);
+        emitted = true;
     }
     /**
      * @event messageContentEdited
@@ -25,10 +27,24 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      * @param {string} newContent The message content after it was edited.
      * @example
      * client.on("messageContentEdited", (message, oldContent, newContent) => {
-     *   console.log("Message with ID "+message.id+" has been edited to "+newContent);
+     *   console.log("Message '"+message.id+"' has been edited to "+newContent);
      * });
      */
     if (oldMessage.content !== newMessage.content) {
         client.emit('messageContentEdited', newMessage, oldMessage.content, newMessage.content);
+        emitted = true;
+    }
+    /**
+     * @event unhandledMessageUpdate
+     * @description Emitted when the messageUpdate event is triggered but discord-logs didn't trigger any custom event.
+     * @param {DJS:Message} oldMessage The message before the update.
+     * @param {DJS:Message} newMessage The message after the update.
+     * @example
+     * client.on("unhandledMessageUpdate", (oldMessage, newMessage) => {
+     *   console.log("Message '"+oldMessage.id+"' was edited but discord-logs couldn't find what was updated...");
+     * });
+     */
+    if (!emitted) {
+        client.emit('unhandledMessageUpdate', oldMessage, newMessage);
     }
 }

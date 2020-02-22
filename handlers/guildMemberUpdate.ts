@@ -5,6 +5,7 @@ import { Client, GuildMember, Role } from 'discord.js';
  * @related guildMemberUpdate
  */
 export async function handleGuildMemberUpdateEvent(client: Client, oldMember: GuildMember, newMember: GuildMember) {
+    let emitted = false;
     /**
      * @event guildMemberBoost
      * @description Emitted when a member starts boosting.
@@ -16,6 +17,7 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      */
     if (!oldMember.premiumSince && newMember.premiumSince) {
         client.emit('guildMemberBoost', newMember);
+        emitted = true;
     }
     /**
      * @event guildMemberUnboost
@@ -28,6 +30,7 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      */
     if (oldMember.premiumSince && !newMember.premiumSince) {
         client.emit('guildMemberUnboost', newMember);
+        emitted = true;
     }
     const addedRoles: Role[] = [];
     newMember.roles.cache.forEach(role => {
@@ -43,7 +46,10 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      *   console.log(member.user.tag+" acquired the role: "+role.name);
      * });
      */
-    addedRoles.forEach(role => client.emit('guildMemberRoleAdd', oldMember, role));
+    addedRoles.forEach(role => {
+        client.emit('guildMemberRoleAdd', oldMember, role);
+        emitted = true;
+    });
     const removedRoles: Role[] = [];
     oldMember.roles.cache.forEach(role => {
         if (!newMember.roles.cache.has(role.id)) removedRoles.push(role);
@@ -58,7 +64,10 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      *   console.log(member.user.tag+" lost the role: "+role.name);
      * });
      */
-    removedRoles.forEach(role => client.emit('guildMemberRoleRemove', oldMember, role));
+    removedRoles.forEach(role => {
+        client.emit('guildMemberRoleRemove', oldMember, role);
+        emitted = true;
+    });
     /**
      * @event guildMemberNicknameUpdate
      * @description Emitted when a member's nickname changes.
@@ -72,5 +81,19 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      */
     if (oldMember.nickname !== newMember.nickname) {
         client.emit('guildMemberNicknameUpdate', newMember, oldMember.nickname, newMember.nickname);
+        emitted = true;
+    }
+    /**
+     * @event unhandledGuildMemberUpdate
+     * @description Emitted when the guildMemberUpdate event is triggered but discord-logs didn't trigger any custom event.
+     * @param {DJS:Guild} oldMember The member before the update.
+     * @param {DJS:Guild} newMember The member after the update.
+     * @example
+     * client.on("unhandledGuildMemberUpdate", (oldMember, newMember) => {
+     *   console.log("Member '"+oldMember.id+"' was edited but discord-logs couldn't find what was updated...");
+     * });
+     */
+    if (!emitted) {
+        client.emit('unhandledGuildMemberUpdate', oldMember, newMember);
     }
 }

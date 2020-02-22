@@ -5,6 +5,7 @@ import { Client, VoiceState } from 'discord.js';
  * @related voiceStateUpdate
  */
 export async function handleVoiceStateUpdateEvent(client: Client, oldState: VoiceState, newState: VoiceState) {
+    let emitted = false;
     const oldMember = oldState.member;
     const newMember = newState.member;
     /**
@@ -19,6 +20,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      */
     if (!oldState.channel && newState.channel) {
         client.emit('voiceChannelJoin', newMember, newState.channel);
+        emitted = true;
     }
     /**
      * @event voiceChannelLeave
@@ -32,6 +34,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      */
     if (oldState.channel && !newState.channel) {
         client.emit('voiceChannelLeave', newMember, oldState.channel);
+        emitted = true;
     }
     /**
      * @event voiceChannelSwitch
@@ -46,6 +49,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      */
     if (oldState.channel && newState.channel && oldState.channel.id !== newState.channel.id) {
         client.emit('voiceChannelSwitch', newMember, oldState.channel, newState.channel);
+        emitted = true;
     }
     /**
      * @event voiceChannelMute
@@ -60,6 +64,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     if (!oldState.mute && newState.mute) {
         const muteType: string = newState.selfMute ? 'self-muted' : 'server-muted';
         client.emit('voiceChannelMute', newMember, muteType);
+        emitted = true;
     }
     /**
      * @event voiceChannelUnmute
@@ -74,6 +79,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     if (oldState.mute && !newState.mute) {
         const muteType: string = oldState.selfMute ? 'self-muted' : 'server-muted';
         client.emit('voiceChannelUnmute', newMember, muteType);
+        emitted = true;
     }
     /**
      * @event voiceChannelDeaf
@@ -88,6 +94,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     if (!oldState.deaf && newState.deaf) {
         const deafType: string = newState.selfDeaf ? 'self-deafed' : 'server-v';
         client.emit('voiceChannelDeaf', newMember, deafType);
+        emitted = true;
     }
     /**
      * @event voiceChannelUndeaf
@@ -102,6 +109,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
     if (oldState.deaf && !newState.deaf) {
         const deafType: string = oldState.selfDeaf ? 'self-deafed' : 'server-v';
         client.emit('voiceChannelUndeaf', newMember, deafType);
+        emitted = true;
     }
     /**
      * @event voiceStreamingStart
@@ -115,6 +123,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      */
     if (!oldState.streaming && newState.streaming) {
         client.emit('voiceStreamingStart', newMember, newState.channel);
+        emitted = true;
     }
     /**
      * @event voiceStreamingStop
@@ -128,5 +137,19 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      */
     if (oldState.streaming && !newState.streaming) {
         client.emit('voiceStreamingStop', newMember, newState.channel);
+        emitted = true;
+    }
+    /**
+     * @event unhandledVoiceStateUpdate
+     * @description Emitted when the voiceStateUpdate event is triggered but discord-logs didn't trigger any custom event.
+     * @param {DJS:VoiceState} oldState The voice state before the update.
+     * @param {DJS:VoiceState} newState The voice state after the update.
+     * @example
+     * client.on("unhandledRoleUpdate", (oldState, newState) => {
+     *   console.log("Voice state for member '"+oldState.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
+     * });
+     */
+    if (!emitted) {
+        client.emit('unhandledVoiceStateUpdate', oldState, newState);
     }
 }
