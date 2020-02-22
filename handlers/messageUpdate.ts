@@ -17,7 +17,7 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
     if (!oldMessage.pinned && newMessage.pinned) {
         client.emit('messagePinned', newMessage);
     }
-     /**
+    /**
      * @event messageEdited
      * @description Emitted when a message has been edited.
      * @param {DJS:Message} oldMessage The message before it was edited.
