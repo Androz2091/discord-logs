@@ -103,4 +103,28 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
         const deafType: string = oldState.selfDeaf ? 'self-deafed' : 'server-v';
         client.emit('voiceChannelUndeaf', newMember, deafType);
     }
+     /**
+     * @event voiceChannelStreaming
+     * @description Emitted when a member is streaming.
+     * @param {DJS:GuildMember} member The member who is streaming.
+     * @example
+     * client.on("voiceChannelStreaming", (member, channel) => {
+     *   console.log(member.user.tag+" is streaming in "+channel.name);
+     * });
+     */
+    if (!oldState.streaming && newState.streaming) {  
+        client.emit('voiceChannelStreaming', newMember, newState.channel);
+    }
+    /**
+     * @event voiceChannelSpeaking
+     * @description Emitted when a member is speaking.
+     * @param {DJS:GuildMember} member The member who is speaking.  
+     * @example
+     * client.on("voiceChannelSpeaking", (member, channel) => {
+     *   console.log(member.user.tag+" is speaking in "+channel.name);
+     * });
+     */
+    if (!oldState.speaking && newState.speaking) {  
+        client.emit('voiceChannelSpeaking', newMember, newState.channel);
+    }
 }
