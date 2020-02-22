@@ -82,7 +82,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * @param {boolean} deafType The deaf type. It can be "self-deafed" or "server-deafed".
      * @example
      * client.on("voiceChannelDeaf", (member, deafType) => {
-     *   console.log(member.user.tag+" become deafed!);
+     *   console.log(member.user.tag+" become deafed!");
      * });
      */
     if (!oldState.deaf && newState.deaf) {
