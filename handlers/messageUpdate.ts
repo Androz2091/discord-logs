@@ -25,7 +25,7 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      * @param {object} newMessage The message after that was edited.
      * @example
      * client.on("messageEdited", (message,oldMessage,newMessage) => {
-     *   console.log("This message has been edited to "+newMessage);
+     *   console.log("Message with ID +"oldMessage.id"+ has been edited to "+newMessage.content);
      * });
      */
     if (!oldMessage.edits && newMessage.edits) {
