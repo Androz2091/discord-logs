@@ -29,6 +29,6 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
      * });
      */
     if (!oldMessage.edits && newMessage.edits) {
-        client.emit('messagePinned', newMessage,newMessage.edits[0],newMessage.edits[1]);
+        client.emit('messageEdited', oldMessage, newMessage);
     }
 }
