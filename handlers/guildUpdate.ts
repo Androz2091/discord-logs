@@ -79,8 +79,8 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         client.emit('guildAfkChannelAdd', newGuild, newGuild.afkChannel);
         emitted = true;
     }
-    
-     /**
+
+    /**
      * @event guildVanityURLAdd
      * @description Emitted when a guild adds a vanity url.
      * @param {DJS:Guild} guild The guild which added a vanity url.
