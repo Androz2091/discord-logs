@@ -79,6 +79,22 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         client.emit('guildAfkChannelAdd', newGuild, newGuild.afkChannel);
         emitted = true;
     }
+    
+     /**
+     * @event guildVanityURLAdd
+     * @description Emitted when a guild adds a vanity url.
+     * @param {DJS:Guild} guild The guild which added a vanity url.
+     * @param {string} vanityURL The vanity url.
+     * @example
+     * client.on("guildVanityURLAdd", (guild, vanityURL) => {
+     *   console.log(guild.name+" has added a vanity url : "+vanityURL);
+     * });
+     */
+    if (!oldGuild.vanityURLCode && newGuild.vanityURLCode) {
+        client.emit('guildVanityURLAdd', newGuild, newGuild.vanityURLCode);
+        emitted = true;
+    }
+
     /**
      * @event unhandledGuildUpdate
      * @description Emitted when the guildUpdate event is triggered but discord-logs didn't trigger any custom event.
