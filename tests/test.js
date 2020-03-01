@@ -59,6 +59,10 @@ client.on("guildAfkChannelAdd", (guild, afkChannel) => {
   console.log(guild.name+" has an AFK channel now!");
 });
 
+client.on("guildVanityURLAdd", (guild, vanityURL) => {
+  console.log(guild.name+" has added a vanity url : "+vanityURL);
+});
+
 client.on("unhandledGuildUpdate", (oldGuild, newGuild) => {
   console.log("Guild '"+oldGuild.id+"' was edited but discord-logs couldn't find what was updated...");
 });
