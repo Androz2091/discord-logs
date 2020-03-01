@@ -86,7 +86,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      * @param {DJS:Guild} guild The guild which added a vanity url.
      * @param {string} vanityURL The vanity url.
      * @example
-     * client.on("guildVanityURLAdd", (guild,newVanity) => {
+     * client.on("guildVanityURLAdd", (guild, vanityURL) => {
      *   console.log(guild.name+" has added a vanity url : "+vanityURL);
      * });
      */
