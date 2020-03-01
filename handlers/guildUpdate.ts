@@ -91,7 +91,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      * });
      */
     if (!oldGuild.vanityURLCode && newGuild.vanityURLCode) {
-        client.emit('guildVanityURL', newGuild, newGuild.vanityURLCode);
+        client.emit('guildVanityURLAdd', newGuild, newGuild.vanityURLCode);
         emitted = true;
     }
 
