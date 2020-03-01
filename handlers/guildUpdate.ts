@@ -81,7 +81,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     }
     
      /**
-     * @event guildVanityURL
+     * @event guildVanityURLAdd
      * @description Emitted when a guild adds a vanity url.
      * @param {DJS:Guild} guild The guild which added a vanity url.
      * @param {string} vanityURL The vanity url.
