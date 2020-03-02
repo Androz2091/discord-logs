@@ -4,7 +4,11 @@ import { Client, GuildChannel } from 'discord.js';
  * @handler Guild Channel Events
  * @related guildChannelUpdate
  */
-export async function handleGuildChannelUpdateEvent(client: Client, oldChannel: GuildChannel, newChannel: GuildChannel) {
+export async function handleGuildChannelUpdateEvent(
+    client: Client,
+    oldChannel: GuildChannel,
+    newChannel: GuildChannel,
+) {
     let emitted = false;
     /**
      * @event guildChannelPermissionsChanged
@@ -16,11 +20,16 @@ export async function handleGuildChannelUpdateEvent(client: Client, oldChannel: 
      * });
      */
     if (oldChannel.permissionOverwrites !== newChannel.permissionOverwrites) {
-        client.emit('guildChannelPermissionsChanged', newChannel, oldChannel.permissionOverwrites, newChannel.permissionOverwrites);
+        client.emit(
+            'guildChannelPermissionsChanged',
+            newChannel,
+            oldChannel.permissionOverwrites,
+            newChannel.permissionOverwrites,
+        );
         emitted = true;
     }
-    
-        /**
+
+    /**
      * @event unhandledGuildChannelUpdate
      * @description Emitted when the guildChannelUpdate event is triggered but discord-logs didn't trigger any custom event.
      * @param {DJS:GuildChannel} oldChannel The channel before the update.
@@ -33,4 +42,4 @@ export async function handleGuildChannelUpdateEvent(client: Client, oldChannel: 
     if (!emitted) {
         client.emit('unhandledGuildChannelUpdate', oldChannel, newChannel);
     }
-   }
+}

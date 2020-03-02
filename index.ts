@@ -11,12 +11,11 @@ import {
 } from './handlers';
 
 export = async (client: Client) => {
-    
     /* HANDLE CHANNEL EVENTS */
     client.on('guildChannelUpdate', (oldChannel: GuildChannel, newChannel: GuildChannel) => {
         handleGuildChannelUpdateEvent(client, oldChannel, newChannel);
     });
-    
+
     /* HANDLE MEMBER EVENTS */
     client.on('guildMemberUpdate', (oldMember: GuildMember, newMember: GuildMember) => {
         handleGuildMemberUpdateEvent(client, oldMember, newMember);

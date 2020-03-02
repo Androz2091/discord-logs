@@ -9,6 +9,17 @@ client.on("ready", () => {
     console.log("Ready. Logged as "+client.user.tag+" in "+client.guilds.cache.size+" servers.");
 });
 
+/* Guild Channel Events */
+// Events related to the guildChannelUpdate event.
+
+client.on("guildChannelPermissionsChanged", (channel, oldPermissions, newPermissions) => {
+  console.log(channel.name+"'s permissions changed!");
+});
+
+client.on("unhandledGuildChannelUpdate", (oldChannel, newChannel) => {
+  console.log("Channel '"+oldChannel.id+"' was edited but discord-logs couldn't find what was updated...");
+});
+
 /* Guild Member Events */
 // Events related to the guildMemberUpdate event.
 
