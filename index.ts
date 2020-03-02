@@ -1,4 +1,4 @@
-import { Client, Guild, GuildMember, Presence, Role, User, Message } from 'discord.js';
+import { Client, Guild, GuildMember, GuildChannel,Presence, Role, User, Message } from 'discord.js';
 import {
     handleGuildMemberUpdateEvent,
     handleGuildUpdateEvent,
@@ -7,9 +7,16 @@ import {
     handleRoleUpdateEvent,
     handleUserUpdateEvent,
     handleVoiceStateUpdateEvent,
+    handleGuildChannelUpdateEvent,
 } from './handlers';
 
 export = async (client: Client) => {
+    
+    /* HANDLE CHANNEL EVENTS */
+    client.on('guildChannelUpdate', (oldChannel: GuildChannel, newChannel: GuildChannel) => {
+        handleGuildChannelUpdateEvent(client, oldChannel, newChannel);
+    });
+    
     /* HANDLE MEMBER EVENTS */
     client.on('guildMemberUpdate', (oldMember: GuildMember, newMember: GuildMember) => {
         handleGuildMemberUpdateEvent(client, oldMember, newMember);
