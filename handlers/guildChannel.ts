@@ -16,7 +16,7 @@ export async function handleGuildChannelUpdateEvent(client: Client, oldChannel: 
      * });
      */
     if (oldChannel.permissionOverwrites !== newChannel.permissionOverwrites) {
-        client.emit('guildChannelPermissionsChanged', newChannel,oldChannel.permissionOverwrites,newChannel.permissionOverwrites);
+        client.emit('guildChannelPermissionsChanged', newChannel, oldChannel.permissionOverwrites, newChannel.permissionOverwrites);
         emitted = true;
     }
     
