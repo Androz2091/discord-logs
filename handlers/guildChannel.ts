@@ -9,7 +9,7 @@ export async function handleGuildChannelUpdateEvent(client: Client, oldChannel: 
     /**
      * @event guildChannelPermissionsChanged
      * @description Emitted when channel permissions change.
-     * @param {DJS:GuildChannel} channel The channel who changed permissions.
+     * @param {DJS:GuildChannel} channel The channel whose permissions have been changed.
      * @example
      * client.on("guildChannelPermissionsChanged", (channel, oldPermissions, newPermissions) => {
      *   console.log(channel.name+"'s permissions changed!");
