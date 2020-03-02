@@ -12,7 +12,7 @@ export async function handleGuildChannelUpdateEvent(client: Client, oldChannel: 
      * @param {DJS:GuildChannel} channel The channel who changed permissions.
      * @example
      * client.on("guildChannelPermissionsChanged", (channel, oldPermissions, newPermissions) => {
-     *   console.log(channel.name+" has changed permissions !");
+     *   console.log(channel.name+"'s permissions changed!");
      * });
      */
     if (oldChannel.permissionOverwrites !== newChannel.permissionOverwrites) {
