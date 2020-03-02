@@ -19,4 +19,18 @@ export async function handleGuildChannelUpdateEvent(client: Client, oldChannel: 
         client.emit('guildChannelPermissionsChanged', newChannel,oldChannel.permissionOverwrites,newChannel.permissionOverwrites);
         emitted = true;
     }
+    
+        /**
+     * @event unhandledGuildChannelUpdate
+     * @description Emitted when the guildChannelUpdate event is triggered but discord-logs didn't trigger any custom event.
+     * @param {DJS:GuildChannel} oldChannel The channel before the update.
+     * @param {DJS:GuildChannel} newChannel The channel after the update.
+     * @example
+     * client.on("unhandledGuildChannelUpdate", (oldChannel, newChannel) => {
+     *   console.log("Channel '"+oldChannel.id+"' was edited but discord-logs couldn't find what was updated...");
+     * });
+     */
+    if (!emitted) {
+        client.emit('unhandledGuildChannelUpdate', oldChannel, newChannel);
+    }
    }
