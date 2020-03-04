@@ -6,7 +6,7 @@
 
 Discord Logs is a powerful package which add many useful events to your Discord.js client!
 
-**Warning**: This package uses recent Discord.js features and only works on v12 or higher (`npm install discordjs/discord.js`).
+**Warning**: This package uses recent Discord.js features and only works on v12 or higher (`npm install discord.js`).
 
 ```js
 const Discord = require('discord.js');
