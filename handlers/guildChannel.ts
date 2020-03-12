@@ -34,7 +34,7 @@ export async function handleGuildChannelUpdateEvent(
      * @description Emitted when a channel topic changes.
      * @param {DJS:GuildChannel} channel The channel whose topic have been changed.
      * @example
-     * client.on("guildChannelTopicChanged", (channel, oldTopic, newTopic) => {
+     * client.on("guildChannelTopicUpdate", (channel, oldTopic, newTopic) => {
      *   console.log(channel.name+"'s topic changed to " + newTopic +"!");
      * });
      */
