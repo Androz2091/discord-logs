@@ -39,7 +39,7 @@ export async function handleGuildChannelUpdateEvent(
      * });
      */
      if(oldChannel.topic !== newChannel.topic) {
-       client.emit("guildChannelTopicChanged", newChannel, oldTopic, newTopic);
+       client.emit("guildChannelTopicUpdate, newChannel, oldTopic, newTopic);
        emitted = true;
      }
     /**
