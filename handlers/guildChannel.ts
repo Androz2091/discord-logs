@@ -28,7 +28,20 @@ export async function handleGuildChannelUpdateEvent(
         );
         emitted = true;
     }
-
+     
+     /**
+     * @event guildChannelTopicChanged
+     * @description Emitted when channel topic change.
+     * @param {DJS:GuildChannel} channel The channel whose topic have been changed.
+     * @example
+     * client.on("guildChannelTopicChanged", (channel, oldTopic, newTopic) => {
+     *   console.log(channel.name+"'s topic changed to " + newTopic +"!");
+     * });
+     */
+     if(oldChannel.topic !== newChannel.topic) {
+       client.emit("guildChannelTopicChanged", newChannel, oldTopic, newTopic);
+       emitted = true;
+     }
     /**
      * @event unhandledGuildChannelUpdate
      * @description Emitted when the guildChannelUpdate event is triggered but discord-logs didn't trigger any custom event.
