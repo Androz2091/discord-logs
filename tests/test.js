@@ -12,8 +12,12 @@ client.on("ready", () => {
 /* Guild Channel Events */
 // Events related to the guildChannelUpdate event.
 
-client.on("guildChannelPermissionsChanged", (channel, oldPermissions, newPermissions) => {
-  console.log(channel.name+"'s permissions changed!");
+client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissions) => {
+  console.log(channel.name+"'s permissions updated!");
+});
+
+client.on("guildChannelTopicUpdate", (channel, oldTopic, newTopic) => {
+  console.log(channel.name+"'s topic changed to " + newTopic +"!");
 });
 
 client.on("unhandledGuildChannelUpdate", (oldChannel, newChannel) => {

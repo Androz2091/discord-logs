@@ -1,4 +1,4 @@
-import { Client, GuildChannel } from 'discord.js';
+import { Client, GuildChannel, TextChannel } from 'discord.js';
 
 /**
  * @handler Guild Channel Events
@@ -11,37 +11,45 @@ export async function handleGuildChannelUpdateEvent(
 ) {
     let emitted = false;
     /**
-     * @event guildChannelPermissionsChanged
-     * @description Emitted when channel permissions change.
-     * @param {DJS:GuildChannel} channel The channel whose permissions have been changed.
+     * @event guildChannelPermissionsUpdate
+     * @description Emitted when channel permissions are updated.
+     * @param {DJS:GuildChannel} channel The channel whose permissions have been updated.
      * @example
-     * client.on("guildChannelPermissionsChanged", (channel, oldPermissions, newPermissions) => {
-     *   console.log(channel.name+"'s permissions changed!");
+     * client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissions) => {
+     *   console.log(channel.name+"'s permissions updated!");
      * });
      */
     if (oldChannel.permissionOverwrites !== newChannel.permissionOverwrites) {
         client.emit(
-            'guildChannelPermissionsChanged',
+            'guildChannelPermissionsUpdate',
             newChannel,
             oldChannel.permissionOverwrites,
             newChannel.permissionOverwrites,
         );
         emitted = true;
     }
-     
-     /**
+
+    /**
      * @event guildChannelTopicUpdate
      * @description Emitted when a channel topic changes.
-     * @param {DJS:GuildChannel} channel The channel whose topic have been changed.
+     * @param {DJS:GuildChannel} channel The channel whose topic have been updated.
+     * @param {string} oldTopic The old channel topic.
+     * @param {string} newTopic The new channel topic.
      * @example
      * client.on("guildChannelTopicUpdate", (channel, oldTopic, newTopic) => {
      *   console.log(channel.name+"'s topic changed to " + newTopic +"!");
      * });
      */
-     if(oldChannel.topic !== newChannel.topic) {
-       client.emit("guildChannelTopicUpdate, newChannel, oldTopic, newTopic);
-       emitted = true;
-     }
+    if (oldChannel.type === 'text' && (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic) {
+        client.emit(
+            'guildChannelTopicUpdate',
+            newChannel,
+            (oldChannel as TextChannel).topic,
+            (newChannel as TextChannel).topic,
+        );
+        emitted = true;
+    }
+
     /**
      * @event unhandledGuildChannelUpdate
      * @description Emitted when the guildChannelUpdate event is triggered but discord-logs didn't trigger any custom event.
