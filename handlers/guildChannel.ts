@@ -30,7 +30,7 @@ export async function handleGuildChannelUpdateEvent(
     }
      
      /**
-     * @event guildChannelTopicChanged
+     * @event guildChannelTopicUpdate
      * @description Emitted when a channel topic changes.
      * @param {DJS:GuildChannel} channel The channel whose topic have been changed.
      * @example
