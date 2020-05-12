@@ -102,11 +102,11 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      * @param {object} oldOwner The old owner.
      * @param {object} newOwner The new owner.
      * @example
-     * client.on("guildVanityURLAdd", (guild, oldOwner, newOwner) => {
+     * client.on("guildOwnerUpdate", (guild, oldOwner, newOwner) => {
      *   console.log("The new owner of " + guild.name + "is now "+ newOwner);
      * });
      */
-    if (!oldGuild.vanityURLCode && newGuild.vanityURLCode) {
+    if (!oldGuild.owner && newGuild.owner) {
         client.emit('guildOwnerUpdate', newGuild, oldGuild.owner, newGuild.owner);
         emitted = true;
     }
