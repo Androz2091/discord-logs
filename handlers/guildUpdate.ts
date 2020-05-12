@@ -98,7 +98,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     /**
      * @event guildVerified
      * @description Emitted when a guild become verified.
-     * @param {DJS:Guild} guild The guild which became verfied.
+     * @param {DJS:Guild} guild The guild which became verified.
      * @example
      * client.on("guildVerified", (guild) => {
      *   console.log(guild.name+" is now verified.");
