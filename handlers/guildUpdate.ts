@@ -107,7 +107,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      * });
      */
     if (oldGuild.ownerID !== newGuild.ownerID) {
-        client.emit('guildOwnerUpdate', newGuild, oldGuild.owner, newGuild.owner);
+        client.emit('guildOwnerUpdate', newGuild, oldGuild.ownerID, newGuild.ownerID);
         emitted = true;
     }
 
