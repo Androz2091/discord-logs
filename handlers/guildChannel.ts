@@ -1,10 +1,10 @@
 import { Client, GuildChannel, TextChannel } from 'discord.js';
 
 /**
- * @handler Guild Channel Events
- * @related guildChannelUpdate
+ * @handler Channel Events
+ * @related channelUpdate
  */
-export async function handleGuildChannelUpdateEvent(
+export async function handleChannelUpdateEvent(
     client: Client,
     oldChannel: GuildChannel,
     newChannel: GuildChannel,
@@ -14,6 +14,8 @@ export async function handleGuildChannelUpdateEvent(
      * @event guildChannelPermissionsUpdate
      * @description Emitted when channel permissions are updated.
      * @param {DJS:GuildChannel} channel The channel whose permissions have been updated.
+     * @param {DJS:PermissionOverwrites} oldPermissions Collection of old PermissionOverwrites.
+     * @param {DJS:PermissionOverwrites} newPermissions Collection of new PermissionOverwrites.
      * @example
      * client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissions) => {
      *   console.log(channel.name+"'s permissions updated!");

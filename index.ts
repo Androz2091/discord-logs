@@ -7,13 +7,13 @@ import {
     handleRoleUpdateEvent,
     handleUserUpdateEvent,
     handleVoiceStateUpdateEvent,
-    handleGuildChannelUpdateEvent,
+    handleChannelUpdateEvent,
 } from './handlers';
 
 export = async (client: Client) => {
     /* HANDLE CHANNEL EVENTS */
-    client.on('guildChannelUpdate', (oldChannel: GuildChannel, newChannel: GuildChannel) => {
-        handleGuildChannelUpdateEvent(client, oldChannel, newChannel);
+    client.on('channelUpdate', (oldChannel: GuildChannel, newChannel: GuildChannel) => {
+        handleChannelUpdateEvent(client, oldChannel, newChannel);
     });
 
     /* HANDLE MEMBER EVENTS */
