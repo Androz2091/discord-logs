@@ -103,7 +103,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      * @param {object} newOwner The new owner.
      * @example
      * client.on("guildOwnerUpdate", (guild, oldOwner, newOwner) => {
-     *   console.log("The new owner of " + guild.name + "is now "+ newOwner);
+     *   console.log("The new owner of " + guild.name + "is now member with ID "+ newOwner);
      * });
      */
     if (oldGuild.ownerID !== newGuild.ownerID) {
