@@ -120,7 +120,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      *   console.log(oldGuild.name+" updated its Acronym : "+newGuild.nameAcronym);
      * });
      */
-    if (!oldGuild.nameAcronym && newGuild.nameAcronym) {
+    if (oldGuild.nameAcronym !== newGuild.nameAcronym) {
         client.emit('guildAcronymUpdate', oldGuild, newGuild);
         emitted = true;
     }
