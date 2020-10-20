@@ -135,7 +135,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      *   console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
      * });
      */
-    if (!oldGuild.owner?.id && newGuild.owner?.id) {
+    if (oldGuild.ownerID !== newGuild.ownerID) {
         client.emit('guildOwnerUpdate', oldGuild, newGuild);
         emitted = true;
     }
@@ -191,7 +191,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      *   console.log(guild.name+" is no longer verified!");
      * });
      */
-    if (oldGuild.partnered && !newGuild.partnered) {
+    if (oldGuild.verified && !newGuild.verified) {
         client.emit('guildVerificationRemove', newGuild);
         emitted = true;
     }
