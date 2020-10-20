@@ -9,8 +9,8 @@ client.on("ready", () => {
     console.log("Ready. Logged as "+client.user.tag+" in "+client.guilds.cache.size+" servers.");
 });
 
-/* Guild Channel Events */
-// Events related to the guildChannelUpdate event.
+/* Channel Events */
+// Events related to the channelUpdate event.
 
 client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissions) => {
   console.log(channel.name+"'s permissions updated!");
@@ -76,6 +76,34 @@ client.on("guildAfkChannelAdd", (guild, afkChannel) => {
 
 client.on("guildVanityURLAdd", (guild, vanityURL) => {
   console.log(guild.name+" has added a vanity url : "+vanityURL);
+});
+
+client.on("guildFeaturesUpdate", (oldGuild, newGuild) => {
+  console.log(`New features: ${newGuild.features.join(", ")}`);
+});
+
+client.on("guildAcronymUpdate", (oldGuild, newGuild) => {
+  console.log(oldGuild.name+" updated its Acronym : "+newGuild.nameAcronym);
+});
+
+client.on("guildVanityURLAdd", (oldGuild, newGuild) => {
+  console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
+});
+
+client.on("guildPartnerAdd", (guild) => {
+  console.log(guild.name+" got partnered!");
+});
+
+client.on("guildPartnerRemove", (guild) => {
+  console.log(guild.name+" is no longer partnered!");
+});
+
+client.on("guildVerificationAdd", (guild) => {
+  console.log(guild.name+" got verified!");
+});
+
+client.on("guildVerificationRemove", (guild) => {
+  console.log(guild.name+" is no longer verified!");
 });
 
 client.on("unhandledGuildUpdate", (oldGuild, newGuild) => {

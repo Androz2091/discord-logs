@@ -726,10 +726,282 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-15">unhandledGuildUpdate</a>
+                            <a data-toggle="collapse" href="#event-15">guildFeaturesUpdate</a>
                         </h4>
                     </div>
                     <div id="event-15" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitten when a guild feature gets updated.</div>
+                        <div class="panel-footer">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldGuild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild before its feature(s) were updated. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newGuild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild after its feature(s) were updated. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildFeaturesUpdate", (oldGuild, newGuild) => {
+  console.log(`New features: ${newGuild.features.join(", ")}`);
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#event-16">guildAcronymUpdate</a>
+                        </h4>
+                    </div>
+                    <div id="event-16" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when a guild updates its Acronym.</div>
+                        <div class="panel-footer">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldGuild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild before its Acronym was updated. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newGuild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild after its Acronym was updated. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildAcronymUpdate", (oldGuild, newGuild) => {
+  console.log(oldGuild.name+" updated its Acronym : "+newGuild.nameAcronym);
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#event-17">guildOwnerUpdate</a>
+                        </h4>
+                    </div>
+                    <div id="event-17" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when a guild updates its owner.</div>
+                        <div class="panel-footer">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldGuild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild before its owner was updated. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newGuild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild after its owner was updated. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildVanityURLAdd", (oldGuild, newGuild) => {
+  console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#event-18">guildPartnerAdd</a>
+                        </h4>
+                    </div>
+                    <div id="event-18" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when a guild gets partnered.</div>
+                        <div class="panel-footer">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> guild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild who partnered. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildPartnerAdd", (guild) => {
+  console.log(guild.name+" got partnered!");
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#event-19">guildPartnerRemove</a>
+                        </h4>
+                    </div>
+                    <div id="event-19" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when a guild is no longer partnered.</div>
+                        <div class="panel-footer">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> guild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild who removed partnership. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildPartnerRemove", (guild) => {
+  console.log(guild.name+" is no longer partnered!");
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#event-20">guildVerificationAdd</a>
+                        </h4>
+                    </div>
+                    <div id="event-20" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when a guild gets verified.</div>
+                        <div class="panel-footer">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> guild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild who got verified. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildVerificationAdd", (guild) => {
+  console.log(guild.name+" got verified!");
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#event-21">guildVerificationRemove</a>
+                        </h4>
+                    </div>
+                    <div id="event-21" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when a guild is no longer verified.</div>
+                        <div class="panel-footer">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> guild </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/Guild">
+                                Guild</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The guild who is no longer verified. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildVerificationRemove", (guild) => {
+  console.log(guild.name+" is no longer verified!");
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#event-22">unhandledGuildUpdate</a>
+                        </h4>
+                    </div>
+                    <div id="event-22" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the guildUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -772,10 +1044,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-16">messagePinned</a>
+                            <a data-toggle="collapse" href="#event-23">messagePinned</a>
                         </h4>
                     </div>
-                    <div id="event-16" class="panel-collapse collapse">
+                    <div id="event-23" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a message has been pinned.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -807,10 +1079,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-17">messageContentEdited</a>
+                            <a data-toggle="collapse" href="#event-24">messageContentEdited</a>
                         </h4>
                     </div>
-                    <div id="event-17" class="panel-collapse collapse">
+                    <div id="event-24" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a message content has been edited.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -860,10 +1132,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-18">unhandledMessageUpdate</a>
+                            <a data-toggle="collapse" href="#event-25">unhandledMessageUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-18" class="panel-collapse collapse">
+                    <div id="event-25" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the messageUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -906,10 +1178,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-19">guildMemberOffline</a>
+                            <a data-toggle="collapse" href="#event-26">guildMemberOffline</a>
                         </h4>
                     </div>
-                    <div id="event-19" class="panel-collapse collapse">
+                    <div id="event-26" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes offline.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -950,10 +1222,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-20">guildMemberOnline</a>
+                            <a data-toggle="collapse" href="#event-27">guildMemberOnline</a>
                         </h4>
                     </div>
-                    <div id="event-20" class="panel-collapse collapse">
+                    <div id="event-27" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes online, dnd or idle.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -994,10 +1266,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-21">unhandledPresenceUpdate</a>
+                            <a data-toggle="collapse" href="#event-28">unhandledPresenceUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-21" class="panel-collapse collapse">
+                    <div id="event-28" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the presenceUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1040,10 +1312,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-22">rolePositionUpdate</a>
+                            <a data-toggle="collapse" href="#event-29">rolePositionUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-22" class="panel-collapse collapse">
+                    <div id="event-29" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a role position changes.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1093,10 +1365,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-23">unhandledRoleUpdate</a>
+                            <a data-toggle="collapse" href="#event-30">unhandledRoleUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-23" class="panel-collapse collapse">
+                    <div id="event-30" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the roleUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1139,10 +1411,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-24">userAvatarUpdate</a>
+                            <a data-toggle="collapse" href="#event-31">userAvatarUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-24" class="panel-collapse collapse">
+                    <div id="event-31" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their avatar.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1192,10 +1464,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-25">userUsernameUpdate</a>
+                            <a data-toggle="collapse" href="#event-32">userUsernameUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-25" class="panel-collapse collapse">
+                    <div id="event-32" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their username.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1245,10 +1517,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-26">userDiscriminatorUpdate</a>
+                            <a data-toggle="collapse" href="#event-33">userDiscriminatorUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-26" class="panel-collapse collapse">
+                    <div id="event-33" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their discriminator.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1298,10 +1570,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-27">unhandledUserUpdate</a>
+                            <a data-toggle="collapse" href="#event-34">unhandledUserUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-27" class="panel-collapse collapse">
+                    <div id="event-34" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the userUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1344,10 +1616,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-28">voiceChannelJoin</a>
+                            <a data-toggle="collapse" href="#event-35">voiceChannelJoin</a>
                         </h4>
                     </div>
-                    <div id="event-28" class="panel-collapse collapse">
+                    <div id="event-35" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member joins a voice channel.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1388,10 +1660,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-29">voiceChannelLeave</a>
+                            <a data-toggle="collapse" href="#event-36">voiceChannelLeave</a>
                         </h4>
                     </div>
-                    <div id="event-29" class="panel-collapse collapse">
+                    <div id="event-36" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member leaves a voice channel.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1432,10 +1704,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-30">voiceChannelSwitch</a>
+                            <a data-toggle="collapse" href="#event-37">voiceChannelSwitch</a>
                         </h4>
                     </div>
-                    <div id="event-30" class="panel-collapse collapse">
+                    <div id="event-37" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member switches to another voice channel.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1485,10 +1757,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-31">voiceChannelMute</a>
+                            <a data-toggle="collapse" href="#event-38">voiceChannelMute</a>
                         </h4>
                     </div>
-                    <div id="event-31" class="panel-collapse collapse">
+                    <div id="event-38" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes muted (self-muted or server-muted).</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1529,10 +1801,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-32">voiceChannelUnmute</a>
+                            <a data-toggle="collapse" href="#event-39">voiceChannelUnmute</a>
                         </h4>
                     </div>
-                    <div id="event-32" class="panel-collapse collapse">
+                    <div id="event-39" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes unmuted.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1573,10 +1845,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-33">voiceChannelDeaf</a>
+                            <a data-toggle="collapse" href="#event-40">voiceChannelDeaf</a>
                         </h4>
                     </div>
-                    <div id="event-33" class="panel-collapse collapse">
+                    <div id="event-40" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes deafed.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1617,10 +1889,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-34">voiceChannelUndeaf</a>
+                            <a data-toggle="collapse" href="#event-41">voiceChannelUndeaf</a>
                         </h4>
                     </div>
-                    <div id="event-34" class="panel-collapse collapse">
+                    <div id="event-41" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes undeafed.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1661,10 +1933,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-35">voiceStreamingStart</a>
+                            <a data-toggle="collapse" href="#event-42">voiceStreamingStart</a>
                         </h4>
                     </div>
-                    <div id="event-35" class="panel-collapse collapse">
+                    <div id="event-42" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member starts streaming.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1705,10 +1977,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-36">voiceStreamingStop</a>
+                            <a data-toggle="collapse" href="#event-43">voiceStreamingStop</a>
                         </h4>
                     </div>
-                    <div id="event-36" class="panel-collapse collapse">
+                    <div id="event-43" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member stops streaming.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>
@@ -1749,10 +2021,10 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-37">unhandledVoiceStateUpdate</a>
+                            <a data-toggle="collapse" href="#event-44">unhandledVoiceStateUpdate</a>
                         </h4>
                     </div>
-                    <div id="event-37" class="panel-collapse collapse">
+                    <div id="event-44" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the voiceStateUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div class="panel-footer">ℹ️ Parameters: 
                         <br><br>

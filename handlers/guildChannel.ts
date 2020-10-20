@@ -4,11 +4,7 @@ import { Client, GuildChannel, TextChannel } from 'discord.js';
  * @handler Channel Events
  * @related channelUpdate
  */
-export async function handleChannelUpdateEvent(
-    client: Client,
-    oldChannel: GuildChannel,
-    newChannel: GuildChannel,
-) {
+export async function handleChannelUpdateEvent(client: Client, oldChannel: GuildChannel, newChannel: GuildChannel) {
     let emitted = false;
     /**
      * @event guildChannelPermissionsUpdate

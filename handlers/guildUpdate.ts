@@ -96,6 +96,107 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     }
 
     /**
+     * @event guildFeaturesUpdate
+     * @description Emitten when a guild feature gets updated.
+     * @param {DJS:Guild} oldGuild The guild before its feature(s) were updated.
+     * @param {DJS:Guild} newGuild The guild after its feature(s) were updated.
+     * @example
+     * client.on("guildFeaturesUpdate", (oldGuild, newGuild) => {
+     *   console.log(`New features: ${newGuild.features.join(", ")}`);
+     * });
+     */
+    if (oldGuild.features.length !== newGuild.features.length) {
+        client.emit('guildFeaturesUpdate', oldGuild, newGuild);
+        emitted = true;
+    }
+
+    /**
+     * @event guildAcronymUpdate
+     * @description Emitted when a guild updates its Acronym.
+     * @param {DJS:Guild} oldGuild The guild before its Acronym was updated.
+     * @param {DJS:Guild} newGuild The guild after its Acronym was updated.
+     * @example
+     * client.on("guildAcronymUpdate", (oldGuild, newGuild) => {
+     *   console.log(oldGuild.name+" updated its Acronym : "+newGuild.nameAcronym);
+     * });
+     */
+    if (!oldGuild.nameAcronym && newGuild.nameAcronym) {
+        client.emit('guildAcronymUpdate', oldGuild, newGuild);
+        emitted = true;
+    }
+
+    /**
+     * @event guildOwnerUpdate
+     * @description Emitted when a guild updates its owner.
+     * @param {DJS:Guild} oldGuild The guild before its owner was updated.
+     * @param {DJS:Guild} newGuild The guild after its owner was updated.
+     * @example
+     * client.on("guildVanityURLAdd", (oldGuild, newGuild) => {
+     *   console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
+     * });
+     */
+    if (!oldGuild.owner?.id && newGuild.owner?.id) {
+        client.emit('guildOwnerUpdate', oldGuild, newGuild);
+        emitted = true;
+    }
+
+    /**
+     * @event guildPartnerAdd
+     * @description Emitted when a guild gets partnered.
+     * @param {DJS:Guild} guild The guild who partnered.
+     * @example
+     * client.on("guildPartnerAdd", (guild) => {
+     *   console.log(guild.name+" got partnered!");
+     * });
+     */
+    if (!oldGuild.partnered && newGuild.partnered) {
+        client.emit('guildPartnerAdd', newGuild);
+        emitted = true;
+    }
+
+    /**
+     * @event guildPartnerRemove
+     * @description Emitted when a guild is no longer partnered.
+     * @param {DJS:Guild} guild The guild who removed partnership.
+     * @example
+     * client.on("guildPartnerRemove", (guild) => {
+     *   console.log(guild.name+" is no longer partnered!");
+     * });
+     */
+    if (oldGuild.partnered && !newGuild.partnered) {
+        client.emit('guildPartnerRemove', newGuild);
+        emitted = true;
+    }
+
+    /**
+     * @event guildVerificationAdd
+     * @description Emitted when a guild gets verified.
+     * @param {DJS:Guild} guild The guild who got verified.
+     * @example
+     * client.on("guildVerificationAdd", (guild) => {
+     *   console.log(guild.name+" got verified!");
+     * });
+     */
+    if (!oldGuild.verified && newGuild.verified) {
+        client.emit('guildVerificationAdd', newGuild);
+        emitted = true;
+    }
+
+    /**
+     * @event guildVerificationRemove
+     * @description Emitted when a guild is no longer verified.
+     * @param {DJS:Guild} guild The guild who is no longer verified.
+     * @example
+     * client.on("guildVerificationRemove", (guild) => {
+     *   console.log(guild.name+" is no longer verified!");
+     * });
+     */
+    if (oldGuild.partnered && !newGuild.partnered) {
+        client.emit('guildVerificationRemove', newGuild);
+        emitted = true;
+    }
+
+    /**
      * @event unhandledGuildUpdate
      * @description Emitted when the guildUpdate event is triggered but discord-logs didn't trigger any custom event.
      * @param {DJS:Guild} oldGuild The guild before the update.
