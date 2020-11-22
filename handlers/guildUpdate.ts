@@ -131,7 +131,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      * @param {DJS:Guild} oldGuild The guild before its owner was updated.
      * @param {DJS:Guild} newGuild The guild after its owner was updated.
      * @example
-     * client.on("guildVanityURLAdd", (oldGuild, newGuild) => {
+     * client.on("guildOwnerUpdate", (oldGuild, newGuild) => {
      *   console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
      * });
      */
