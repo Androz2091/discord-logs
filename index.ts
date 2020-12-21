@@ -10,7 +10,13 @@ import {
     handleChannelUpdateEvent,
 } from './handlers';
 
+let eventRegistered = false;
+
 export = async (client: Client) => {
+
+    if (eventRegistered) return;
+    eventRegistered = true;
+
     /* HANDLE CHANNEL EVENTS */
     client.on('channelUpdate', (oldChannel: GuildChannel, newChannel: GuildChannel) => {
         handleChannelUpdateEvent(client, oldChannel, newChannel);
