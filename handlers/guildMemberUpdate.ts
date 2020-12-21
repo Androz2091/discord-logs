@@ -24,7 +24,7 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      * @description Emitted when a member stops boosting.
      * @param {DJS:GuildMember} member The member who stopped boosting.
      * @example
-     * client.on("guildMemberBoost", (member) => {
+     * client.on("guildMemberUnboost", (member) => {
      *   console.log(member.user.tag+" has stopped boosting "+member.guild.name+"...");
      * });
      */
