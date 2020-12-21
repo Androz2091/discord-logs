@@ -72,7 +72,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * @param {DJS:GuildMember} member The member who became unmuted.
      * @param {boolean} muteType The old mute type. It can be "self-muted" or "server-muted".
      * @example
-     * client.on("voiceChannelMute", (member, oldMuteType) => {
+     * client.on("voiceChannelUnmute", (member, oldMuteType) => {
      *   console.log(member.user.tag+" become unmuted!");
      * });
      */
