@@ -31,7 +31,7 @@ client.on("guildMemberBoost", (member) => {
   console.log(member.user.tag+" has started boosting "+member.guild.name+"!");
 });
 
-client.on("guildMemberBoost", (member) => {
+client.on("guildMemberUnboost", (member) => {
   console.log(member.user.tag+" has stopped boosting "+member.guild.name+"...");
 });
 
@@ -86,7 +86,7 @@ client.on("guildAcronymUpdate", (oldGuild, newGuild) => {
   console.log(oldGuild.name+" updated its Acronym : "+newGuild.nameAcronym);
 });
 
-client.on("guildVanityURLAdd", (oldGuild, newGuild) => {
+client.on("guildOwnerUpdate", (oldGuild, newGuild) => {
   console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
 });
 

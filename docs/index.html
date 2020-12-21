@@ -237,7 +237,7 @@
                         </tr>
                         
                       </table></div>
-                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildMemberBoost", (member) => {
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildMemberUnboost", (member) => {
   console.log(member.user.tag+" has stopped boosting "+member.guild.name+"...");
 });
 </code></pre></div>
@@ -847,7 +847,7 @@
                         </tr>
                         
                       </table></div>
-                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildVanityURLAdd", (oldGuild, newGuild) => {
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildOwnerUpdate", (oldGuild, newGuild) => {
   console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
 });
 </code></pre></div>
