@@ -33,7 +33,7 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
         emitted = true;
     }
     const addedRoles: Role[] = [];
-    newMember.roles.cache.forEach(role => {
+    newMember.roles.cache.forEach((role) => {
         if (!oldMember.roles.cache.has(role.id)) addedRoles.push(role);
     });
     /**
@@ -46,12 +46,12 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      *   console.log(member.user.tag+" acquired the role: "+role.name);
      * });
      */
-    addedRoles.forEach(role => {
+    addedRoles.forEach((role) => {
         client.emit('guildMemberRoleAdd', oldMember, role);
         emitted = true;
     });
     const removedRoles: Role[] = [];
-    oldMember.roles.cache.forEach(role => {
+    oldMember.roles.cache.forEach((role) => {
         if (!newMember.roles.cache.has(role.id)) removedRoles.push(role);
     });
     /**
@@ -64,7 +64,7 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
      *   console.log(member.user.tag+" lost the role: "+role.name);
      * });
      */
-    removedRoles.forEach(role => {
+    removedRoles.forEach((role) => {
         client.emit('guildMemberRoleRemove', oldMember, role);
         emitted = true;
     });

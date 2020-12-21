@@ -27,16 +27,16 @@ let botContent = '';
 (async () => {
     const handlersFiles = await fs.readdir('./handlers');
     await asyncForEach(
-        handlersFiles.filter(f => f.split('.')[0] !== 'index'),
-        async handler => {
+        handlersFiles.filter((f) => f.split('.')[0] !== 'index'),
+        async (handler) => {
             const handlerContent = await fs.readFile(`./handlers/${handler}`, 'utf-8');
             const parsedComments = comments.parse(handlerContent);
-            const handlerTitle = parsedComments[0].tags.find(tag => tag.title === 'handler').description;
+            const handlerTitle = parsedComments[0].tags.find((tag) => tag.title === 'handler').description;
             const handlerDescription = `Events related to the ${
-                parsedComments[0].tags.find(tag => tag.title === 'related').description
+                parsedComments[0].tags.find((tag) => tag.title === 'related').description
             } event.`;
             botContent += `\n/* ${handlerTitle} */\n// ${handlerDescription}`;
-            parsedComments.forEach(blockComment => {
+            parsedComments.forEach((blockComment) => {
                 botContent += '\n' + (blockComment.examples[0] ? blockComment.examples[0].value.slice(1) : '');
             });
         },

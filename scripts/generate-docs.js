@@ -45,18 +45,18 @@ let pageContent = '';
     const handlersFiles = await fs.readdir('./handlers');
     let pointer = 0;
     await asyncForEach(
-        handlersFiles.filter(f => f.split('.')[0] !== 'index'),
-        async handler => {
+        handlersFiles.filter((f) => f.split('.')[0] !== 'index'),
+        async (handler) => {
             const handlerContent = await fs.readFile(`./handlers/${handler}`, 'utf-8');
             const parsedComments = comments.parse(handlerContent);
-            const handlerTitle = parsedComments[0].tags.find(tag => tag.title === 'handler').description;
+            const handlerTitle = parsedComments[0].tags.find((tag) => tag.title === 'handler').description;
             const handlerDescription = `Events related to the ${
-                parsedComments[0].tags.find(tag => tag.title === 'related').description
+                parsedComments[0].tags.find((tag) => tag.title === 'related').description
             } event.`;
             pageContent += `
         <h3>${handlerTitle}</h3>
         <h5>${handlerDescription}</h5><br>`;
-            parsedComments.forEach(blockComment => {
+            parsedComments.forEach((blockComment) => {
                 if (blockComment.value.includes('@event')) {
                     pageContent += `
                 <div class="panel-group">
@@ -64,7 +64,7 @@ let pageContent = '';
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#event-${pointer}">${
-                        blockComment.tags.find(f => f.title === 'event').description
+                        blockComment.tags.find((f) => f.title === 'event').description
                     }</a>
                         </h4>
                     </div>
@@ -79,9 +79,9 @@ let pageContent = '';
                             <th style="padding:0 15px 0 15px;">Description</th>
                         </tr>
                         ${blockComment.tags
-                            .filter(tag => tag.title === 'param')
+                            .filter((tag) => tag.title === 'param')
                             .map(
-                                param => `
+                                (param) => `
                         <tr>
                             <td> ${param.name} </td>
                             <td style="padding:0 15px 0 15px;">
