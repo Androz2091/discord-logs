@@ -18,37 +18,37 @@ export = async (client: Client) => {
     eventRegistered = true;
 
     /* HANDLE CHANNEL EVENTS */
-    client.on('channelUpdate', (oldChannel: GuildChannel, newChannel: GuildChannel) => {
+    client.on('channelUpdate', (oldChannel, newChannel) => {
         handleChannelUpdateEvent(client, oldChannel, newChannel);
     });
 
     /* HANDLE MEMBER EVENTS */
-    client.on('guildMemberUpdate', (oldMember: GuildMember, newMember: GuildMember) => {
+    client.on('guildMemberUpdate', (oldMember, newMember) => {
         handleGuildMemberUpdateEvent(client, oldMember, newMember);
     });
 
     /* HANDLE GUILD EVENTS */
-    client.on('guildUpdate', (oldGuild: Guild, newGuild: Guild) => {
+    client.on('guildUpdate', (oldGuild, newGuild) => {
         handleGuildUpdateEvent(client, oldGuild, newGuild);
     });
 
     /* HANDLE MESSAGE UPDATE EVENTS */
-    client.on('messageUpdate', (oldMessage: Message, newMessage: Message) => {
+    client.on('messageUpdate', (oldMessage, newMessage) => {
         handleMessageUpdateEvent(client, oldMessage, newMessage);
     });
 
     /* HANDLE PRESENCE UPDATE EVENTS */
-    client.on('presenceUpdate', (oldPresence: Presence, newPresence: Presence) => {
+    client.on('presenceUpdate', (oldPresence, newPresence) => {
         handlePresenceUpdateEvent(client, oldPresence, newPresence);
     });
 
     /* HANDLE ROLE EVENTS */
-    client.on('roleUpdate', (oldRole: Role, newRole: Role) => {
+    client.on('roleUpdate', (oldRole, newRole) => {
         handleRoleUpdateEvent(client, oldRole, newRole);
     });
 
     /* HANDLE USER EVENTS */
-    client.on('userUpdate', (oldUser: User, newUser: User) => {
+    client.on('userUpdate', (oldUser, newUser) => {
         handleUserUpdateEvent(client, oldUser, newUser);
     });
 

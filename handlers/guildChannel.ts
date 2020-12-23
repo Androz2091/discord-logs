@@ -1,51 +1,56 @@
-import { Client, GuildChannel, TextChannel } from 'discord.js';
+import { Channel, Client, TextChannel, GuildChannel } from 'discord.js';
 
 /**
  * @handler Channel Events
  * @related channelUpdate
  */
-export async function handleChannelUpdateEvent(client: Client, oldChannel: GuildChannel, newChannel: GuildChannel) {
+export async function handleChannelUpdateEvent(client: Client, oldChannel: Channel, newChannel: Channel) {
     let emitted = false;
-    /**
-     * @event guildChannelPermissionsUpdate
-     * @description Emitted when channel permissions are updated.
-     * @param {DJS:GuildChannel} channel The channel whose permissions have been updated.
-     * @param {DJS:PermissionOverwrites} oldPermissions Collection of old PermissionOverwrites.
-     * @param {DJS:PermissionOverwrites} newPermissions Collection of new PermissionOverwrites.
-     * @example
-     * client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissions) => {
-     *   console.log(channel.name+"'s permissions updated!");
-     * });
-     */
-    if (oldChannel.permissionOverwrites !== newChannel.permissionOverwrites) {
-        client.emit(
-            'guildChannelPermissionsUpdate',
-            newChannel,
-            oldChannel.permissionOverwrites,
-            newChannel.permissionOverwrites,
-        );
-        emitted = true;
-    }
+    
+    if (Object.prototype.hasOwnProperty.call(oldChannel, 'guild')) {
+        
+        /**
+         * @event guildChannelPermissionsUpdate
+         * @description Emitted when channel permissions are updated.
+         * @param {DJS:GuildChannel} channel The channel whose permissions have been updated.
+         * @param {DJS:PermissionOverwrites} oldPermissions Collection of old PermissionOverwrites.
+         * @param {DJS:PermissionOverwrites} newPermissions Collection of new PermissionOverwrites.
+         * @example
+         * client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissions) => {
+         *   console.log(channel.name+"'s permissions updated!");
+         * });
+         */
+        if ((oldChannel as GuildChannel).permissionOverwrites !== (newChannel as GuildChannel).permissionOverwrites) {
+            client.emit(
+                'guildChannelPermissionsUpdate',
+                newChannel,
+                (oldChannel as GuildChannel).permissionOverwrites,
+                (newChannel as GuildChannel).permissionOverwrites,
+            );
+            emitted = true;
+        }
 
-    /**
-     * @event guildChannelTopicUpdate
-     * @description Emitted when a channel topic changes.
-     * @param {DJS:GuildChannel} channel The channel whose topic have been updated.
-     * @param {string} oldTopic The old channel topic.
-     * @param {string} newTopic The new channel topic.
-     * @example
-     * client.on("guildChannelTopicUpdate", (channel, oldTopic, newTopic) => {
-     *   console.log(channel.name+"'s topic changed to " + newTopic +"!");
-     * });
-     */
-    if (oldChannel.type === 'text' && (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic) {
-        client.emit(
-            'guildChannelTopicUpdate',
-            newChannel,
-            (oldChannel as TextChannel).topic,
-            (newChannel as TextChannel).topic,
-        );
-        emitted = true;
+        /**
+         * @event guildChannelTopicUpdate
+         * @description Emitted when a channel topic changes.
+         * @param {DJS:GuildChannel} channel The channel whose topic have been updated.
+         * @param {string} oldTopic The old channel topic.
+         * @param {string} newTopic The new channel topic.
+         * @example
+         * client.on("guildChannelTopicUpdate", (channel, oldTopic, newTopic) => {
+         *   console.log(channel.name+"'s topic changed to " + newTopic +"!");
+         * });
+         */
+        if (oldChannel.type === 'text' && (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic) {
+            client.emit(
+                'guildChannelTopicUpdate',
+                newChannel,
+                (oldChannel as TextChannel).topic,
+                (newChannel as TextChannel).topic,
+            );
+            emitted = true;
+        }
+
     }
 
     /**

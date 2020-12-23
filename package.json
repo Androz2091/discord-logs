@@ -11,7 +11,7 @@
     "generate-docs": "node scripts/generate-docs.js",
     "generate-test": "node scripts/generate-test.js",
     "build": "tsc",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "format": "prettier --write \"handlers/**/*.ts\" index.ts scripts/**/*.js docs/**/*.html",
     "lint": "tslint -p tsconfig.json"
   },
