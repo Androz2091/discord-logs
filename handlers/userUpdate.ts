@@ -46,7 +46,7 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User | Part
          * @param {string} oldDiscriminator The old discriminator.
          * @param {string} newDiscriminator The new discriminator.
          * @example
-         * client.on("userUsernameUpdate", (user, oldDiscriminator, newDiscriminator) => {
+         * client.on("userDiscriminatorUpdate", (user, oldDiscriminator, newDiscriminator) => {
          *   console.log(user.tag+" discriminator updated!");
          * });
          */
