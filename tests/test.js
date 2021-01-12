@@ -189,7 +189,7 @@ client.on("voiceChannelMute", (member, muteType) => {
   console.log(member.user.tag+" become muted! (type: "+muteType);
 });
 
-client.on("voiceChannelMute", (member, oldMuteType) => {
+client.on("voiceChannelUnmute", (member, oldMuteType) => {
   console.log(member.user.tag+" become unmuted!");
 });
 
