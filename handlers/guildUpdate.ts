@@ -95,6 +95,38 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         emitted = true;
     }
 
+
+    /**
+     * @event guildVanityURLRemove
+     * @description Emitted when a guild removes a vanity url.
+     * @param {DJS:Guild} guild The guild which remove a vanity url.
+     * @param {string} vanityURL The vanity url.
+     * @example
+     * client.on("guildVanityURLRemove", (guild, vanityURL) => {
+     *   console.log(guild.name+" has remove a vanity url : "+vanityURL);
+     * });
+     */
+    if (oldGuild.vanityURLCode && !newGuild.vanityURLCode) {
+        client.emit('guildVanityURLRemove', newGuild, oldGuild.vanityURLCode);
+        emitted = true;
+    }
+
+
+    /**
+     * @event guildVanityURLUpdate
+     * @description Emitted when a guild update a vanity url.
+     * @param {DJS:Guild} guild The guild which update a vanity url.
+     * @param {string} vanityURL The vanity url.
+     * @example
+     * client.on("guildVanityURLUpdate", (guild, vanityURL) => {
+     *   console.log(guild.name+" has update a vanity url : "+vanityURL);
+     * });
+     */
+    if (oldGuild.vanityURLCode !== newGuild.vanityURLCode) {
+        client.emit('guildVanityURLUpdate', newGuild, newGuild.vanityURLCode);
+        emitted = true;
+    }
+
     /**
      * @event guildFeaturesUpdate
      * @description Emitten when a guild feature gets updated.
