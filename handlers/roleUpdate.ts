@@ -21,6 +21,22 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
         client.emit('rolePositionUpdate', newRole, oldRole.rawPosition, newRole.rawPosition);
         emitted = true;
     }
+
+    /**
+     * @event rolePermissionsUpdate
+     * @description Emitted when a role permissions changes.
+     * @param {DJS:Role} role The role whose permissions has changed.
+     * @param {number} oldPermissions The old role permissions.
+     * @param {number} newPermissions The new role permissions.
+     * @example
+     * client.on("rolePermissionsUpdate", (role, oldPermissions, newPermissions) => {
+     *   console.log(role.name + " had as permissions "+oldPermissions+" and now has as permissions "+newPermissions);
+     * });
+     */
+    if (oldRole.permissions.bitfield !== newRole.permissions.bitfield) {
+        client.emit('rolePermissionsUpdate', newRole, oldRole.permissions.bitfield, newRole.permissions.bitfield);
+        emitted = true;
+    }
     /**
      * @event unhandledRoleUpdate
      * @description Emitted when the roleUpdate event is triggered but discord-logs didn't trigger any custom event.
