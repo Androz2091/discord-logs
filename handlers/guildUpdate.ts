@@ -99,11 +99,11 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     /**
      * @event guildVanityURLRemove
      * @description Emitted when a guild removes a vanity url.
-     * @param {DJS:Guild} guild The guild which remove a vanity url.
+     * @param {DJS:Guild} guild The guild which removed its vanity URL.
      * @param {string} vanityURL The vanity url.
      * @example
      * client.on("guildVanityURLRemove", (guild, vanityURL) => {
-     *   console.log(guild.name+" has remove a vanity url : "+vanityURL);
+     *   console.log(guild.name+" has removed its vanity url : "+vanityURL);
      * });
      */
     if (oldGuild.vanityURLCode && !newGuild.vanityURLCode) {
