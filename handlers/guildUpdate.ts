@@ -118,12 +118,12 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      * @param {DJS:Guild} guild The guild which updated a vanity URL.
      * @param {string} vanityURL The updated vanity URL.
      * @example
-     * client.on("guildVanityURLUpdate", (guild, vanityURL) => {
-     *   console.log(guild.name+" has update a vanity url : "+vanityURL);
+     * client.on("guildVanityURLUpdate", (guild, oldVanityURL, newVanityURL) => {
+     *   console.log(`${guild.name} to change the vanity URL from ${oldGuildvanityURL} to ${newGuildvanityURL} !`);
      * });
      */
     if (oldGuild.vanityURLCode !== newGuild.vanityURLCode) {
-        client.emit('guildVanityURLUpdate', newGuild, newGuild.vanityURLCode);
+        client.emit('guildVanityURLUpdate', newGuild, oldGuild.vanityURLCode, newGuild.vanityURLCode);
         emitted = true;
     }
 
