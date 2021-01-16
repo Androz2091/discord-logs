@@ -102,7 +102,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * @param {DJS:GuildMember} member The member who became undeafed.
      * @param {boolean} deafType The deaf type. It can be "self-deafed" or "server-deafed".
      * @example
-     * client.on("voiceChannelUneaf", (member, deafType) => {
+     * client.on("voiceChannelUndeaf", (member, deafType) => {
      *   console.log(member.user.tag+" become undeafed!");
      * });
      */
@@ -145,7 +145,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * @param {DJS:VoiceState} oldState The voice state before the update.
      * @param {DJS:VoiceState} newState The voice state after the update.
      * @example
-     * client.on("unhandledRoleUpdate", (oldState, newState) => {
+     * client.on("unhandledVoiceStateUpdate", (oldState, newState) => {
      *   console.log("Voice state for member '"+oldState.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
      * });
      */
