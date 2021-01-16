@@ -2125,7 +2125,7 @@
                         </tr>
                         
                       </table></div>
-                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("voiceChannelUneaf", (member, deafType) => {
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("voiceChannelUndeaf", (member, deafType) => {
   console.log(member.user.tag+" become undeafed!");
 });
 </code></pre></div>
@@ -2257,7 +2257,7 @@
                         </tr>
                         
                       </table></div>
-                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("unhandledRoleUpdate", (oldState, newState) => {
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("unhandledVoiceStateUpdate", (oldState, newState) => {
   console.log("Voice state for member '"+oldState.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
 });
 </code></pre></div>

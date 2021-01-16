@@ -213,7 +213,7 @@ client.on("voiceChannelDeaf", (member, deafType) => {
   console.log(member.user.tag+" become deafed!");
 });
 
-client.on("voiceChannelUneaf", (member, deafType) => {
+client.on("voiceChannelUndeaf", (member, deafType) => {
   console.log(member.user.tag+" become undeafed!");
 });
 
@@ -225,7 +225,7 @@ client.on("voiceStreamingStop", (member, voiceChannel) => {
   console.log(member.user.tag+" stopped streaming");
 });
 
-client.on("unhandledRoleUpdate", (oldState, newState) => {
+client.on("unhandledVoiceStateUpdate", (oldState, newState) => {
   console.log("Voice state for member '"+oldState.member.user.tag+"' was updated but discord-logs couldn't find what was updated...");
 });
 
