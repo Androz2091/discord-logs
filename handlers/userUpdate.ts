@@ -46,12 +46,29 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User | Part
          * @param {string} oldDiscriminator The old discriminator.
          * @param {string} newDiscriminator The new discriminator.
          * @example
-         * client.on("userUsernameUpdate", (user, oldDiscriminator, newDiscriminator) => {
+         * client.on("userDiscriminatorUpdate", (user, oldDiscriminator, newDiscriminator) => {
          *   console.log(user.tag+" discriminator updated!");
          * });
          */
         if (oldUser.discriminator !== newUser.discriminator) {
             client.emit('userDiscriminatorUpdate', newUser, oldUser.discriminator, newUser.discriminator);
+            emitted = true;
+        }
+
+
+        /**
+         * @event userFlagsUpdate
+         * @description Emitted when a user changes their flags.
+         * @param {DJS:User} user The user who changed their flags.
+         * @param {string} oldFlags The old flags.
+         * @param {string} newFlags The new flags.
+         * @example
+         * client.on("userFlagsUpdate", (user, oldFlags, newFlags) => {
+         *   console.log(user.tag+" flags updated!");
+         * });
+         */
+        if (oldUser.flags !== newUser.flags) {
+            client.emit('userFlagsUpdate', newUser, oldUser.flags, newUser.flags);
             emitted = true;
         }
 
