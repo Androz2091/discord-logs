@@ -78,6 +78,14 @@ client.on("guildVanityURLAdd", (guild, vanityURL) => {
   console.log(guild.name+" has added a vanity url : "+vanityURL);
 });
 
+client.on("guildVanityURLRemove", (guild, vanityURL) => {
+  console.log(guild.name+" has removed its vanity url : "+vanityURL);
+});
+
+client.on("guildVanityURLUpdate", (guild, oldVanityURL, newVanityURL) => {
+  console.log(`${guild.name} has changed its vanity URL from ${oldGuildvanityURL} to ${newGuildvanityURL} !`);
+});
+
 client.on("guildFeaturesUpdate", (oldGuild, newGuild) => {
   console.log(`New features: ${newGuild.features.join(", ")}`);
 });
@@ -147,6 +155,10 @@ client.on("rolePositionUpdate", (role, oldPosition, newPosition) => {
   console.log(role.name + " was at position "+oldPosition+" and now is at position "+newPosition);
 });
 
+client.on("rolePermissionsUpdate", (role, oldPermissions, newPermissions) => {
+  console.log(role.name + " had as permissions "+oldPermissions+" and now has as permissions "+newPermissions);
+});
+
 client.on("unhandledRoleUpdate", (oldRole, newRole) => {
   console.log("Role '"+oldRole.id+"' was updated but discord-logs couldn't find what was updated...");
 });
@@ -162,8 +174,12 @@ client.on("userUsernameUpdate", (user, oldUsername, newUsername) => {
   console.log(user.tag+" username updated!");
 });
 
-client.on("userUsernameUpdate", (user, oldDiscriminator, newDiscriminator) => {
+client.on("userDiscriminatorUpdate", (user, oldDiscriminator, newDiscriminator) => {
   console.log(user.tag+" discriminator updated!");
+});
+
+client.on("userFlagsUpdate", (user, oldFlags, newFlags) => {
+  console.log(user.tag+" flags updated!");
 });
 
 client.on("unhandledUserUpdate", (oldUser, newUser) => {
