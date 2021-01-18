@@ -6,6 +6,7 @@
   "files": [
     "lib/**/*"
   ],
+  "types": "typings/index.d.ts",
   "scripts": {
     "test": "node tests/test.js",
     "generate-docs": "node scripts/generate-docs.js",
