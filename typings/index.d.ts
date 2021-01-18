@@ -1,20 +1,3 @@
-import { GuildMember } from "discord.js";
-import { Presence } from "discord.js";
-import { Role } from "discord.js";
-import { User } from "discord.js";
-import { User } from "discord.js";
-import { VoiceChannel } from "discord.js";
-import { VoiceState } from "discord.js";
-import { VoiceState } from "discord.js";
-import { VoiceChannel } from "discord.js";
-import { GuildMember } from "discord.js";
-import { User } from "discord.js";
-import { Role } from "discord.js";
-import { Presence } from "discord.js";
-import { GuildMember } from "discord.js";
-import { Message } from "discord.js";
-import { Message } from "discord.js";
-
 declare module 'discord.js' {
   interface ClientEvents {
     guildChannelPermissionsUpdate: [GuildChannel, PermissionOverwrites, PermissionOverwrites];
