@@ -1,7 +1,7 @@
 require("dotenv").config();
-import { Client } from 'discord.js'
+import { Client } from 'discord.js';
 const client = new Client();
-import logs from '../index'
+import logs from '../index';
 logs(client);
 
 client.on("ready", () => {
@@ -12,4 +12,4 @@ client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissi
   console.log(channel.name+"'s permissions updated!");
 });
 
-client.login()
+client.login();
