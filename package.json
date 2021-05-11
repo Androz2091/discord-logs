@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "discord.js": "^12.4.0",
-    "dotenv": "^8.2.0",
+    "dotenv": "^9.0.2",
     "parse-comments": "^1.0.0",
     "prettier": "^2.0.4",
     "tslint": "^6.0.0",
