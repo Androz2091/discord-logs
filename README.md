@@ -9,7 +9,15 @@ Discord Logs is a powerful package which add many useful events to your Discord.
 
 ```js
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({
+    intents: [
+        Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
+        Discord.Intents.FLAGS.GUILD_PRESENCES,
+        Discord.Intents.FLAGS.GUILD_MEMBERS
+    ]
+});
 const logs = require('discord-logs');
 logs(client);
 
