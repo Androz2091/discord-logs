@@ -3,9 +3,7 @@
 [![downloadsBadge](https://img.shields.io/npm/dt/discord-logs?style=for-the-badge)](https://npmjs.com/discord-logs)
 [![versionBadge](https://img.shields.io/npm/v/discord-logs?style=for-the-badge)](https://npmjs.com/discord-logs)
 
-Discord Logs is a powerful package which add many useful events to your Discord.js client!
-
-**Warning**: This package uses recent Discord.js features and only works on v12 or higher (`npm install discord.js`).
+Discord Logs is a powerful package which add many useful events to your Discord.js (v13) client!
 
 ```js
 const Discord = require('discord.js');
