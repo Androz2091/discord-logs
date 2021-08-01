@@ -37,21 +37,6 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         emitted = true;
     }
     /**
-     * @event guildRegionUpdate
-     * @description Emitted when a guild region changes.
-     * @param {DJS:Guild} guild The guild whose region has changed.
-     * @param {string} oldRegion The old guild region.
-     * @param {string} newRegion The new guild region.
-     * @example
-     * client.on("guildRegionUpdate", (guild, oldRegion, newRegion) => {
-     *   console.log(guild.name+" region is now "+newRegion);
-     * });
-     */
-    if (oldGuild.region !== newGuild.region) {
-        client.emit('guildRegionUpdate', newGuild, oldGuild.region, newGuild.region);
-        emitted = true;
-    }
-    /**
      * @event guildBannerAdd
      * @description Emitted when a guild banner is added.
      * @param {DJS:Guild} guild The guild whose banner has been added.
@@ -168,7 +153,7 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
      *   console.log(oldGuild.name+" updated its owner : "+newGuild.owner.id);
      * });
      */
-    if (oldGuild.ownerID !== newGuild.ownerID) {
+    if (oldGuild.ownerId !== newGuild.ownerId) {
         client.emit('guildOwnerUpdate', oldGuild, newGuild);
         emitted = true;
     }

@@ -1,4 +1,4 @@
-import { Client, Guild, GuildMember, GuildChannel, Presence, Role, User, Message } from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import {
     handleGuildMemberUpdateEvent,
     handleGuildUpdateEvent,
@@ -12,48 +12,73 @@ import {
 
 let eventRegistered = false;
 
-export = async (client: Client) => {
+export = async (client: Client, options?: { debug?: boolean }) => {
 
     if (eventRegistered) return;
     eventRegistered = true;
 
-    /* HANDLE CHANNEL EVENTS */
-    client.on('channelUpdate', (oldChannel, newChannel) => {
-        handleChannelUpdateEvent(client, oldChannel, newChannel);
-    });
+    const intents = new Intents(client.options.intents);
+
+    /* HANDLE GUILDS EVENTS */
+    if (intents.has('GUILDS')) {
+        if (options?.debug) console.log('channelUpdate event handler registered.');
+        client.on('channelUpdate', (oldChannel, newChannel) => {
+            handleChannelUpdateEvent(client, oldChannel, newChannel);
+        });
+        if (options?.debug) console.log('guildUpdate event handler registered.');
+        client.on('guildUpdate', (oldGuild, newGuild) => {
+            handleGuildUpdateEvent(client, oldGuild, newGuild);
+        });
+        if (options?.debug) console.log('roleUpdate event handler registered.');
+        client.on('roleUpdate', (oldRole, newRole) => {
+            handleRoleUpdateEvent(client, oldRole, newRole);
+        });
+    } else {
+        if (options?.debug) console.log('channelUpdate, guildUpdate and roleUpdate event handlers not registered (missing GUILDS intent).');
+    }
 
     /* HANDLE MEMBER EVENTS */
-    client.on('guildMemberUpdate', (oldMember, newMember) => {
-        handleGuildMemberUpdateEvent(client, oldMember, newMember);
-    });
-
-    /* HANDLE GUILD EVENTS */
-    client.on('guildUpdate', (oldGuild, newGuild) => {
-        handleGuildUpdateEvent(client, oldGuild, newGuild);
-    });
+    if (intents.has('GUILD_MEMBERS')) {
+        if (options?.debug) console.log('guildMemberUpdate event handler registered.');
+        client.on('guildMemberUpdate', (oldMember, newMember) => {
+            handleGuildMemberUpdateEvent(client, oldMember, newMember);
+        });
+        if (options?.debug) console.log('userUpdate event handler registered.');
+        client.on('userUpdate', (oldUser, newUser) => {
+            handleUserUpdateEvent(client, oldUser, newUser);
+        });
+    } else {
+        if (options?.debug) console.log('guildMemberUpdate, userUpdate event handlers not registered (missing GUILD_MEMBERS intents).');
+    }
 
     /* HANDLE MESSAGE UPDATE EVENTS */
-    client.on('messageUpdate', (oldMessage, newMessage) => {
-        handleMessageUpdateEvent(client, oldMessage, newMessage);
-    });
+    if (intents.has('GUILD_MESSAGES')) {
+        if (options?.debug) console.log('messageUpdate event handler registered.');
+        client.on('messageUpdate', (oldMessage, newMessage) => {
+            handleMessageUpdateEvent(client, oldMessage, newMessage);
+        });
+    } else {
+        if (options?.debug) console.log('messageUpdate event handler not registered (missing GUILD_MESSAGES intent).');
+    }
 
     /* HANDLE PRESENCE UPDATE EVENTS */
-    client.on('presenceUpdate', (oldPresence, newPresence) => {
-        handlePresenceUpdateEvent(client, oldPresence, newPresence);
-    });
-
-    /* HANDLE ROLE EVENTS */
-    client.on('roleUpdate', (oldRole, newRole) => {
-        handleRoleUpdateEvent(client, oldRole, newRole);
-    });
-
-    /* HANDLE USER EVENTS */
-    client.on('userUpdate', (oldUser, newUser) => {
-        handleUserUpdateEvent(client, oldUser, newUser);
-    });
+    if (intents.has('GUILD_PRESENCES')) {
+        if (options?.debug) console.log('presenceUpdate event handler registered.');
+        client.on('presenceUpdate', (oldPresence, newPresence) => {
+            handlePresenceUpdateEvent(client, oldPresence, newPresence);
+        });
+    } else {
+        if (options?.debug) console.log('presenceUpdate event handler not registered (missing GUILD_PRESENCES intent).');
+    }
 
     /* HANDLE VOICE STATE UPDATE */
-    client.on('voiceStateUpdate', (oldState, newState) => {
-        handleVoiceStateUpdateEvent(client, oldState, newState);
-    });
+    if (intents.has('GUILD_VOICE_STATES')) {
+        if (options?.debug) console.log('voiceStateUpdate event handler registered.');
+        client.on('voiceStateUpdate', (oldState, newState) => {
+            handleVoiceStateUpdateEvent(client, oldState, newState);
+        });
+    } else {
+        if (options?.debug) console.log('voiceStateUpdate event handler not registered (missing GUILD_VOICE_STATES intent).');
+    }
+
 };
