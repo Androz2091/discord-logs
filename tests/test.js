@@ -62,10 +62,6 @@ client.on("guildBoostLevelDown", (guild, oldLevel, newLevel) => {
   console.log(guild.name+" returned to the boost level: "+newLevel);
 });
 
-client.on("guildRegionUpdate", (guild, oldRegion, newRegion) => {
-  console.log(guild.name+" region is now "+newRegion);
-});
-
 client.on("guildBannerAdd", (guild, bannerURL) => {
   console.log(guild.name+" has a banner now!");
 });

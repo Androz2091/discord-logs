@@ -1,4 +1,4 @@
-import { Channel, Client, TextChannel, GuildChannel } from 'discord.js';
+import { Channel, Client, TextChannel, GuildChannel, Constants } from 'discord.js';
 
 /**
  * @handler Channel Events
@@ -41,7 +41,7 @@ export async function handleChannelUpdateEvent(client: Client, oldChannel: Chann
          *   console.log(channel.name+"'s topic changed to " + newTopic +"!");
          * });
          */
-        if (oldChannel.type === 'text' && (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic) {
+        if (oldChannel.type === 'GUILD_TEXT' && (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic) {
             client.emit(
                 'guildChannelTopicUpdate',
                 newChannel,

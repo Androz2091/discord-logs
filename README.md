@@ -22,3 +22,14 @@ client.login('YOUR_DISCORD_BOT_TOKEN');
 ```
 
 ## [Click here to see the list of all the handled events!](https://discord-logs.js.org)
+
+## Troubleshooting
+
+You can enable debug to try to know why an event is not working:
+
+```js
+const logs = require('discord-logs');
+logs(client, {
+    debug: true
+});
+```
