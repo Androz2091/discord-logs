@@ -1,0 +1,52 @@
+body{
+     color:  white;
+	background-color: white;
+}
+.panel-body{
+	color:  black;
+}
+.javascript {
+	background-color: #2f3136;
+	border:  none;
+	border-width: none;
+}
+
+.panel-group {
+background-color: none;
+}
+.panel-body{
+	color:  white;
+}
+.border{
+
+	border-left-width:  medium;
+	border-left-color: palegreen;
+	border-left-style: solid;
+	border-spacing: initial;
+	line-height: 10%;
+	height: 50px;
+	
+
+}
+.border:hover {
+ transform: translateY(-10px);
+ transition: ease 0.5s;
+ box-shadow: aquamarine;
+	
+
+}
+.panel-title{
+ padding-top: 1.4%;
+ padding-left: 2.5%;
+}
+.panel-title:hover{
+ color:  aquamarine;
+
+}
+.no-border{
+	border:  none;
+}
+pre {
+	background-color: #2f3136;
+	border: none;
+}
