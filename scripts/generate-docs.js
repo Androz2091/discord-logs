@@ -12,33 +12,42 @@ const pageStart = `
 <!-- This file was automatically generated -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/a11y-light.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/a11y-dark.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/cssmain.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    hljs.initHighlightingOnLoad();
+    </script>
 </head>
-<body>
+
+<body style=" background-color: rgba(31, 41, 55);">
     <a href="https://npmjs.com/discord-logs">
-        <h1 align="center">Discord Logs</h1>
+        <center>
+            <img src="https://i.ibb.co/MZsYGgj/image.png" alt="Logo" align="center">
+        </center>
     </a>
     <h3 align="center">Add many useful events to your Discord.js client!</h3>
     <div class="container">
-    <h4><em>This is a list of all the events Discord Logs handle. Not all events that could be supported are supported by the module. You can open a pull request to add new ones. This is just an automatically generated documentation list, see <a href="https://npmjs.com/discord-logs">the README file</a> to learn how to install and use the package.</em></h4>
-
+        <h4><em>This is a list of all the events Discord Logs handle. Not all events that could be supported are supported by the module. You can open a pull request to add new ones. This is just an automatically generated documentation list, see <a href="https://npmjs.com/discord-logs">the README file</a> to learn how to install and use the package.</em></h4>
+        
 `;
 const pageEnd = `
-    <div class="panel panel-default">
-    <div class="panel-body" align="center">
-        Want to add cool events? Submit a pull request on <a href="https://github.com/Androz2091/discord-logs">Github</a>!
-    </div>
-    </div>
+    <br>
+                  <div class="panel-body" align="center">
+                Want to add cool events? Submit a pull request on <a href="https://github.com/Androz2091/discord-logs">Github</a>!
+            </div>
+        </div>
     </div>
 </body>
-</html>`;
+
+</html>
+`;
 let pageContent = '';
 
 (async () => {
@@ -60,17 +69,17 @@ let pageContent = '';
                 if (blockComment.value.includes('@event')) {
                     pageContent += `
                 <div class="panel-group">
-                    <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#event-${pointer}">${
-                        blockComment.tags.find((f) => f.title === 'event').description
-                    }</a>
-                        </h4>
-                    </div>
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-${pointer}">${
+                                    blockComment.tags.find((f) => f.title === 'event').description
+                                }</a>
+                            </h4>
+                        </div>
                     <div id="event-${pointer}" class="panel-collapse collapse">
                         <div class="panel-body">📡 ${blockComment.description}</div>
-                        <div class="panel-footer">ℹ️ Parameters: 
+                        <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
                         <table>
                         <tr>
