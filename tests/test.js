@@ -57,6 +57,10 @@ client.on("guildMemberNicknameUpdate", (member, oldNickname, newNickname) => {
   console.log(member.user.tag+"'s nickname is now "+newNickname);
 });
 
+client.on("guildMemberEntered", (member) => {
+  console.log(member.user.tag+" has passed the gate!");
+});
+
 client.on("unhandledGuildMemberUpdate", (oldMember, newMember) => {
   console.log("Member '"+oldMember.id+"' was edited but discord-logs couldn't find what was updated...");
 });

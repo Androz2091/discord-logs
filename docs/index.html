@@ -396,10 +396,45 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-8">unhandledGuildMemberUpdate</a>
+                                <a data-toggle="collapse" href="#event-8">guildMemberEntered</a>
                             </h4>
                         </div>
                     <div id="event-8" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when the member has passed the gate of the guild</div>
+                        <div style="padding: 15px">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> member </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/GuildMember">
+                                GuildMember</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The member whose passed the gate of the guild </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("guildMemberEntered", (member) => {
+  console.log(member.user.tag+" has passed the gate!");
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-9">unhandledGuildMemberUpdate</a>
+                            </h4>
+                        </div>
+                    <div id="event-9" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the guildMemberUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -442,10 +477,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-9">guildBoostLevelUp</a>
+                                <a data-toggle="collapse" href="#event-10">guildBoostLevelUp</a>
                             </h4>
                         </div>
-                    <div id="event-9" class="panel-collapse collapse">
+                    <div id="event-10" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild's boost level increases.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -495,10 +530,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-10">guildBoostLevelDown</a>
+                                <a data-toggle="collapse" href="#event-11">guildBoostLevelDown</a>
                             </h4>
                         </div>
-                    <div id="event-10" class="panel-collapse collapse">
+                    <div id="event-11" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild's boost level decreases.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -548,10 +583,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-11">guildBannerAdd</a>
+                                <a data-toggle="collapse" href="#event-12">guildBannerAdd</a>
                             </h4>
                         </div>
-                    <div id="event-11" class="panel-collapse collapse">
+                    <div id="event-12" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild banner is added.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -592,10 +627,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-12">guildAfkChannelAdd</a>
+                                <a data-toggle="collapse" href="#event-13">guildAfkChannelAdd</a>
                             </h4>
                         </div>
-                    <div id="event-12" class="panel-collapse collapse">
+                    <div id="event-13" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild afk channel is added.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -636,10 +671,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-13">guildVanityURLAdd</a>
+                                <a data-toggle="collapse" href="#event-14">guildVanityURLAdd</a>
                             </h4>
                         </div>
-                    <div id="event-13" class="panel-collapse collapse">
+                    <div id="event-14" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild adds a vanity url.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -680,10 +715,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-14">guildVanityURLRemove</a>
+                                <a data-toggle="collapse" href="#event-15">guildVanityURLRemove</a>
                             </h4>
                         </div>
-                    <div id="event-14" class="panel-collapse collapse">
+                    <div id="event-15" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild removes its vanity URL.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -724,10 +759,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-15">guildVanityURLUpdate</a>
+                                <a data-toggle="collapse" href="#event-16">guildVanityURLUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-15" class="panel-collapse collapse">
+                    <div id="event-16" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild updates its vanity URL.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -777,10 +812,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-16">guildFeaturesUpdate</a>
+                                <a data-toggle="collapse" href="#event-17">guildFeaturesUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-16" class="panel-collapse collapse">
+                    <div id="event-17" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitten when a guild feature gets updated.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -821,10 +856,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-17">guildAcronymUpdate</a>
+                                <a data-toggle="collapse" href="#event-18">guildAcronymUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-17" class="panel-collapse collapse">
+                    <div id="event-18" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild updates its Acronym.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -865,10 +900,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-18">guildOwnerUpdate</a>
+                                <a data-toggle="collapse" href="#event-19">guildOwnerUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-18" class="panel-collapse collapse">
+                    <div id="event-19" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild updates its owner.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -909,10 +944,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-19">guildPartnerAdd</a>
+                                <a data-toggle="collapse" href="#event-20">guildPartnerAdd</a>
                             </h4>
                         </div>
-                    <div id="event-19" class="panel-collapse collapse">
+                    <div id="event-20" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild gets partnered.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -944,10 +979,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-20">guildPartnerRemove</a>
+                                <a data-toggle="collapse" href="#event-21">guildPartnerRemove</a>
                             </h4>
                         </div>
-                    <div id="event-20" class="panel-collapse collapse">
+                    <div id="event-21" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild is no longer partnered.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -979,10 +1014,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-21">guildVerificationAdd</a>
+                                <a data-toggle="collapse" href="#event-22">guildVerificationAdd</a>
                             </h4>
                         </div>
-                    <div id="event-21" class="panel-collapse collapse">
+                    <div id="event-22" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild gets verified.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1014,10 +1049,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-22">guildVerificationRemove</a>
+                                <a data-toggle="collapse" href="#event-23">guildVerificationRemove</a>
                             </h4>
                         </div>
-                    <div id="event-22" class="panel-collapse collapse">
+                    <div id="event-23" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a guild is no longer verified.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1049,10 +1084,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-23">unhandledGuildUpdate</a>
+                                <a data-toggle="collapse" href="#event-24">unhandledGuildUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-23" class="panel-collapse collapse">
+                    <div id="event-24" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the guildUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1095,10 +1130,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-24">messagePinned</a>
+                                <a data-toggle="collapse" href="#event-25">messagePinned</a>
                             </h4>
                         </div>
-                    <div id="event-24" class="panel-collapse collapse">
+                    <div id="event-25" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a message has been pinned.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1130,10 +1165,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-25">messageContentEdited</a>
+                                <a data-toggle="collapse" href="#event-26">messageContentEdited</a>
                             </h4>
                         </div>
-                    <div id="event-25" class="panel-collapse collapse">
+                    <div id="event-26" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a message content has been edited.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1183,10 +1218,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-26">unhandledMessageUpdate</a>
+                                <a data-toggle="collapse" href="#event-27">unhandledMessageUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-26" class="panel-collapse collapse">
+                    <div id="event-27" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the messageUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1229,10 +1264,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-27">guildMemberOffline</a>
+                                <a data-toggle="collapse" href="#event-28">guildMemberOffline</a>
                             </h4>
                         </div>
-                    <div id="event-27" class="panel-collapse collapse">
+                    <div id="event-28" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes offline.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1273,10 +1308,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-28">guildMemberOnline</a>
+                                <a data-toggle="collapse" href="#event-29">guildMemberOnline</a>
                             </h4>
                         </div>
-                    <div id="event-28" class="panel-collapse collapse">
+                    <div id="event-29" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes online, dnd or idle.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1317,10 +1352,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-29">unhandledPresenceUpdate</a>
+                                <a data-toggle="collapse" href="#event-30">unhandledPresenceUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-29" class="panel-collapse collapse">
+                    <div id="event-30" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the presenceUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1363,10 +1398,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-30">rolePositionUpdate</a>
+                                <a data-toggle="collapse" href="#event-31">rolePositionUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-30" class="panel-collapse collapse">
+                    <div id="event-31" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a role position changes.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1416,10 +1451,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-31">rolePermissionsUpdate</a>
+                                <a data-toggle="collapse" href="#event-32">rolePermissionsUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-31" class="panel-collapse collapse">
+                    <div id="event-32" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a role permissions changes.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1469,10 +1504,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-32">unhandledRoleUpdate</a>
+                                <a data-toggle="collapse" href="#event-33">unhandledRoleUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-32" class="panel-collapse collapse">
+                    <div id="event-33" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the roleUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1515,10 +1550,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-33">userAvatarUpdate</a>
+                                <a data-toggle="collapse" href="#event-34">userAvatarUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-33" class="panel-collapse collapse">
+                    <div id="event-34" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their avatar.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1568,10 +1603,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-34">userUsernameUpdate</a>
+                                <a data-toggle="collapse" href="#event-35">userUsernameUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-34" class="panel-collapse collapse">
+                    <div id="event-35" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their username.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1621,10 +1656,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-35">userDiscriminatorUpdate</a>
+                                <a data-toggle="collapse" href="#event-36">userDiscriminatorUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-35" class="panel-collapse collapse">
+                    <div id="event-36" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their discriminator.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1674,10 +1709,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-36">userFlagsUpdate</a>
+                                <a data-toggle="collapse" href="#event-37">userFlagsUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-36" class="panel-collapse collapse">
+                    <div id="event-37" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their flags.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1727,10 +1762,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-37">unhandledUserUpdate</a>
+                                <a data-toggle="collapse" href="#event-38">unhandledUserUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-37" class="panel-collapse collapse">
+                    <div id="event-38" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the userUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1773,10 +1808,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-38">voiceChannelJoin</a>
+                                <a data-toggle="collapse" href="#event-39">voiceChannelJoin</a>
                             </h4>
                         </div>
-                    <div id="event-38" class="panel-collapse collapse">
+                    <div id="event-39" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member joins a voice channel.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1817,10 +1852,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-39">voiceChannelLeave</a>
+                                <a data-toggle="collapse" href="#event-40">voiceChannelLeave</a>
                             </h4>
                         </div>
-                    <div id="event-39" class="panel-collapse collapse">
+                    <div id="event-40" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member leaves a voice channel.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1861,10 +1896,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-40">voiceChannelSwitch</a>
+                                <a data-toggle="collapse" href="#event-41">voiceChannelSwitch</a>
                             </h4>
                         </div>
-                    <div id="event-40" class="panel-collapse collapse">
+                    <div id="event-41" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member switches to another voice channel.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1914,10 +1949,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-41">voiceChannelMute</a>
+                                <a data-toggle="collapse" href="#event-42">voiceChannelMute</a>
                             </h4>
                         </div>
-                    <div id="event-41" class="panel-collapse collapse">
+                    <div id="event-42" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes muted (self-muted or server-muted).</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1958,10 +1993,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-42">voiceChannelUnmute</a>
+                                <a data-toggle="collapse" href="#event-43">voiceChannelUnmute</a>
                             </h4>
                         </div>
-                    <div id="event-42" class="panel-collapse collapse">
+                    <div id="event-43" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes unmuted.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2002,10 +2037,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-43">voiceChannelDeaf</a>
+                                <a data-toggle="collapse" href="#event-44">voiceChannelDeaf</a>
                             </h4>
                         </div>
-                    <div id="event-43" class="panel-collapse collapse">
+                    <div id="event-44" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes deafed.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2046,10 +2081,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-44">voiceChannelUndeaf</a>
+                                <a data-toggle="collapse" href="#event-45">voiceChannelUndeaf</a>
                             </h4>
                         </div>
-                    <div id="event-44" class="panel-collapse collapse">
+                    <div id="event-45" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes undeafed.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2090,10 +2125,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-45">voiceStreamingStart</a>
+                                <a data-toggle="collapse" href="#event-46">voiceStreamingStart</a>
                             </h4>
                         </div>
-                    <div id="event-45" class="panel-collapse collapse">
+                    <div id="event-46" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member starts streaming.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2134,10 +2169,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-46">voiceStreamingStop</a>
+                                <a data-toggle="collapse" href="#event-47">voiceStreamingStop</a>
                             </h4>
                         </div>
-                    <div id="event-46" class="panel-collapse collapse">
+                    <div id="event-47" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member stops streaming.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2178,10 +2213,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-47">unhandledVoiceStateUpdate</a>
+                                <a data-toggle="collapse" href="#event-48">unhandledVoiceStateUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-47" class="panel-collapse collapse">
+                    <div id="event-48" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the voiceStateUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
