@@ -93,7 +93,7 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
          * @param {DJS:GuildMember} member The member whose passed the gate of the guild
          * @example
          * client.on("guildMemberEntered", (member) => {
-         *   console.log(member.user.tag+"'s has passed the gate!");
+         *   console.log(member.user.tag+" has passed the gate!");
          * });
          */
         if (oldMember.pending !== newMember.pending) {
