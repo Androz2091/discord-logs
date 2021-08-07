@@ -1,49 +1,50 @@
 {
-  "name": "discord-logs",
-  "version": "2.0.1",
-  "description": "Add many useful events to your Discord.js client!",
-  "main": "lib/index.js",
-  "files": [
-    "lib/**/*"
-  ],
-  "scripts": {
-    "test": "node tests/test.js",
-    "generate-docs": "node scripts/generate-docs.js",
-    "generate-test": "node scripts/generate-test.js",
-    "build": "tsc",
-    "prepare": "npm run build",
-    "format": "prettier --write \"handlers/**/*.ts\" index.ts scripts/**/*.js docs/**/*.html",
-    "lint": "tslint -p tsconfig.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Androz2091/discord-logs.git"
-  },
-  "keywords": [
-    "avdanced",
-    "logs",
-    "bot",
-    "framework",
-    "discord",
-    "audit-logs"
-  ],
-  "author": "Androz2091",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Androz2091/discord-logs/issues"
-  },
-  "homepage": "https://github.com/Androz2091/discord-logs#readme",
-  "dependencies": {
-    "@types/node": "^14.0.1",
-    "@types/ws": "^7.2.1"
-  },
-  "devDependencies": {
-    "discord.js": "^13.0.0",
-    "dotenv": "^8.2.0",
-    "parse-comments": "^1.0.0",
-    "prettier": "^2.0.4",
-    "tslint": "^6.0.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^4.1.3"
-  }
+    "name": "discord-logs",
+    "version": "2.0.1",
+    "description": "Add many useful events to your Discord.js client!",
+    "main": "lib/index.js",
+    "files": [
+        "lib/**/*",
+        "typings/**/*"
+    ],
+    "scripts": {
+        "test": "node tests/test.js",
+        "generate-docs": "node scripts/generate-docs.js",
+        "generate-test": "node scripts/generate-test.js",
+        "build": "tsc",
+        "prepare": "npm run build",
+        "format": "prettier --write \"handlers/**/*.ts\" index.ts scripts/**/*.js docs/**/*.html",
+        "lint": "tslint -p tsconfig.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Androz2091/discord-logs.git"
+    },
+    "keywords": [
+        "avdanced",
+        "logs",
+        "bot",
+        "framework",
+        "discord",
+        "audit-logs"
+    ],
+    "author": "Androz2091",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Androz2091/discord-logs/issues"
+    },
+    "homepage": "https://github.com/Androz2091/discord-logs#readme",
+    "dependencies": {
+        "@types/node": "^14.0.1",
+        "@types/ws": "^7.2.1"
+    },
+    "devDependencies": {
+        "discord.js": "^13.0.0",
+        "dotenv": "^8.2.0",
+        "parse-comments": "^1.0.0",
+        "prettier": "^2.0.4",
+        "tslint": "^6.0.0",
+        "tslint-config-prettier": "^1.18.0",
+        "typescript": "^4.1.3"
+    }
 }

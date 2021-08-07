@@ -1,7 +1,25 @@
-declare module "discord-logs" {
-    import { GuildChannel, ClientEvents, PermissionOverwrites, GuildMember, Role, Guild, Status, Presence, User, VoiceChannel, VoiceState, Client } from "discord.js";
+declare module 'discord-logs' {
+    import {
+        GuildChannel,
+        ClientEvents,
+        PermissionOverwrites,
+        GuildMember,
+        Role,
+        Guild,
+        Status,
+        Presence,
+        User,
+        VoiceChannel,
+        VoiceState,
+        Client,
+        Message,
+    } from 'discord.js';
     export interface DiscordEvents extends ClientEvents {
-        guildChannelPermissionsUpdate: [channel: GuildChannel, oldPermissions: PermissionOverwrites, newPermissions: PermissionOverwrites];
+        guildChannelPermissionsUpdate: [
+            channel: GuildChannel,
+            oldPermissions: PermissionOverwrites,
+            newPermissions: PermissionOverwrites,
+        ];
         guildChannelTopicUpdate: [channel: GuildChannel, oldTopic: string, newTopic: string];
         unhandledGuildChannelUpdate: [oldChannel: GuildChannel, newChannel: GuildChannel];
         guildMemberBoost: [member: GuildMember];
@@ -9,10 +27,10 @@ declare module "discord-logs" {
         guildMemberRoleAdd: [member: GuildMember, role: Role];
         guildMemberRoleRemove: [member: GuildMember, role: Role];
         guildMemberNicknameUpdate: [member: GuildMember, oldNickname: string, newNickname: string];
+        guildMemberEntered: [member: GuildMember];
         unhandledGuildMemberUpdate: [oldMember: Guild, newMember: Guild];
         guildBoostLevelUp: [guild: Guild, oldLevel: number, newLevel: number];
         guildBoostLevelDown: [guild: Guild, oldLevel: number, newLevel: number];
-        guildRegionUpdate: [guild: Guild, oldRegion: string, newRegion: string];
         guildBannerAdd: [guild: Guild, bannerURL: string];
         guildAfkChannelAdd: [guild: Guild, afkChannel: string];
         guildVanityURLAdd: [guild: Guild, vanityURL: string];
@@ -23,7 +41,7 @@ declare module "discord-logs" {
         guildOwnerUpdate: [oldGuild: Guild, newGuild: Guild];
         guildPartnerAdd: [guild: Guild];
         guildPartnerRemove: [guild: Guild];
-        guildVerificationAddL: [guild: Guild];
+        guildVerificationAdd: [guild: Guild];
         guildVerificationRemove: [guild: Guild];
         unhandledGuildUpdate: [oldGuild: Guild, newGuild: Guild];
         messagePinned: [message: Message];
@@ -50,9 +68,9 @@ declare module "discord-logs" {
         voiceStreamingStart: [member: GuildMember, voiceChannel: VoiceChannel];
         voiceStreamingStop: [member: GuildMember, voiceChannel: VoiceChannel];
         unhandledVoiceStateUpdate: [oldState: VoiceState, newState: VoiceState];
-    };
-    namespace Logs {
-        export function logs(client: Client): Promise<void>;
-    };
-    export = Logs;
-};
+    }
+    export namespace Logs {
+        export function logs(client: Client, options?: { debug?: boolean }): Promise<void>;
+    }
+    // export = Logs;
+}
