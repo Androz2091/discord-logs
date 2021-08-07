@@ -1,0 +1,26 @@
+name: Generate docs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+        registry-url: https://registry.npmjs.org/
+    - run: npm install
+    - run: node scripts/generate-docs.js
+    - run: node scripts/generate-test.js
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+          commit_message: ":pencil: Generate documentation and tests"

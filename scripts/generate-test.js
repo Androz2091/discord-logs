@@ -11,9 +11,19 @@ const asyncForEach = async (array, callback) => {
 const botStart = `
 require("dotenv").config();
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({
+    intents: [
+        Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_PRESENCES,
+        Discord.Intents.FLAGS.GUILD_MEMBERS,
+        Discord.Intents.FLAGS.GUILD_VOICE_STATES
+    ]
+});
 const logs = require("../");
-logs(client);
+logs(client, {
+    debug: true
+});
 
 client.on("ready", () => {
     console.log("Ready. Logged as "+client.user.tag+" in "+client.guilds.cache.size+" servers.");
