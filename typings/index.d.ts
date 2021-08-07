@@ -1,20 +1,7 @@
-declare module 'discord-logs' {
-    import {
-        GuildChannel,
-        ClientEvents,
-        PermissionOverwrites,
-        GuildMember,
-        Role,
-        Guild,
-        Status,
-        Presence,
-        User,
-        VoiceChannel,
-        VoiceState,
-        Client,
-        Message,
-    } from 'discord.js';
-    export interface DiscordEvents extends ClientEvents {
+import { Client } from 'discord.js';
+
+declare module 'discord.js' {
+    export interface ClientEvents {
         guildChannelPermissionsUpdate: [
             channel: GuildChannel,
             oldPermissions: PermissionOverwrites,
@@ -69,8 +56,10 @@ declare module 'discord-logs' {
         voiceStreamingStop: [member: GuildMember, voiceChannel: VoiceChannel];
         unhandledVoiceStateUpdate: [oldState: VoiceState, newState: VoiceState];
     }
+}
+
+declare module 'discord-logs' {
     export namespace Logs {
         export function logs(client: Client, options?: { debug?: boolean }): Promise<void>;
     }
-    // export = Logs;
 }
