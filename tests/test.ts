@@ -1,21 +1,21 @@
 require('dotenv').config();
-const Discord = require('discord.js');
-const client = new Discord.Client({
+import { Client, Intents } from 'discord.js';
+const client = new Client({
     intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_PRESENCES,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_PRESENCES,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_VOICE_STATES,
     ],
 });
-const logs = require('../index');
+import logs from '../index';
 logs(client, {
     debug: true,
 });
 
 client.on('ready', () => {
-    console.log('Ready. Logged as ' + client.user.tag + ' in ' + client.guilds.cache.size + ' servers.');
+    console.log('Ready. Logged as ' + client.user?.tag + ' in ' + client.guilds.cache.size + ' servers.');
 });
 
 /* Channel Events */
@@ -92,7 +92,7 @@ client.on('guildVanityURLRemove', (guild, vanityURL) => {
 });
 
 client.on('guildVanityURLUpdate', (guild, oldVanityURL, newVanityURL) => {
-    console.log(`${guild.name} has changed its vanity URL from ${oldGuildvanityURL} to ${newGuildvanityURL} !`);
+    console.log(`${guild.name} has changed its vanity URL from ${oldVanityURL} to ${newVanityURL} !`);
 });
 
 client.on('guildFeaturesUpdate', (oldGuild, newGuild) => {
@@ -104,7 +104,7 @@ client.on('guildAcronymUpdate', (oldGuild, newGuild) => {
 });
 
 client.on('guildOwnerUpdate', (oldGuild, newGuild) => {
-    console.log(oldGuild.name + ' updated its owner : ' + newGuild.owner.id);
+    console.log(oldGuild.name + ' updated its owner : ' + newGuild.ownerId);
 });
 
 client.on('guildPartnerAdd', (guild) => {

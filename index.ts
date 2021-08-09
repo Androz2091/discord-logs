@@ -12,8 +12,7 @@ import {
 
 let eventRegistered = false;
 
-export = async (client: Client, options?: { debug?: boolean }) => {
-
+export default async (client: Client, options?: { debug?: boolean }) => {
     if (eventRegistered) return;
     eventRegistered = true;
 
@@ -34,7 +33,10 @@ export = async (client: Client, options?: { debug?: boolean }) => {
             handleRoleUpdateEvent(client, oldRole, newRole);
         });
     } else {
-        if (options?.debug) console.log('channelUpdate, guildUpdate and roleUpdate event handlers not registered (missing GUILDS intent).');
+        if (options?.debug)
+            console.log(
+                'channelUpdate, guildUpdate and roleUpdate event handlers not registered (missing GUILDS intent).',
+            );
     }
 
     /* HANDLE MEMBER EVENTS */
@@ -48,7 +50,8 @@ export = async (client: Client, options?: { debug?: boolean }) => {
             handleUserUpdateEvent(client, oldUser, newUser);
         });
     } else {
-        if (options?.debug) console.log('guildMemberUpdate, userUpdate event handlers not registered (missing GUILD_MEMBERS intents).');
+        if (options?.debug)
+            console.log('guildMemberUpdate, userUpdate event handlers not registered (missing GUILD_MEMBERS intents).');
     }
 
     /* HANDLE MESSAGE UPDATE EVENTS */
@@ -68,7 +71,8 @@ export = async (client: Client, options?: { debug?: boolean }) => {
             handlePresenceUpdateEvent(client, oldPresence, newPresence);
         });
     } else {
-        if (options?.debug) console.log('presenceUpdate event handler not registered (missing GUILD_PRESENCES intent).');
+        if (options?.debug)
+            console.log('presenceUpdate event handler not registered (missing GUILD_PRESENCES intent).');
     }
 
     /* HANDLE VOICE STATE UPDATE */
@@ -78,7 +82,7 @@ export = async (client: Client, options?: { debug?: boolean }) => {
             handleVoiceStateUpdateEvent(client, oldState, newState);
         });
     } else {
-        if (options?.debug) console.log('voiceStateUpdate event handler not registered (missing GUILD_VOICE_STATES intent).');
+        if (options?.debug)
+            console.log('voiceStateUpdate event handler not registered (missing GUILD_VOICE_STATES intent).');
     }
-
 };

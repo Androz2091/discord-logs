@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-      "target": "es5",
-      "module": "commonjs",
-      "declaration": true,
-      "outDir": "./lib",
-      "strict": true
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": true,
+        "outDir": "./lib",
+        "strict": true,
+        "typeRoots": ["typings"]
     },
-    "include": ["handlers","index.ts"],
+    "include": ["handlers", "index.ts"],
     "exclude": ["node_modules", "**/__tests__/*"]
 }
