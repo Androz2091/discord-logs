@@ -1,5 +1,5 @@
 require('dotenv').config();
-import Discord, { Client, GuildChannel, GuildMember, Intents, PermissionOverwrites, Role } from 'discord.js';
+import { Client, Intents } from 'discord.js';
 const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
@@ -9,11 +9,13 @@ const client = new Client({
         Intents.FLAGS.GUILD_VOICE_STATES,
     ],
 });
-import logs from '../';
-logs(client);
+import logs from '../index';
+logs(client, {
+    debug: true,
+});
 
 client.on('ready', () => {
-    console.log('Ready. Logged as ' + client.user.tag + ' in ' + client.guilds.cache.size + ' servers.');
+    console.log('Ready. Logged as ' + client.user?.tag + ' in ' + client.guilds.cache.size + ' servers.');
 });
 
 /* Channel Events */
