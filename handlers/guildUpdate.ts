@@ -116,15 +116,16 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
     /**
      * @event guildFeaturesUpdate
      * @description Emitten when a guild feature gets updated.
-     * @param {DJS:Guild} oldGuild The guild before its feature(s) were updated.
-     * @param {DJS:Guild} newGuild The guild after its feature(s) were updated.
+     * @param {DJS:Guild} guild The guild which updated its feature(s).
+     * @param {DJS:Features} oldFeatures Array of the former feature(s).
+     * @param {DJS:Features} newFeatures Array of the updated feature(s).
      * @example
-     * client.on("guildFeaturesUpdate", (oldGuild, newGuild) => {
-     *   console.log(`New features: ${newGuild.features.join(", ")}`);
+     * client.on("guildFeaturesUpdate", (guild, oldFeatures, newFeatures) => {
+     *   console.log(`New features: ${newFeatures.join(", ")}`);
      * });
      */
     if (oldGuild.features.length !== newGuild.features.length) {
-        client.emit('guildFeaturesUpdate', oldGuild, newGuild);
+        client.emit('guildFeaturesUpdate', newGuild, oldGuild.features, newGuild.features);
         emitted = true;
     }
 
