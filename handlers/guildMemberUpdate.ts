@@ -4,11 +4,14 @@ import { Client, GuildMember, PartialGuildMember, Role } from 'discord.js';
  * @handler Guild Member Events
  * @related guildMemberUpdate
  */
-export async function handleGuildMemberUpdateEvent(client: Client, oldMember: GuildMember | PartialGuildMember, newMember: GuildMember) {
+export async function handleGuildMemberUpdateEvent(
+    client: Client,
+    oldMember: GuildMember | PartialGuildMember,
+    newMember: GuildMember,
+) {
     let emitted = false;
 
     if (!oldMember.partial) {
-
         /**
          * @event guildMemberBoost
          * @description Emitted when a member starts boosting.
@@ -100,9 +103,8 @@ export async function handleGuildMemberUpdateEvent(client: Client, oldMember: Gu
             client.emit('guildMemberEntered', newMember);
             emitted = true;
         }
-
     }
-    
+
     /**
      * @event unhandledGuildMemberUpdate
      * @description Emitted when the guildMemberUpdate event is triggered but discord-logs didn't trigger any custom event.

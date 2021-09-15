@@ -73,8 +73,8 @@ let pageContent = '';
                         <div class="border">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" href="#event-${pointer}">${
-                                    blockComment.tags.find((f) => f.title === 'event').description
-                                }</a>
+                        blockComment.tags.find((f) => f.title === 'event').description
+                    }</a>
                             </h4>
                         </div>
                     <div id="event-${pointer}" class="panel-collapse collapse">
