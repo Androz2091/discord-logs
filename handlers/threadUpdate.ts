@@ -19,7 +19,7 @@ export async function handleThreadChannelUpdateEvent(
          * @param {DJS:ThreadChannel} newThread The new thread channel after state update.
          * @example
          * client.on("threadStateUpdate", (oldThread, newThread) => {
-         *   console.log(newThread.name+" is now" + newThread.archived ? "archived" : "unarchived");
+         *   console.log(`${newThread.name} is now ${newThread.archived ? "archived" : "unarchived"}`);
          * });
          */
         if (oldThread.archived !== newThread.archived) {
@@ -50,7 +50,7 @@ export async function handleThreadChannelUpdateEvent(
          * @param {DJS:ThreadChannel} newThread The new thread channel after lock state update.
          * @example
          * client.on("threadLockStateUpdate", (oldThread, newThread) => {
-         *   console.log(newThread.name+" is now" + newThread.locked ? "locked" : "unlocked");
+         *   console.log(`${newThread.name} is now ${newThread.locked ? "locked" : "unlocked"}`);
          * });
          */
         if (oldThread.locked !== newThread.locked) {
@@ -66,7 +66,7 @@ export async function handleThreadChannelUpdateEvent(
          * @param {Number} newRateLimitPerUser Thread channel's new rate limit per user in seconds.
          * @example
          * client.on("threadRateLimitPerUserUpdate", (thread, oldRateLimitPerUser, newRateLimitPerUser) => {
-         *   console.log(thread.name+"'s slowmode got changed from " + oldRateLimitPerUser ? oldRateLimitPerUser : 0 + " seconds to" + newRateLimitPerUser ? newRateLimitPerUser : 0 + " seconds.");
+         *   console.log(`${thread.name}'s slowmode got changed from ${oldRateLimitPerUser ? oldRateLimitPerUser : 0} seconds to ${newRateLimitPerUser ? newRateLimitPerUser : 0} seconds.`);
          * });
          */
         if (oldThread.rateLimitPerUser !== newThread.rateLimitPerUser) {
@@ -87,7 +87,7 @@ export async function handleThreadChannelUpdateEvent(
          * @param {Number} newAutoArchiveDuration Thread channel's new auto archive duration in minutes.
          * @example
          * client.on("threadAutoArchiveDurationUpdate", (thread, oldAutoArchiveDuration, newAutoArchiveDuration) => {
-         *   console.log(thread.name+"'s auto archive duration got changed from " + oldAutoArchiveDuration + " minutes to" + newAutoArchiveDuration + " minutes.");
+         *   console.log(thread.name+"'s auto archive duration got changed from " + oldAutoArchiveDuration + " minutes to " + newAutoArchiveDuration + " minutes.");
          * });
          */
         if (oldThread.autoArchiveDuration !== newThread.autoArchiveDuration) {
@@ -108,7 +108,7 @@ export async function handleThreadChannelUpdateEvent(
      * @param {DJS:ThreadChannel} newThread The thread after the update.
      * @example
      * client.on("unhandledThreadUpdate", (oldThread, newThread) => {
-     *   console.log("Channel '"+oldThread.id+"' was edited but discord-logs couldn't find what was updated...");
+     *   console.log("Thread "+oldThread.id+" was edited but discord-logs couldn't find what was updated...");
      * });
      */
     if (!emitted) {
