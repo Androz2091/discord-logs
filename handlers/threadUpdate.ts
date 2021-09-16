@@ -82,8 +82,8 @@ export async function handleThreadChannelUpdateEvent(
         /**
          * @event threadAutoArchiveDurationUpdate
          * @description Emitted when thread's auto archive duration is updated.
-         * @param {DJS:ThreadChannel} thread The thread channel who's rate limit per user got updated.
-         * @param {Number} oldAutoArchiveDuration Thread channel's old auto archive duration minutes.
+         * @param {DJS:ThreadChannel} thread The thread channel who's auto archive duration got updated.
+         * @param {Number} oldAutoArchiveDuration Thread channel's old auto archive duration in minutes.
          * @param {Number} newAutoArchiveDuration Thread channel's new auto archive duration in minutes.
          * @example
          * client.on("threadAutoArchiveDurationUpdate", (thread, oldAutoArchiveDuration, newAutoArchiveDuration) => {
