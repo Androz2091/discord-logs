@@ -80,7 +80,6 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         emitted = true;
     }
 
-
     /**
      * @event guildVanityURLRemove
      * @description Emitted when a guild removes its vanity URL.
@@ -95,7 +94,6 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         client.emit('guildVanityURLRemove', newGuild, oldGuild.vanityURLCode);
         emitted = true;
     }
-
 
     /**
      * @event guildVanityURLUpdate

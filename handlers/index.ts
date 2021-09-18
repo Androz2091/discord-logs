@@ -6,3 +6,4 @@ export * from './userUpdate';
 export * from './voiceStateUpdate';
 export * from './messageUpdate';
 export * from './guildChannel';
+export * from './threadUpdate';

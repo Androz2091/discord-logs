@@ -8,7 +8,6 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User | Part
     let emitted = false;
 
     if (!oldUser.partial) {
-
         /**
          * @event userAvatarUpdate
          * @description Emitted when a user changes their avatar.
@@ -55,7 +54,6 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User | Part
             emitted = true;
         }
 
-
         /**
          * @event userFlagsUpdate
          * @description Emitted when a user changes their flags.
@@ -71,7 +69,6 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User | Part
             client.emit('userFlagsUpdate', newUser, oldUser.flags, newUser.flags);
             emitted = true;
         }
-
     }
 
     /**

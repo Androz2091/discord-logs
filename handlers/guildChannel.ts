@@ -6,9 +6,8 @@ import { Channel, Client, TextChannel, GuildChannel, Constants } from 'discord.j
  */
 export async function handleChannelUpdateEvent(client: Client, oldChannel: Channel, newChannel: Channel) {
     let emitted = false;
-    
+
     if (Object.prototype.hasOwnProperty.call(oldChannel, 'guild')) {
-        
         /**
          * @event guildChannelPermissionsUpdate
          * @description Emitted when channel permissions are updated.
@@ -41,7 +40,10 @@ export async function handleChannelUpdateEvent(client: Client, oldChannel: Chann
          *   console.log(channel.name+"'s topic changed to " + newTopic +"!");
          * });
          */
-        if (oldChannel.type === 'GUILD_TEXT' && (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic) {
+        if (
+            oldChannel.type === 'GUILD_TEXT' &&
+            (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic
+        ) {
             client.emit(
                 'guildChannelTopicUpdate',
                 newChannel,
@@ -50,7 +52,6 @@ export async function handleChannelUpdateEvent(client: Client, oldChannel: Chann
             );
             emitted = true;
         }
-
     }
 
     /**

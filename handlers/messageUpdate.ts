@@ -4,11 +4,13 @@ import { Client, Message, PartialMessage } from 'discord.js';
  * @handler Message Events
  * @related messageUpdate
  */
-export async function handleMessageUpdateEvent(client: Client, oldMessage: Message | PartialMessage, newMessage: Message | PartialMessage) {
-
+export async function handleMessageUpdateEvent(
+    client: Client,
+    oldMessage: Message | PartialMessage,
+    newMessage: Message | PartialMessage,
+) {
     let emitted = false;
     if (!oldMessage.partial && !newMessage.partial) {
-
         /**
          * @event messagePinned
          * @description Emitted when a message has been pinned.
@@ -37,9 +39,8 @@ export async function handleMessageUpdateEvent(client: Client, oldMessage: Messa
             client.emit('messageContentEdited', newMessage, oldMessage.content, newMessage.content);
             emitted = true;
         }
-
     }
-    
+
     /**
      * @event unhandledMessageUpdate
      * @description Emitted when the messageUpdate event is triggered but discord-logs didn't trigger any custom event.
