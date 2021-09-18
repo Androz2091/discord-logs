@@ -1544,16 +1544,309 @@
                     </div>
                     </div>
                 </div><br>
+        <h3>Thread Channel Events</h3>
+        <h5>Events related to the threadUpdate event.</h5><br>
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-34">threadStateUpdate</a>
+                            </h4>
+                        </div>
+                    <div id="event-34" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when thread is either archived or unarchived.</div>
+                        <div style="padding: 15px">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldThread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The old thread channel before state update. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newThread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The new thread channel after state update. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("threadStateUpdate", (oldThread, newThread) => {
+  console.log(`${newThread.name} is now ${newThread.archived ? "archived" : "unarchived"}`);
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-35">threadNameUpdate</a>
+                            </h4>
+                        </div>
+                    <div id="event-35" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when thread's name is updated.</div>
+                        <div style="padding: 15px">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> thread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The thread channel who's name was updated. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldName </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">
+                                String</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The old name of the thread. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newName </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">
+                                String</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The new name of the thread. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("threadNameUpdate", (thread, oldName, newName) => {
+  console.log(oldName + "'s name is updated to " + newName);
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-36">threadLockStateUpdate</a>
+                            </h4>
+                        </div>
+                    <div id="event-36" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when thread is either locked or unlocked.</div>
+                        <div style="padding: 15px">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldThread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The old thread channel before lock state update. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newThread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The new thread channel after lock state update. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("threadLockStateUpdate", (oldThread, newThread) => {
+  console.log(`${newThread.name} is now ${newThread.locked ? "locked" : "unlocked"}`);
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-37">threadRateLimitPerUserUpdate</a>
+                            </h4>
+                        </div>
+                    <div id="event-37" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when thread's slowmode is updated.</div>
+                        <div style="padding: 15px">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> thread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The thread channel who's rate limit per user got updated. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldRateLimitPerUser </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">
+                                Number</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> Thread channel's old rate limit per user in seconds. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newRateLimitPerUser </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">
+                                Number</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> Thread channel's new rate limit per user in seconds. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("threadRateLimitPerUserUpdate", (thread, oldRateLimitPerUser, newRateLimitPerUser) => {
+  console.log(`${thread.name}'s slowmode got changed from ${oldRateLimitPerUser ? oldRateLimitPerUser : 0} seconds to ${newRateLimitPerUser ? newRateLimitPerUser : 0} seconds.`);
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-38">threadAutoArchiveDurationUpdate</a>
+                            </h4>
+                        </div>
+                    <div id="event-38" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when thread's auto archive duration is updated.</div>
+                        <div style="padding: 15px">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> thread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The thread channel who's auto archive duration got updated. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldAutoArchiveDuration </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">
+                                Number</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> Thread channel's old auto archive duration in minutes. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newAutoArchiveDuration </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">
+                                Number</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> Thread channel's new auto archive duration in minutes. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("threadAutoArchiveDurationUpdate", (thread, oldAutoArchiveDuration, newAutoArchiveDuration) => {
+  console.log(thread.name+"'s auto archive duration got changed from " + oldAutoArchiveDuration + " minutes to " + newAutoArchiveDuration + " minutes.");
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="panel-group">
+                    <div class="panel-heading">
+                        <div class="border">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#event-39">unhandledThreadUpdate</a>
+                            </h4>
+                        </div>
+                    <div id="event-39" class="panel-collapse collapse">
+                        <div class="panel-body">📡 Emitted when the threadUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
+                        <div style="padding: 15px">ℹ️ Parameters: 
+                        <br><br>
+                        <table>
+                        <tr>
+                            <th>Name</th>
+                            <th style="padding:0 15px 0 15px;">Type</th>
+                            <th style="padding:0 15px 0 15px;">Description</th>
+                        </tr>
+                        
+                        <tr>
+                            <td> oldThread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The thread before the update. </td>
+                        </tr>
+                        
+                        <tr>
+                            <td> newThread </td>
+                            <td style="padding:0 15px 0 15px;">
+                                <a target="_blank" href="https://discord.js.org/#/docs/main/master/class/ThreadChannel">
+                                ThreadChannel</a>
+                            </td>
+                            <td style="padding:0 15px 0 15px;"> The thread after the update. </td>
+                        </tr>
+                        
+                      </table></div>
+                      <div class="panel-body">🆘 Example:<br><pre><code class="javascript">client.on("unhandledThreadUpdate", (oldThread, newThread) => {
+  console.log("Thread "+oldThread.id+" was edited but discord-logs couldn't find what was updated...");
+});
+</code></pre></div>
+                    </div>
+                    </div>
+                </div><br>
         <h3>User Events</h3>
         <h5>Events related to the userUpdate event.</h5><br>
                 <div class="panel-group">
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-34">userAvatarUpdate</a>
+                                <a data-toggle="collapse" href="#event-40">userAvatarUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-34" class="panel-collapse collapse">
+                    <div id="event-40" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their avatar.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1603,10 +1896,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-35">userUsernameUpdate</a>
+                                <a data-toggle="collapse" href="#event-41">userUsernameUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-35" class="panel-collapse collapse">
+                    <div id="event-41" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their username.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1656,10 +1949,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-36">userDiscriminatorUpdate</a>
+                                <a data-toggle="collapse" href="#event-42">userDiscriminatorUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-36" class="panel-collapse collapse">
+                    <div id="event-42" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their discriminator.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1709,10 +2002,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-37">userFlagsUpdate</a>
+                                <a data-toggle="collapse" href="#event-43">userFlagsUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-37" class="panel-collapse collapse">
+                    <div id="event-43" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a user changes their flags.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1762,10 +2055,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-38">unhandledUserUpdate</a>
+                                <a data-toggle="collapse" href="#event-44">unhandledUserUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-38" class="panel-collapse collapse">
+                    <div id="event-44" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the userUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1808,10 +2101,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-39">voiceChannelJoin</a>
+                                <a data-toggle="collapse" href="#event-45">voiceChannelJoin</a>
                             </h4>
                         </div>
-                    <div id="event-39" class="panel-collapse collapse">
+                    <div id="event-45" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member joins a voice channel.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1852,10 +2145,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-40">voiceChannelLeave</a>
+                                <a data-toggle="collapse" href="#event-46">voiceChannelLeave</a>
                             </h4>
                         </div>
-                    <div id="event-40" class="panel-collapse collapse">
+                    <div id="event-46" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member leaves a voice channel.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1896,10 +2189,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-41">voiceChannelSwitch</a>
+                                <a data-toggle="collapse" href="#event-47">voiceChannelSwitch</a>
                             </h4>
                         </div>
-                    <div id="event-41" class="panel-collapse collapse">
+                    <div id="event-47" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member switches to another voice channel.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1949,10 +2242,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-42">voiceChannelMute</a>
+                                <a data-toggle="collapse" href="#event-48">voiceChannelMute</a>
                             </h4>
                         </div>
-                    <div id="event-42" class="panel-collapse collapse">
+                    <div id="event-48" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes muted (self-muted or server-muted).</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -1993,10 +2286,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-43">voiceChannelUnmute</a>
+                                <a data-toggle="collapse" href="#event-49">voiceChannelUnmute</a>
                             </h4>
                         </div>
-                    <div id="event-43" class="panel-collapse collapse">
+                    <div id="event-49" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes unmuted.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2037,10 +2330,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-44">voiceChannelDeaf</a>
+                                <a data-toggle="collapse" href="#event-50">voiceChannelDeaf</a>
                             </h4>
                         </div>
-                    <div id="event-44" class="panel-collapse collapse">
+                    <div id="event-50" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes deafed.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2081,10 +2374,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-45">voiceChannelUndeaf</a>
+                                <a data-toggle="collapse" href="#event-51">voiceChannelUndeaf</a>
                             </h4>
                         </div>
-                    <div id="event-45" class="panel-collapse collapse">
+                    <div id="event-51" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member becomes undeafed.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2125,10 +2418,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-46">voiceStreamingStart</a>
+                                <a data-toggle="collapse" href="#event-52">voiceStreamingStart</a>
                             </h4>
                         </div>
-                    <div id="event-46" class="panel-collapse collapse">
+                    <div id="event-52" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member starts streaming.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2169,10 +2462,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-47">voiceStreamingStop</a>
+                                <a data-toggle="collapse" href="#event-53">voiceStreamingStop</a>
                             </h4>
                         </div>
-                    <div id="event-47" class="panel-collapse collapse">
+                    <div id="event-53" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when a member stops streaming.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>
@@ -2213,10 +2506,10 @@
                     <div class="panel-heading">
                         <div class="border">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#event-48">unhandledVoiceStateUpdate</a>
+                                <a data-toggle="collapse" href="#event-54">unhandledVoiceStateUpdate</a>
                             </h4>
                         </div>
-                    <div id="event-48" class="panel-collapse collapse">
+                    <div id="event-54" class="panel-collapse collapse">
                         <div class="panel-body">📡 Emitted when the voiceStateUpdate event is triggered but discord-logs didn't trigger any custom event.</div>
                         <div style="padding: 15px">ℹ️ Parameters: 
                         <br><br>

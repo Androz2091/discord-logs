@@ -173,6 +173,33 @@ client.on("unhandledRoleUpdate", (oldRole, newRole) => {
   console.log("Role '"+oldRole.id+"' was updated but discord-logs couldn't find what was updated...");
 });
 
+/* Thread Channel Events */
+// Events related to the threadUpdate event.
+
+client.on("threadStateUpdate", (oldThread, newThread) => {
+  console.log(`${newThread.name} is now ${newThread.archived ? "archived" : "unarchived"}`);
+});
+
+client.on("threadNameUpdate", (thread, oldName, newName) => {
+  console.log(oldName + "'s name is updated to " + newName);
+});
+
+client.on("threadLockStateUpdate", (oldThread, newThread) => {
+  console.log(`${newThread.name} is now ${newThread.locked ? "locked" : "unlocked"}`);
+});
+
+client.on("threadRateLimitPerUserUpdate", (thread, oldRateLimitPerUser, newRateLimitPerUser) => {
+  console.log(`${thread.name}'s slowmode got changed from ${oldRateLimitPerUser ? oldRateLimitPerUser : 0} seconds to ${newRateLimitPerUser ? newRateLimitPerUser : 0} seconds.`);
+});
+
+client.on("threadAutoArchiveDurationUpdate", (thread, oldAutoArchiveDuration, newAutoArchiveDuration) => {
+  console.log(thread.name+"'s auto archive duration got changed from " + oldAutoArchiveDuration + " minutes to " + newAutoArchiveDuration + " minutes.");
+});
+
+client.on("unhandledThreadUpdate", (oldThread, newThread) => {
+  console.log("Thread "+oldThread.id+" was edited but discord-logs couldn't find what was updated...");
+});
+
 /* User Events */
 // Events related to the userUpdate event.
 
