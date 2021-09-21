@@ -4,7 +4,11 @@
       "module": "commonjs",
       "declaration": true,
       "outDir": "./lib",
-      "strict": true
+      "strict": true,
+      "typeRoots" : [
+        "node_modules/@types",
+        "typings"
+      ]
     },
     "include": ["handlers","index.ts"],
     "exclude": ["node_modules", "**/__tests__/*"]
