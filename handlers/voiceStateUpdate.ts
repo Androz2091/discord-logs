@@ -92,7 +92,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * });
      */
     if (!oldState.deaf && newState.deaf) {
-        const deafType: string = newState.selfDeaf ? 'self-deafed' : 'server-v';
+        const deafType: string = newState.selfDeaf ? 'self-deafed' : 'server-deafed';
         client.emit('voiceChannelDeaf', newMember, deafType);
         emitted = true;
     }
@@ -107,7 +107,7 @@ export async function handleVoiceStateUpdateEvent(client: Client, oldState: Voic
      * });
      */
     if (oldState.deaf && !newState.deaf) {
-        const deafType: string = oldState.selfDeaf ? 'self-deafed' : 'server-v';
+        const deafType: string = oldState.selfDeaf ? 'self-deafed' : 'server-deafed';
         client.emit('voiceChannelUndeaf', newMember, deafType);
         emitted = true;
     }
