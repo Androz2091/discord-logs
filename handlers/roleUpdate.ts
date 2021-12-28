@@ -53,6 +53,37 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
          emitted = true;
      }
 
+     /**
+      * @event roleIconUpdate
+      * @description Emitted when a role icon updated.
+      * @param {DJS:Role} role The role whose icon has updated.
+      * @param {string} oldIconURL The old role icon url.
+      * @param {string} newIconURL The new role icon url.
+      * @example
+      * client.on("roleIconUpdate", (role, oldIconURL, newIconURL) => {
+      *     console.log(role.name + " updated icon url from " + oldIconURL " to " + newIconURL);
+      * })
+      */
+     if (oldRole.icon !== newRole.icon) {
+         client.emit('roleIconUpdate', newRole, oldRole.iconURL(), newRole.iconURL());
+         emitted = true;
+     }
+
+     /**
+      * @event roleIconRemove
+      * @description Emitted when a role icon removed.
+      * @param {DJS:Role} role The role whose icon has removed.
+      * @param {string} iconURL The role icon url.
+      * @example
+      * client.on("roleIconRemove", (role, iconURL) => {
+      *     console.log(role.name + " has removed role icon: " +iconURL);
+      * })
+      */
+     if (oldRole.icon && !newRole.icon) {
+         client.emit('roleIconRemove', newRole, oldRole.iconURL());
+         emitted = true;
+     }
+
     /**
      * @event unhandledRoleUpdate
      * @description Emitted when the roleUpdate event is triggered but discord-logs didn't trigger any custom event.
