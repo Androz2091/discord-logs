@@ -39,17 +39,17 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
     }
 
      /**
-      * @event roleIconAdded
+      * @event roleIconAdd
       * @description Emitted when a role icon added.
       * @param {DJS:Role} role The role whose icon has added.
       * @param {string} iconURL The role icon url.
       * @example
-      * client.on("roleIconAdded", (role, iconURL) => {
+      * client.on("roleIconAdd", (role, iconURL) => {
       *    console.log(role.name + " added new icon url " + iconURL)
       * })
       */
      if (!oldRole.icon && newRole.icon) {
-         client.emit('roleIconAdded', newRole, newRole.iconURL());
+         client.emit('roleIconAdd', newRole, newRole.iconURL());
          emitted = true;
      }
 
