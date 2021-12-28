@@ -103,6 +103,51 @@ export async function handleGuildMemberUpdateEvent(
             client.emit('guildMemberEntered', newMember);
             emitted = true;
         }
+
+        /**
+         * @event guildMemberAvatarAdd
+         * @description Emitted when the member set new guild avatar.
+         * @param {DJS:GuildMember} member The member whose set new guild avatar.
+         * @param {string} avatarURL The guild avatar for member.
+         * @example
+         * client.on("guildMemberAvatarAdd", (member, avatarURL) => {
+         *    console.log(member.user.tag + " set new guild avatar " + avatarURL);
+         * })
+         */
+        if (!oldMember.avatar && newMember.avatar) {
+            client.emit('guildMemberAvatarAdd', newMember, newMember.avatarURL());
+            emitted = true;
+        }
+
+        /**
+         * @event guildMemberAvatarUpdate
+         * @description Emitted when the member changes his guild avatar.
+         * @param {DJS:GuildMember} member The member whose changes his guild avatar.
+         * @param {string} avatarURL The guild avatar for member.
+         * @example
+         * client.on("guildMemberAvatarUpdate", (member, avatarURL) => {
+         *      console.log(member.user.tag + " changes his guild avatar " + avatarURL);
+         * })
+         */
+        if (oldMember.avatar !== newMember.avatar) {
+            client.emit('guildMemberAvatarUpdate', newMember, newMember.avatarURL());
+            emitted = true;
+        }
+
+        /**
+         * @event guildMemberAvatarRemove
+         * @description Emitted when the member remove his guild avatar.
+         * @param {DJS:GuildMember} member The member whose remove his guild avatar.
+         * @param {string} avatarURL The guild avatar for member.
+         * @example
+         * client.on("guildMemberAvatarRemove", (member, avatarURL) => {
+         *      console.log(member.user.tag + " removed his guild avatar " + avatarURL)
+         * })
+         */
+        if (oldMember.avatar && !newMember.avatar) {
+            client.emit('guildMemberAvatarRemove', newMember, oldMember.avatarURL());
+            emitted = true;
+        }
     }
 
     /**
