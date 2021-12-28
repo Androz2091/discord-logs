@@ -37,6 +37,22 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
         client.emit('rolePermissionsUpdate', newRole, oldRole.permissions.bitfield, newRole.permissions.bitfield);
         emitted = true;
     }
+
+     /**
+      * @event roleIconAdded
+      * @description Emitted when a role icon added.
+      * @param {DJS:Role} role The role whose icon has added.
+      * @param {string} iconURL The role icon url.
+      * @example
+      * client.on("roleIconAdded", (role, iconURL) => {
+      *    console.log(role.name + " added new icon url " + iconURL)
+      * })
+      */
+     if (!oldRole.icon && newRole.icon) {
+         client.emit('roleIconAdded', newRole, newRole.iconURL());
+         emitted = true;
+     }
+
     /**
      * @event unhandledRoleUpdate
      * @description Emitted when the roleUpdate event is triggered but discord-logs didn't trigger any custom event.
