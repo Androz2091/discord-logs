@@ -61,6 +61,18 @@ client.on("guildMemberEntered", (member) => {
   console.log(member.user.tag+" has passed the gate!");
 });
 
+client.on("guildMemberAvatarAdd", (member, avatarURL) => {
+  console.log(member.user.tag + " set new guild avatar " + avatarURL);
+});
+
+client.on("guildMemberAvatarUpdate", (member, oldAvatarURL, newAvatarURL) => {
+  console.log(member.user.tag + " changes his guild avatar from " + oldAvatarURL + " to " + newAvatarURL);
+});
+
+client.on("guildMemberAvatarRemove", (member, avatarURL) => {
+  console.log(member.user.tag + " removed his guild avatar " + avatarURL);
+});
+
 client.on("unhandledGuildMemberUpdate", (oldMember, newMember) => {
   console.log("Member '"+oldMember.id+"' was edited but discord-logs couldn't find what was updated...");
 });
