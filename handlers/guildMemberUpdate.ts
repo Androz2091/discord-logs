@@ -126,7 +126,7 @@ export async function handleGuildMemberUpdateEvent(
          * @param {string} avatarURL The guild avatar for member.
          * @example
          * client.on("guildMemberAvatarUpdate", (member, oldAvatarURL, newAvatarURL) => {
-         *      console.log(member.user.tag + " changes his guild avatar from " + oldAvatarURL + " to " + newAvatarURL);
+         *   console.log(member.user.tag + " changes his guild avatar from " + oldAvatarURL + " to " + newAvatarURL);
          * })
          */
         if (oldMember.avatar !== newMember.avatar) {
@@ -141,7 +141,7 @@ export async function handleGuildMemberUpdateEvent(
          * @param {string} avatarURL The guild avatar for member.
          * @example
          * client.on("guildMemberAvatarRemove", (member, avatarURL) => {
-         *      console.log(member.user.tag + " removed his guild avatar " + avatarURL)
+         *   console.log(member.user.tag + " removed his guild avatar " + avatarURL);
          * })
          */
         if (oldMember.avatar && !newMember.avatar) {
