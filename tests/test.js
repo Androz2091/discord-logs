@@ -169,9 +169,17 @@ client.on("rolePermissionsUpdate", (role, oldPermissions, newPermissions) => {
   console.log(role.name + " had as permissions "+oldPermissions+" and now has as permissions "+newPermissions);
 });
 
-client.on('roleIconAdded', (role, iconURL) => {
+client.on("roleIconAdd", (role, iconURL) => {
   console.log(role.name + " added new icon url " + iconURL);
 })
+
+client.on("roleIconUpdate", (role, oldIconURL, newIconURL) => {
+  console.log(role.name + " updated icon url from " + oldIconURL + " to " + newIconURL);
+});
+
+client.on("roleIconRemove", (role, iconURL) => {
+  console.log(role.name + " has removed role icon: " +iconURL);
+});
 
 client.on("unhandledRoleUpdate", (oldRole, newRole) => {
   console.log("Role '"+oldRole.id+"' was updated but discord-logs couldn't find what was updated...");

@@ -61,7 +61,7 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
       * @param {string} newIconURL The new role icon url.
       * @example
       * client.on("roleIconUpdate", (role, oldIconURL, newIconURL) => {
-      *     console.log(role.name + " updated icon url from " + oldIconURL " to " + newIconURL);
+      *    console.log(role.name + " updated icon url from " + oldIconURL + " to " + newIconURL);
       * })
       */
      if (oldRole.icon !== newRole.icon) {
@@ -76,7 +76,7 @@ export async function handleRoleUpdateEvent(client: Client, oldRole: Role, newRo
       * @param {string} iconURL The role icon url.
       * @example
       * client.on("roleIconRemove", (role, iconURL) => {
-      *     console.log(role.name + " has removed role icon: " +iconURL);
+      *   console.log(role.name + " has removed role icon: " +iconURL);
       * })
       */
      if (oldRole.icon && !newRole.icon) {
