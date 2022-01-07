@@ -123,7 +123,8 @@ export async function handleGuildMemberUpdateEvent(
          * @event guildMemberAvatarUpdate
          * @description Emitted when the member changes his guild avatar.
          * @param {DJS:GuildMember} member The member whose changes his guild avatar.
-         * @param {string} avatarURL The guild avatar for member.
+         * @param {string} oldAvatarURL The old guild avatar for member.
+         * @param {string} newAvatarURL The new guild avatar for member.
          * @example
          * client.on("guildMemberAvatarUpdate", (member, oldAvatarURL, newAvatarURL) => {
          *   console.log(member.user.tag + " changes his guild avatar from " + oldAvatarURL + " to " + newAvatarURL);
