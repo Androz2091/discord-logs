@@ -103,6 +103,16 @@ export async function handleGuildMemberUpdateEvent(
             client.emit('guildMemberEntered', newMember);
             emitted = true;
         }
+        
+        if(!(oldMember.isCommunicationDisabled()) && (newMember.isCommunicationDisable())) {
+            client.emit('guildMemberTimeout', newMember, newMember.communicationDisabledUntil);
+            emitted = true;
+        }
+        
+        if(!(newMember.isCommunicationDisabled()) && (oldMember.isCommunicationDisable())) {
+            client.emit('guildMemberUnTimeout', newMember);
+            emitted = true;
+        }
     }
 
     /**
