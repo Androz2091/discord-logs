@@ -104,6 +104,20 @@ export async function handleGuildMemberUpdateEvent(
             emitted = true;
         }
         /**
+         * @event guildMemberTimeout
+         * @description Emitted when the member has been timed out.
+         * @param {DJS:GuildMember} member The member whose passed the gate of the guild
+         * @param {Date} disabledUntil The timestamp the member has been disabled until, null if the member is not disabled
+         * @example
+         * client.on("guildMemberCommunicationDisabled", (member, disabledUntil) => {
+         *   console.log(`${member.user.tag} has been disabled until ${disabledUntil}`);
+         * });
+         */
+        if (oldMember.communicationDisabledUntil !== newMember.communicationDisabledUntil) {
+            client.emit('guildMemberTimeout', newMember, newMember.communicationDisabledUntil);
+            emitted = true;
+        }
+        /**
          * @event guildMemberEntered
          * @description Emitted when the member has passed the gate of the guild
          * @param {DJS:GuildMember} member The member whose passed the gate of the guild
