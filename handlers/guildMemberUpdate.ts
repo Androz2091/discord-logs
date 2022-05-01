@@ -89,7 +89,20 @@ export async function handleGuildMemberUpdateEvent(
             client.emit('guildMemberNicknameUpdate', newMember, oldMember.nickname, newMember.nickname);
             emitted = true;
         }
-
+        /**
+         * @event guildMemberTimeout
+         * @description Emitted when the member has been timed out.
+         * @param {DJS:GuildMember} member The member whose passed the gate of the guild
+         * @param {Date} disabledUntil The timestamp the member has been disabled until, null if the member is not disabled
+         * @example
+         * client.on("guildMemberCommunicationDisabled", (member, disabledUntil) => {
+         *   console.log(`${member.user.tag} has been disabled until ${disabledUntil}`);
+         * });
+         */
+        if (oldMember.communicationDisabledUntil !== newMember.communicationDisabledUntil) {
+            client.emit('guildMemberTimeout', newMember, newMember.communicationDisabledUntil);
+            emitted = true;
+        }
         /**
          * @event guildMemberEntered
          * @description Emitted when the member has passed the gate of the guild
@@ -99,7 +112,7 @@ export async function handleGuildMemberUpdateEvent(
          *   console.log(member.user.tag+" has passed the gate!");
          * });
          */
-        if (oldMember.pending !== newMember.pending) {
+         if (oldMember.pending !== newMember.pending) {
             client.emit('guildMemberEntered', newMember);
             emitted = true;
         }
