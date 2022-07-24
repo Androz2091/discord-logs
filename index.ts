@@ -1,4 +1,4 @@
-import { Client, Intents } from 'discord.js';
+import { Client, IntentsBitField } from 'discord.js';
 import {
     handleGuildMemberUpdateEvent,
     handleGuildUpdateEvent,
@@ -17,10 +17,10 @@ export = async (client: Client, options?: { debug?: boolean }) => {
     if (eventRegistered) return;
     eventRegistered = true;
 
-    const intents = new Intents(client.options.intents);
+    const intents = new IntentsBitField(client.options.intents);
 
     /* HANDLE GUILDS EVENTS */
-    if (intents.has('GUILDS')) {
+    if (intents.has('Guilds')) {
         if (options?.debug) console.log('channelUpdate event handler registered.');
         client.on('channelUpdate', (oldChannel, newChannel) => {
             handleChannelUpdateEvent(client, oldChannel, newChannel);
@@ -45,7 +45,7 @@ export = async (client: Client, options?: { debug?: boolean }) => {
     }
 
     /* HANDLE MEMBER EVENTS */
-    if (intents.has('GUILD_MEMBERS')) {
+    if (intents.has('GuildMembers')) {
         if (options?.debug) console.log('guildMemberUpdate event handler registered.');
         client.on('guildMemberUpdate', (oldMember, newMember) => {
             handleGuildMemberUpdateEvent(client, oldMember, newMember);
@@ -60,7 +60,7 @@ export = async (client: Client, options?: { debug?: boolean }) => {
     }
 
     /* HANDLE MESSAGE UPDATE EVENTS */
-    if (intents.has('GUILD_MESSAGES')) {
+    if (intents.has('GuildMessages')) {
         if (options?.debug) console.log('messageUpdate event handler registered.');
         client.on('messageUpdate', (oldMessage, newMessage) => {
             handleMessageUpdateEvent(client, oldMessage, newMessage);
@@ -70,7 +70,7 @@ export = async (client: Client, options?: { debug?: boolean }) => {
     }
 
     /* HANDLE PRESENCE UPDATE EVENTS */
-    if (intents.has('GUILD_PRESENCES')) {
+    if (intents.has('GuildPresences')) {
         if (options?.debug) console.log('presenceUpdate event handler registered.');
         client.on('presenceUpdate', (oldPresence, newPresence) => {
             handlePresenceUpdateEvent(client, oldPresence, newPresence);
@@ -81,7 +81,7 @@ export = async (client: Client, options?: { debug?: boolean }) => {
     }
 
     /* HANDLE VOICE STATE UPDATE */
-    if (intents.has('GUILD_VOICE_STATES')) {
+    if (intents.has('GuildVoiceStates')) {
         if (options?.debug) console.log('voiceStateUpdate event handler registered.');
         client.on('voiceStateUpdate', (oldState, newState) => {
             handleVoiceStateUpdateEvent(client, oldState, newState);
