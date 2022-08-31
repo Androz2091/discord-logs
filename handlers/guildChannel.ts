@@ -1,4 +1,4 @@
-import { Channel, Client, TextChannel, GuildChannel, Constants } from 'discord.js';
+import { Channel, ChannelType, Client, TextChannel, GuildChannel, Constants } from 'discord.js';
 
 /**
  * @handler Channel Events
@@ -41,7 +41,7 @@ export async function handleChannelUpdateEvent(client: Client, oldChannel: Chann
          * });
          */
         if (
-            oldChannel.type === 'GUILD_TEXT' &&
+            oldChannel.type === ChannelType.GuildText &&
             (oldChannel as TextChannel).topic !== (newChannel as TextChannel).topic
         ) {
             client.emit(
