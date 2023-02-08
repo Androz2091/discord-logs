@@ -79,6 +79,22 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         client.emit('guildVanityURLAdd', newGuild, newGuild.vanityURLCode);
         emitted = true;
     }
+    
+        /**
+     * @event guildOwnerUpdate
+     * @description Emitted when a guild changes owner.
+     * @param {DJS:Guild} guild The guild which changed owner.
+     * @param {object} oldOwner The old owner.
+     * @param {object} newOwner The new owner.
+     * @example
+     * client.on("guildOwnerUpdate", (guild, oldOwner, newOwner) => {
+     *   console.log("The new owner of " + guild.name + "is now member with ID "+ newOwner);
+     * });
+     */
+    if (oldGuild.ownerID !== newGuild.ownerID) {
+        client.emit('guildOwnerUpdate', newGuild, oldGuild.ownerID, newGuild.ownerID);
+        emitted = true;
+    }
 
     /**
      * @event guildVanityURLRemove
