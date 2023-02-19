@@ -4,7 +4,7 @@ import { Client, VoiceState } from 'discord.js';
  * @handler Voice Events
  * @related voiceStateUpdate
  */
-export async function handleVoiceStateUpdateEvent(client: Client, oldState: VoiceState, newState: VoiceState) {
+export async function handleVoiceStateUpdateEvent(client: Client, newState: VoiceState, oldState: VoiceState) {
     let emitted = false;
     const oldMember = oldState.member;
     const newMember = newState.member;
