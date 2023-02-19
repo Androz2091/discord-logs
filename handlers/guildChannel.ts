@@ -53,6 +53,20 @@ export async function handleChannelUpdateEvent(client: Client, oldChannel: Chann
             emitted = true;
         }
     }
+    /**
+     * @event guildChannelDelete
+        * @description Emitted when a channel is deleted.
+        * @param {DJS:GuildChannel} channel The channel that was deleted.
+        * @example
+        * client.on("guildChannelDelete", (channel) => {
+        *  console.log(channel.name+" was deleted!");
+        * });
+        */
+    if (oldChannel.type !== ChannelType.GuildCategory && newChannel.type === ChannelType.GuildCategory) {
+        client.emit('guildChannelDelete', oldChannel);
+        emitted = true;
+    }
+
 
     /**
      * @event unhandledGuildChannelUpdate
