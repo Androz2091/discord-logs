@@ -20,7 +20,7 @@ export async function handleUserUpdateEvent(client: Client, oldUser: User | Part
          * });
          */
         if (oldUser.displayAvatarURL() !== newUser.displayAvatarURL()) {
-            client.emit('userAvatarUpdate', newUser, oldUser.displayAvatarURL(), newUser.displayAvatarURL());
+            client.emit('userAvatarUpdate', newUser, oldUser.displayAvatarURL({dynamic:true}), newUser.displayAvatarURL({dynamic:true}));
             emitted = true;
         }
         /**
