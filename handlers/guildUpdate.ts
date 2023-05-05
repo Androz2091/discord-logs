@@ -79,6 +79,20 @@ export async function handleGuildUpdateEvent(client: Client, oldGuild: Guild, ne
         client.emit('guildVanityURLAdd', newGuild, newGuild.vanityURLCode);
         emitted = true;
     }
+    
+    /**
+     * @event guildVerified
+     * @description Emitted when a guild become verified.
+     * @param {DJS:Guild} guild The guild which became verified.
+     * @example
+     * client.on("guildVerified", (guild) => {
+     *   console.log(guild.name+" is now verified.");
+     * });
+     */
+    if (!oldGuild.verified && newGuild.verified) {
+        client.emit('guildVerified', newGuild);
+        emitted = true;
+    }
 
     /**
      * @event guildVanityURLRemove
