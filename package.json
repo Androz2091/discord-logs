@@ -4,8 +4,10 @@
   "description": "Add many useful events to your discord.js client!",
   "main": "lib/index.js",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "typings/**/*"
   ],
+  "types": "typings/index.d.ts",
   "scripts": {
     "test": "node tests/test.js",
     "generate-docs": "node scripts/generate-docs.js",
