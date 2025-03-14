@@ -13,8 +13,8 @@ import {
 
 let eventRegistered = false;
 
-export = async (client: Client, options?: { debug?: boolean }) => {
-    if (eventRegistered) return;
+export = async (client: Client, options?: { debug?: boolean, force?: boolean }) => {
+    if (eventRegistered && !options?.force) return;
     eventRegistered = true;
 
     const intents = new IntentsBitField(client.options.intents);
